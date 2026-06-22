@@ -1046,10 +1046,102 @@ elif page == "⚽ Quản lý trận đấu":
     </div>
     """, unsafe_allow_html=True)
 
-    m_tab1, m_tab2 = st.tabs([
-        f"✅ Đã có tỉ số  ({len(has_score)})",
-        f"⏳ Chưa có tỉ số  ({len(no_score)})",
-    ])
+    # ── Layout: danh sách trận | chi tiết vote ──
+    match_col, vote_col = st.columns([1, 1.4], gap="large")
+
+    # ── Helper functions (defined outside columns so both sides can use them) ──
+
+    def render_match_votes(match: str):
+        """Hiển thị tất cả vote của mọi người cho một trận."""
+        from collections import Counter
+        score      = raw_scores.get(match)
+        home, away = match.split(" vs ")
+        hs, as_    = (score[0], score[1]) if score else (None, None)
+
+        # Header trận
+        score_str = f"{hs} – {as_}" if score else "Chưa có kết quả"
+        st.markdown(f"""
+        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;
+                    padding:14px 20px;margin-bottom:16px;text-align:center">
+            <div style="font-size:.8rem;color:#64748b;font-weight:600;text-transform:uppercase;
+                        letter-spacing:.08em;margin-bottom:6px">Tỉ số</div>
+            <div style="font-size:1.1rem;font-weight:700;color:#1e293b">{home}</div>
+            <div style="font-size:1.8rem;font-weight:900;color:#1e40af;letter-spacing:4px;
+                        margin:4px 0">{score_str}</div>
+            <div style="font-size:1.1rem;font-weight:700;color:#1e293b">{away}</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+        # Tổng hợp vote
+        vote_rows = []
+        for m in members:
+            pred = m["votes"].get(match)
+            if score:
+                result = grade(pred, match, scores) if pred and str(pred).strip() else None
+            else:
+                result = None
+            vote_rows.append({"name": m["name"], "pred": pred, "result": result})
+
+        # Đếm
+        n_voted   = sum(1 for r in vote_rows if r["pred"] and str(r["pred"]).strip())
+        n_correct = sum(1 for r in vote_rows if r["result"] is True)
+        n_wrong   = sum(1 for r in vote_rows if r["result"] is False)
+        n_novote  = sum(1 for r in vote_rows if not r["pred"] or not str(r["pred"]).strip())
+
+        s1, s2, s3, s4 = st.columns(4)
+        s1.metric("Đã vote",  n_voted)
+        s2.metric("✅ Đúng",  n_correct)
+        s3.metric("❌ Sai",   n_wrong)
+        s4.metric("⬜ Bỏ",    n_novote)
+
+        st.markdown("<div style='margin:8px 0 4px'></div>", unsafe_allow_html=True)
+
+        # Tally dự đoán phổ biến
+        pred_counts = Counter(
+            str(r["pred"]).strip() for r in vote_rows
+            if r["pred"] and str(r["pred"]).strip()
+        )
+        if pred_counts:
+            st.markdown("<div style='font-size:.78rem;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px'>Dự đoán phổ biến</div>", unsafe_allow_html=True)
+            tally_cols = st.columns(min(len(pred_counts), 4))
+            for idx, (pred_val, cnt) in enumerate(pred_counts.most_common(4)):
+                tally_cols[idx].metric(pred_val, f"{cnt} người")
+
+        st.markdown("<div style='margin:12px 0 4px'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size:.78rem;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px'>Danh sách vote</div>", unsafe_allow_html=True)
+
+        # Header
+        st.markdown("""
+        <div style="display:grid;grid-template-columns:1fr 130px 90px;gap:10px;
+                    padding:5px 14px 7px;color:#94a3b8;font-size:.74rem;font-weight:700;
+                    text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e2e8f0;margin-bottom:4px">
+            <span>Người</span>
+            <span style="text-align:center;display:block">Dự đoán</span>
+            <span style="text-align:center;display:block">Kết quả</span>
+        </div>
+        """, unsafe_allow_html=True)
+
+        for r in vote_rows:
+            pred_str = str(r["pred"]).strip() if r["pred"] and str(r["pred"]).strip() else "—"
+            if r["result"] is True:
+                badge = "<span style='background:#dcfce7;color:#166534;padding:2px 10px;border-radius:99px;font-size:.78rem;font-weight:700'>✅</span>"
+                bg, border = "#f0fdf4", "#bbf7d0"
+            elif r["result"] is False:
+                badge = "<span style='background:#fee2e2;color:#991b1b;padding:2px 10px;border-radius:99px;font-size:.78rem;font-weight:700'>❌</span>"
+                bg, border = "#fff5f5", "#fecaca"
+            else:
+                badge = "<span style='background:#f1f5f9;color:#94a3b8;padding:2px 10px;border-radius:99px;font-size:.78rem;font-weight:700'>—</span>"
+                bg, border = "#f8fafc", "#e2e8f0"
+
+            st.markdown(f"""
+            <div style="display:grid;grid-template-columns:1fr 130px 90px;gap:10px;
+                        align-items:center;background:{bg};border:1px solid {border};
+                        border-radius:8px;padding:7px 14px;margin-bottom:4px">
+                <div style="font-size:.85rem;font-weight:600;color:#1e293b">{r["name"]}</div>
+                <div style="text-align:center;font-size:.83rem;color:#475569">{pred_str}</div>
+                <div style="text-align:center">{badge}</div>
+            </div>
+            """, unsafe_allow_html=True)
 
     def render_score_editor(match_dict: dict, key_prefix: str):
         if not match_dict:
@@ -1062,7 +1154,7 @@ elif page == "⚽ Quản lý trận đấu":
 
         matches = list(match_dict.items())
         edits   = {}
-        COLS    = 3
+        COLS    = 2   # 2 cột để còn chỗ cho nút xem vote
 
         for i in range(0, len(matches), COLS):
             cols = st.columns(COLS)
@@ -1071,9 +1163,27 @@ elif page == "⚽ Quản lý trận đấu":
                     break
                 match, score = matches[i + j]
                 home, away   = match.split(" vs ")
+                is_selected  = st.session_state.get("selected_match") == match
                 with col:
+                    border_style = "2px solid #3b82f6" if is_selected else "1px solid #e2e8f0"
                     with st.container(border=True):
-                        st.markdown(f"<div class='match-title'>{home} <span style='color:#64748b'>vs</span> {away}</div>", unsafe_allow_html=True)
+                        # Tên trận + nút xem vote
+                        btn_col, title_col = st.columns([1, 5])
+                        with btn_col:
+                            if st.button(
+                                "👁",
+                                key=f"view_{key_prefix}_{i+j}",
+                                help="Xem vote của mọi người",
+                                type="primary" if is_selected else "secondary",
+                            ):
+                                st.session_state["selected_match"] = match
+                                st.rerun()
+                        with title_col:
+                            st.markdown(
+                                f"<div class='match-title' style='padding-top:6px'>{home} <span style='color:#64748b'>vs</span> {away}</div>",
+                                unsafe_allow_html=True,
+                            )
+
                         ic1, ic2, ic3 = st.columns([5, 2, 5])
                         with ic1:
                             home_val = st.number_input(
@@ -1113,12 +1223,32 @@ elif page == "⚽ Quản lý trận đấu":
             if st.button("↺ Reset", key=f"reset_{key_prefix}", width="stretch"):
                 st.rerun()
 
-    with m_tab1:
-        render_score_editor(has_score, "has")
-    with m_tab2:
-        if no_score:
-            st.info(f"⚠️ Còn **{len(no_score)}** trận chưa có kết quả. Nhập tỉ số và nhấn Lưu.")
-        render_score_editor(no_score, "no")
+    # ── Render hai cột ──
+    with match_col:
+        m_tab1, m_tab2 = st.tabs([
+            f"✅ Đã có tỉ số  ({len(has_score)})",
+            f"⏳ Chưa có tỉ số  ({len(no_score)})",
+        ])
+        with m_tab1:
+            render_score_editor(has_score, "has")
+        with m_tab2:
+            if no_score:
+                st.info(f"⚠️ Còn **{len(no_score)}** trận chưa có kết quả. Nhập tỉ số và nhấn Lưu.")
+            render_score_editor(no_score, "no")
+
+    with vote_col:
+        selected_match = st.session_state.get("selected_match")
+        if selected_match and selected_match in raw_scores:
+            st.markdown(f"### 📊 Vote: {selected_match}")
+            render_match_votes(selected_match)
+        else:
+            st.markdown("""
+            <div style="margin-top:80px;text-align:center;color:#94a3b8">
+                <div style="font-size:3rem">👈</div>
+                <div style="font-size:1.1rem;margin-top:12px;font-weight:600">Chọn một trận đấu</div>
+                <div style="font-size:.9rem;margin-top:6px">Nhấn 👁 để xem vote của mọi người</div>
+            </div>
+            """, unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════
 # PAGE 3: Xuất báo cáo
