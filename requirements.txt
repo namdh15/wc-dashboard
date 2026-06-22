@@ -1,4 +1,7 @@
-python-docx 
-pandas 
+python-docx
+pandas
 openpyxl
 tqdm
+streamlit
+telethon
+requests
