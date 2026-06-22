@@ -879,8 +879,11 @@ document.querySelectorAll(".member-header").forEach(h => {{
 # UI
 # ─────────────────────────────────────────────────────────────
 
+import os
 import subprocess
 import sys
+
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # ── Custom CSS ────────────────────────────────────────────────
 st.markdown("""
@@ -968,47 +971,72 @@ with st.sidebar:
     # ── Nút 1: Kéo poll Telegram ──
     if st.button("📡 Kéo poll Telegram", width="stretch",
                  help="Lấy lại vote từ Telegram → poll_results_1.xlsx"):
+        _poll_path = os.path.join(_SCRIPT_DIR, OUTPUT_FILE)
+        _mtime_before = os.path.getmtime(_poll_path) if os.path.exists(_poll_path) else 0
         with st.spinner("Đang kéo poll từ Telegram..."):
-            result = subprocess.run(
-                [sys.executable, "telegram_poll_export.py",
-                 "--skip-ranking", "--skip-fetch-scores"],
-                capture_output=True, text=True, cwd="."
-            )
-        output = (result.stdout or "") + (result.stderr or "")
-        # Coi là thành công nếu có file được tạo, dù returncode != 0
-        # (có thể có PollVoteRequiredError đã được skip trong code)
-        import os
-        poll_ok = os.path.exists(OUTPUT_FILE)
-        if poll_ok:
-            st.toast("✅ Kéo poll xong!")
-            if output:
-                with st.expander("Log", expanded=False):
-                    st.code(output, language=None)
-            load_all.clear()
-            st.rerun()
+            try:
+                result = subprocess.run(
+                    [sys.executable,
+                     os.path.join(_SCRIPT_DIR, "telegram_poll_export.py"),
+                     "--skip-ranking", "--skip-fetch-scores"],
+                    capture_output=True, text=True, cwd=_SCRIPT_DIR,
+                    timeout=180,
+                )
+                _timed_out = False
+            except subprocess.TimeoutExpired:
+                result = None
+                _timed_out = True
+        if _timed_out:
+            st.error("⏱️ Quá thời gian chờ (180s). Kiểm tra kết nối Telegram.")
         else:
-            st.error("Kéo poll thất bại")
-            st.code(output)
+            output = (result.stdout or "") + (result.stderr or "")
+            _mtime_after = os.path.getmtime(_poll_path) if os.path.exists(_poll_path) else 0
+            # Thành công khi file thực sự được ghi mới
+            poll_ok = _mtime_after > _mtime_before
+            if poll_ok:
+                st.toast("✅ Kéo poll xong!")
+                if output:
+                    with st.expander("Log", expanded=False):
+                        st.code(output, language=None)
+                load_all.clear()
+                st.rerun()
+            else:
+                st.error(f"❌ Kéo poll thất bại (returncode={result.returncode})")
+                if output:
+                    st.code(output)
 
     # ── Nút 2: Fetch kết quả ESPN ──
     if st.button("🌐 Fetch kết quả ESPN", width="stretch",
                  help="Tự động lấy tỉ số từ ESPN → scores.json"):
+        _scores_path  = os.path.join(_SCRIPT_DIR, SCORES_FILE)
+        _mtime_before = os.path.getmtime(_scores_path) if os.path.exists(_scores_path) else 0
         with st.spinner("Đang fetch từ ESPN..."):
-            result = subprocess.run(
-                [sys.executable, "telegram_poll_export.py",
-                 "--skip-poll", "--fetch-scores", "--skip-ranking"],
-                capture_output=True, text=True, cwd="."
-            )
-        output = (result.stdout or "") + (result.stderr or "")
-        if result.returncode == 0:
-            st.toast("✅ Fetch kết quả xong!")
+            try:
+                result = subprocess.run(
+                    [sys.executable,
+                     os.path.join(_SCRIPT_DIR, "telegram_poll_export.py"),
+                     "--skip-poll", "--fetch-scores", "--skip-ranking"],
+                    capture_output=True, text=True, cwd=_SCRIPT_DIR,
+                    timeout=60,
+                )
+                _timed_out = False
+            except subprocess.TimeoutExpired:
+                result = None
+                _timed_out = True
+        if _timed_out:
+            st.error("⏱️ Quá thời gian chờ (60s). Kiểm tra kết nối mạng.")
         else:
-            st.warning("Fetch xong (có thể một số trận chưa khớp)")
-        if output:
-            with st.expander("Log ESPN", expanded=True):
-                st.code(output, language=None)
-        load_all.clear()
-        st.rerun()
+            output = (result.stdout or "") + (result.stderr or "")
+            _mtime_after = os.path.getmtime(_scores_path) if os.path.exists(_scores_path) else 0
+            if _mtime_after > _mtime_before:
+                st.toast("✅ Fetch kết quả xong!")
+            else:
+                st.warning("⚠️ Fetch xong nhưng scores.json không thay đổi (có thể chưa có trận mới)")
+            if output:
+                with st.expander("Log ESPN", expanded=True):
+                    st.code(output, language=None)
+            load_all.clear()
+            st.rerun()
 
     # ── Nút 3: Cập nhật ranking ──
     if st.button("🏆 Tính lại xếp hạng", width="stretch",
