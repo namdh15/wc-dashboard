@@ -12,19 +12,102 @@ import pandas as pd
 import streamlit as st
 from openpyxl import load_workbook
 
-POLL_FILE   = "poll_results_1.xlsx"
-SCORES_FILE = "scores.json"
-OUTPUT_FILE = POLL_FILE
+POLL_FILE         = "poll_results_1.xlsx"
+SCORES_FILE       = "scores.json"
+MATCH_GROUPS_FILE = "match_groups.json"
+MULTIPLIERS_FILE  = "multipliers.json"
+OUTPUT_FILE       = POLL_FILE
+
+# ── Bảng đấu & hệ số điểm ─────────────────────────────────────
+GROUP_STAGE_LETTERS = list("ABCDEFGHIJKL")
+KNOCKOUT_GROUPS     = ["Vòng 32", "Vòng 16", "Tứ kết", "Bán kết", "Tranh 3-4", "Chung kết"]
+ALL_GROUP_OPTIONS   = GROUP_STAGE_LETTERS + KNOCKOUT_GROUPS + ["—"]
+
+GROUP_TO_ROUND = {g: "group" for g in GROUP_STAGE_LETTERS}
+GROUP_TO_ROUND.update({
+    "Vòng 32":   "round32",
+    "Vòng 16":   "round16",
+    "Tứ kết":    "quarter",
+    "Bán kết":   "semi",
+    "Tranh 3-4": "third",
+    "Chung kết": "final",
+    "—":         "group",
+})
+
+ROUND_LABELS = {
+    "group":   "Vòng bảng",
+    "round32": "Vòng 32 đội",
+    "round16": "Vòng 16 đội",
+    "quarter": "Tứ kết",
+    "semi":    "Bán kết",
+    "third":   "Tranh 3-4",
+    "final":   "Chung kết",
+}
+# Hệ số mặc định — có thể ghi đè qua multipliers.json
+DEFAULT_MULTIPLIERS: dict[str, int] = {
+    "group":   1,
+    "round32": 2,
+    "round16": 3,
+    "quarter": 5,
+    "semi":    7,
+    "third":   9,
+    "final":   12,
+}
+# Thứ tự hiển thị trong UI cấu hình
+ROUND_ORDER = ["group", "round32", "round16", "quarter", "semi", "third", "final"]
+
+
+def load_multipliers() -> dict[str, int]:
+    """Đọc multipliers.json; dùng DEFAULT_MULTIPLIERS nếu chưa có."""
+    try:
+        with open(MULTIPLIERS_FILE, encoding="utf-8") as f:
+            data = json.load(f)
+        return {k: int(data.get(k, DEFAULT_MULTIPLIERS[k])) for k in ROUND_ORDER}
+    except (FileNotFoundError, json.JSONDecodeError):
+        return dict(DEFAULT_MULTIPLIERS)
+
+
+def save_multipliers(mults: dict[str, int]):
+    with open(MULTIPLIERS_FILE, "w", encoding="utf-8") as f:
+        json.dump(mults, f, ensure_ascii=False, indent=2)
+
+
+def group_display_name(g: str) -> str:
+    if g in GROUP_STAGE_LETTERS:
+        return f"Bảng {g}"
+    if g == "—":
+        return "Chưa phân bảng"
+    return g
+
+
+def group_multiplier(g: str, mults: dict) -> int:
+    return mults.get(GROUP_TO_ROUND.get(g, "group"), 1)
 
 st.set_page_config(
     page_title="Dự đoán bóng đá",
     page_icon="⚽",
     layout="wide",
+    initial_sidebar_state="collapsed",
 )
 
 # ─────────────────────────────────────────────────────────────
 # Load dữ liệu
 # ─────────────────────────────────────────────────────────────
+
+def load_match_groups(match_names: list) -> dict:
+    """Đọc match_groups.json; mặc định '—' cho trận chưa phân bảng."""
+    try:
+        with open(MATCH_GROUPS_FILE, encoding="utf-8") as f:
+            data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        data = {}
+    return {m: data.get(m, "—") for m in match_names}
+
+
+def save_match_groups(groups: dict):
+    with open(MATCH_GROUPS_FILE, "w", encoding="utf-8") as f:
+        json.dump(groups, f, ensure_ascii=False, indent=2)
+
 
 @st.cache_data
 def load_all():
@@ -90,21 +173,38 @@ def grade(pred, match, scores) -> bool | None:
     return diff > 0
 
 
-def build_ranking(members: list, scores: dict) -> pd.DataFrame:
+def build_ranking(members: list, scores: dict, rounds: dict, mults: dict) -> pd.DataFrame:
     rows = []
     for m in members:
-        scored  = {k: v for k, v in m["votes"].items() if k in scores}
-        total   = len(scored)
-        correct = sum(1 for match, pred in scored.items() if grade(pred, match, scores) is True)
+        scored   = {k: v for k, v in m["votes"].items() if k in scores}
+        total    = len(scored)
+        correct  = 0
+        wrong    = 0
+        pts_ok   = 0
+        pts_bad  = 0
+        for match, pred in scored.items():
+            mult   = mults.get(rounds.get(match, "group"), 1)
+            result = grade(pred, match, scores)
+            if result is True:
+                correct += 1
+                pts_ok  += mult
+            else:
+                # False (vote sai) hoặc None (không vote) đều tính là sai
+                wrong   += 1
+                pts_bad += mult
         rows.append({
-            "Tên":       m["name"],
-            "Đúng":      correct,
-            "Sai":       total - correct,
-            "Tỷ lệ (%)": round(correct / total * 100, 1) if total else 0,
+            "Tên":         m["name"],
+            "Đúng":        correct,
+            "Sai":         wrong,
+            "Sai (hệ số)": pts_bad,
+            "Tỷ lệ (%)":   round(correct / total * 100, 1) if total else 0,
         })
     df = (
         pd.DataFrame(rows)
-        .sort_values(["Đúng", "Sai", "Tên"], ascending=[False, True, True])
+        .sort_values(
+            ["Đúng", "Sai (hệ số)", "Tên"],
+            ascending=[False, True, True],  # nhiều đúng nhất lên đầu, cùng đúng thì ít hệ số sai hơn thắng
+        )
         .reset_index(drop=True)
     )
     df.index     += 1
@@ -112,7 +212,7 @@ def build_ranking(members: list, scores: dict) -> pd.DataFrame:
     return df
 
 
-def build_detail(member: dict, scores: dict) -> pd.DataFrame:
+def build_detail(member: dict, scores: dict, rounds: dict, mults: dict) -> pd.DataFrame:
     rows = []
     for match, pred in member["votes"].items():
         if match not in scores:
@@ -120,11 +220,16 @@ def build_detail(member: dict, scores: dict) -> pd.DataFrame:
         home, away = match.split(" vs ")
         hs, as_    = scores[match]
         result     = grade(pred, match, scores)
+        mult       = mults.get(rounds.get(match, "group"), 1)
+        pts        = mult if result is True else 0
         rows.append({
             "Trận":    match,
+            "Vòng":    ROUND_LABELS.get(rounds.get(match, "group"), "Vòng bảng"),
+            "×":       mult,
             "Tỉ số":  f"{hs} - {as_}",
             "Dự đoán": str(pred).strip() if pred else "—",
-            "Kết quả": "✅ Đúng" if result is True else ("❌ Sai" if result is False else "⬜ Không vote"),
+            "Điểm":    pts,
+            "Kết quả": "✅ Đúng" if result is True else ("❌ Không vote" if result is None else "❌ Sai"),
         })
     return pd.DataFrame(rows)
 
@@ -139,6 +244,8 @@ def export_html(
     members: list,
     ranking_df: pd.DataFrame,
     member_map: dict,
+    rounds: dict,
+    mults: dict,
     output_path: str | None = None,
 ) -> bytes:
     """
@@ -149,11 +256,13 @@ def export_html(
     # Chuẩn bị dữ liệu cho JS
     ranking_list = [
         {
-            "rank":     int(ranking_df.index[i]),
-            "name":     ranking_df.iloc[i]["Tên"],
-            "correct":  int(ranking_df.iloc[i]["Đúng"]),
-            "wrong":    int(ranking_df.iloc[i]["Sai"]),
-            "accuracy": float(ranking_df.iloc[i]["Tỷ lệ (%)"]),
+            "rank":      int(ranking_df.index[i]),
+            "name":      ranking_df.iloc[i]["Tên"],
+            "points":    int(ranking_df.iloc[i]["Đúng (hệ số)"]),
+            "pts_bad":   int(ranking_df.iloc[i]["Sai (hệ số)"]),
+            "correct":   int(ranking_df.iloc[i]["Đúng"]),
+            "wrong":     int(ranking_df.iloc[i]["Sai"]),
+            "accuracy":  float(ranking_df.iloc[i]["Tỷ lệ (%)"]),
         }
         for i in range(len(ranking_df))
     ]
@@ -167,11 +276,15 @@ def export_html(
             home, away = match.split(" vs ")
             hs, as_ = scores[match]
             result = grade(pred, match, scores)
+            mult   = mults.get(rounds.get(match, "group"), 1)
             rows.append({
-                "match":   match,
-                "score":   f"{hs} - {as_}",
-                "pred":    str(pred).strip() if pred else "—",
-                "result":  "correct" if result is True else ("wrong" if result is False else "novote"),
+                "match":  match,
+                "round":  ROUND_LABELS.get(rounds.get(match, "group"), "Vòng bảng"),
+                "mult":   mult,
+                "score":  f"{hs} - {as_}",
+                "pred":   str(pred).strip() if pred else "—",
+                "pts":    mult if result is True else 0,
+                "result": "correct" if result is True else ("wrong" if result is False else "novote"),
             })
         details_map[name] = rows
 
@@ -318,8 +431,10 @@ def export_html(
           <tr>
             <th style="text-align:center">Hạng</th>
             <th>Tên</th>
+            <th style="text-align:center">✅ Hệ số</th>
             <th style="text-align:center">Đúng</th>
             <th style="text-align:center">Sai</th>
+            <th style="text-align:center">❌ Hệ số</th>
             <th>Tỷ lệ</th>
           </tr>
         </thead>
@@ -356,21 +471,23 @@ DATA.ranking.forEach((r, i) => {{
   tr.innerHTML = `
     <td class="rank">${{medalHtml(r.rank)}}</td>
     <td class="name">${{r.name}}</td>
-    <td class="num" style="color:#155724;font-weight:600">${{r.correct}}</td>
+    <td class="num" style="color:#155724;font-weight:700">${{r.points}}</td>
+    <td class="num" style="color:#155724">${{r.correct}}</td>
     <td class="num" style="color:#721c24">${{r.wrong}}</td>
+    <td class="num" style="color:#721c24;font-weight:700">${{r.pts_bad}}</td>
     <td>
       <div class="bar-wrap"><div class="bar" style="width:${{barW}}%"></div></div>
       <span class="bar-label">${{r.accuracy}}%</span>
     </td>`;
-  tr.addEventListener("click", () => showDetail(r.name, r.rank, r.correct, r.wrong, r.accuracy));
+  tr.addEventListener("click", () => showDetail(r.name, r.rank, r.points, r.pts_bad, r.correct, r.wrong, r.accuracy));
   tbody.appendChild(tr);
 }});
 
 // Detail panel
 let currentTab = "all";
 
-function resultHtml(r) {{
-  if (r === "correct") return '<span class="result-correct">✅ Đúng</span>';
+function resultHtml(r, mult) {{
+  if (r === "correct") return `<span class="result-correct">✅ +${{mult}}đ</span>`;
   if (r === "wrong")   return '<span class="result-wrong">❌ Sai</span>';
   return '<span class="result-novote">⬜ Không vote</span>';
 }}
@@ -379,20 +496,24 @@ function renderTable(rows) {{
   if (!rows.length) return '<p style="padding:24px;color:#999;text-align:center">Không có dữ liệu</p>';
   return `<table id="detail-table">
     <thead><tr>
-      <th>Trận</th><th style="text-align:center">Tỉ số</th>
+      <th>Trận</th><th style="text-align:center">Vòng</th>
+      <th style="text-align:center">×</th>
+      <th style="text-align:center">Tỉ số</th>
       <th>Dự đoán</th><th style="text-align:center">Kết quả</th>
     </tr></thead>
     <tbody>
     ${{rows.map(r => `<tr>
       <td>${{r.match}}</td>
+      <td style="text-align:center;font-size:.8rem;color:#666">${{r.round}}</td>
+      <td style="text-align:center"><span style="background:#fef3c7;color:#92400e;padding:1px 6px;border-radius:4px;font-size:.78rem;font-weight:700">×${{r.mult}}</span></td>
       <td style="text-align:center;font-weight:600">${{r.score}}</td>
       <td>${{r.pred}}</td>
-      <td style="text-align:center">${{resultHtml(r.result)}}</td>
+      <td style="text-align:center">${{resultHtml(r.result, r.mult)}}</td>
     </tr>`).join("")}}
     </tbody></table>`;
 }}
 
-function showDetail(name, rank, correct, wrong, accuracy) {{
+function showDetail(name, rank, points, pts_bad, correct, wrong, accuracy) {{
   // Highlight row
   document.querySelectorAll("#ranking-body tr").forEach(tr => tr.classList.remove("active"));
   document.querySelectorAll("#ranking-body tr").forEach(tr => {{
@@ -414,8 +535,10 @@ function showDetail(name, rank, correct, wrong, accuracy) {{
       <h2>${{name}}</h2>
       <div class="mini-metrics">
         <div class="mini-metric"><div class="ml">Hạng</div><div class="mv">#${{rank}}</div></div>
+        <div class="mini-metric"><div class="ml">✅ Hệ số</div><div class="mv" style="color:#155724">${{points}}</div></div>
         <div class="mini-metric"><div class="ml">Đúng</div><div class="mv" style="color:#155724">${{correct}}</div></div>
         <div class="mini-metric"><div class="ml">Sai</div><div class="mv" style="color:#721c24">${{wrong}}</div></div>
+        <div class="mini-metric"><div class="ml">❌ Hệ số</div><div class="mv" style="color:#721c24">${{pts_bad}}</div></div>
         <div class="mini-metric"><div class="ml">Tỷ lệ</div><div class="mv">${{accuracy}}%</div></div>
       </div>
     </div>
@@ -457,6 +580,8 @@ def export_full_html(
     members: list,
     ranking_df: pd.DataFrame,
     member_map: dict,
+    rounds: dict,
+    mults: dict,
     output_path: str | None = None,
 ) -> bytes:
     """
@@ -482,8 +607,10 @@ def export_full_html(
             style="cursor:pointer">
           <td class="tc fw" style="width:56px">{medal(rank)}</td>
           <td class="fw">{r["Tên"]}</td>
-          <td class="tc" style="color:#155724;font-weight:600">{int(r["Đúng"])}</td>
+          <td class="tc" style="color:#155724;font-weight:700">{int(r["Đúng (hệ số)"])}</td>
+          <td class="tc" style="color:#155724">{int(r["Đúng"])}</td>
           <td class="tc" style="color:#721c24">{int(r["Sai"])}</td>
+          <td class="tc" style="color:#721c24;font-weight:700">{int(r["Sai (hệ số)"])}</td>
           <td style="min-width:140px">
             <div class="bw"><div class="bar" style="width:{bar_w}%"></div></div>
             <span class="bl">{r["Tỷ lệ (%)"]:.1f}%</span>
@@ -501,6 +628,8 @@ def export_full_html(
             continue
 
         slug     = name.replace(" ", "_").replace("'", "")
+        points   = int(r["Đúng (hệ số)"])
+        pts_bad  = int(r["Sai (hệ số)"])
         correct  = int(r["Đúng"])
         wrong    = int(r["Sai"])
         accuracy = r["Tỷ lệ (%)"]
@@ -513,9 +642,11 @@ def export_full_html(
             home, away = match.split(" vs ")
             hs, as_    = scores[match]
             result     = grade(pred, match, scores)
+            mult       = mults.get(rounds.get(match, "group"), 1)
+            round_lbl  = ROUND_LABELS.get(rounds.get(match, "group"), "Vòng bảng")
             pred_str   = str(pred).strip() if pred else "—"
             if result is True:
-                result_html = '<span class="rc">✅ Đúng</span>'
+                result_html = f'<span class="rc">✅ +{mult}đ</span>'
             elif result is False:
                 result_html = '<span class="rw">❌ Sai</span>'
             else:
@@ -523,6 +654,8 @@ def export_full_html(
             detail_rows += f"""
             <tr>
               <td>{match}</td>
+              <td class="tc" style="font-size:.8rem;color:#666">{round_lbl}</td>
+              <td class="tc"><span style="background:#fef3c7;color:#92400e;padding:1px 5px;border-radius:4px;font-size:.75rem;font-weight:700">×{mult}</span></td>
               <td class="tc fw">{hs} - {as_}</td>
               <td>{pred_str}</td>
               <td class="tc">{result_html}</td>
@@ -534,8 +667,8 @@ def export_full_html(
           <span class="member-rank">{medal(rank)}</span>
           <span class="member-name">{name}</span>
           <div class="member-stats">
-            <span class="ms-item ms-correct">✅ {correct} đúng</span>
-            <span class="ms-item ms-wrong">❌ {wrong} sai</span>
+            <span class="ms-item ms-correct">✅ {correct} ({points}đ)</span>
+            <span class="ms-item ms-wrong">❌ {wrong} ({pts_bad}đ)</span>
             <span class="ms-item ms-acc">📊 {accuracy:.1f}%</span>
           </div>
           <button class="toggle-btn" onclick="toggleDetail(this)">▲ Thu gọn</button>
@@ -543,7 +676,8 @@ def export_full_html(
         <div class="member-detail">
           <table class="dt">
             <thead><tr>
-              <th>Trận</th><th class="tc">Tỉ số</th><th>Dự đoán</th><th class="tc">Kết quả</th>
+              <th>Trận</th><th class="tc">Vòng</th><th class="tc">×</th>
+              <th class="tc">Tỉ số</th><th>Dự đoán</th><th class="tc">Kết quả</th>
             </tr></thead>
             <tbody>{detail_rows}</tbody>
           </table>
@@ -672,8 +806,10 @@ def export_full_html(
       <thead><tr>
         <th style="width:56px;text-align:center">Hạng</th>
         <th>Tên</th>
+        <th style="text-align:center">✅ Hệ số</th>
         <th style="text-align:center">Đúng</th>
         <th style="text-align:center">Sai</th>
+        <th style="text-align:center">❌ Hệ số</th>
         <th>Tỷ lệ</th>
       </tr></thead>
       <tbody>{ranking_rows_html}</tbody>
@@ -823,6 +959,7 @@ with st.sidebar:
         "Chọn trang",
         ["🏆 Bảng xếp hạng", "⚽ Quản lý trận đấu", "📤 Xuất báo cáo"],
         label_visibility="collapsed",
+        index=0,
     )
 
     st.markdown("---")
@@ -890,7 +1027,10 @@ except FileNotFoundError as e:
     st.error(f"Không tìm thấy file: {e}. Hãy chạy `python telegram_poll_export.py` trước.")
     st.stop()
 
-ranking_df = build_ranking(members, scores)
+match_groups = load_match_groups(match_names)
+rounds       = {m: GROUP_TO_ROUND.get(g, "group") for m, g in match_groups.items()}
+mults        = load_multipliers()
+ranking_df   = build_ranking(members, scores, rounds, mults)
 member_map = {m["name"]: m for m in members}
 
 with open(SCORES_FILE, encoding="utf-8") as f:
@@ -907,7 +1047,8 @@ c1.metric("🏟️ Tổng trận poll",     len(match_names))
 c2.metric("✅ Đã có kết quả",       len(scores))
 c3.metric("👥 Người tham gia",      len(members))
 c4.metric("📊 Tỷ lệ đúng TB",      f"{ranking_df['Tỷ lệ (%)'].mean():.1f}%")
-c5.metric("🥇 Dẫn đầu",            ranking_df.iloc[0]["Tên"] if not ranking_df.empty else "—")
+top_row = ranking_df.iloc[0] if not ranking_df.empty else None
+c5.metric("🥇 Dẫn đầu",            f"{top_row['Tên']} ({int(top_row['Đúng'])}đ)" if top_row is not None else "—")
 
 st.markdown("<div style='margin-top:8px'></div>", unsafe_allow_html=True)
 
@@ -927,10 +1068,12 @@ if page == "🏆 Bảng xếp hạng":
             on_select="rerun",
             height=640,
             column_config={
-                "Tên": st.column_config.TextColumn("Tên", width="medium"),
-                "Đúng": st.column_config.NumberColumn("✅ Đúng", width="small"),
-                "Sai":  st.column_config.NumberColumn("❌ Sai",  width="small"),
-                "Tỷ lệ (%)": st.column_config.NumberColumn("📊 Tỷ lệ", format="%.1f%%"),
+                "Tên":          st.column_config.TextColumn("Tên", width="medium"),
+                # "Đúng (hệ số)": st.column_config.NumberColumn("✅ Hệ số", width="small"),
+                "Đúng":         st.column_config.NumberColumn("✅ Đúng",  width="small"),
+                "Sai":          st.column_config.NumberColumn("❌ Sai",   width="small"),
+                "Sai (hệ số)":  st.column_config.NumberColumn("❌ Hệ số", width="small"),
+                "Tỷ lệ (%)":    st.column_config.NumberColumn("📊 Tỷ lệ", format="%.1f%%"),
             },
         )
         selected_rows = event.selection.rows
@@ -954,22 +1097,24 @@ if page == "🏆 Bảng xếp hạng":
             medal = {1: "🥇", 2: "🥈", 3: "🥉"}.get(rank, f"#{rank}")
             st.markdown(f"### {medal} {name}")
 
-            mc1, mc2, mc3, mc4 = st.columns(4)
-            mc1.metric("Hạng",    medal)
-            mc2.metric("✅ Đúng", int(row_data["Đúng"]))
-            mc3.metric("❌ Sai",  int(row_data["Sai"]))
-            mc4.metric("📊 Tỷ lệ", f"{row_data['Tỷ lệ (%)']:.1f}%")
+            mc1, mc2, mc3, mc4, mc5, mc6 = st.columns(6)
+            mc1.metric("Hạng",         medal)
+            # mc2.metric("✅ Hệ số",     int(row_data["Đúng (hệ số)"]))
+            mc3.metric("✅ Đúng",      int(row_data["Đúng"]))
+            mc4.metric("❌ Sai",       int(row_data["Sai"]))
+            mc5.metric("❌ Hệ số",     int(row_data["Sai (hệ số)"]))
+            mc6.metric("📊 Tỷ lệ",     f"{row_data['Tỷ lệ (%)']:.1f}%")
 
-            detail_df = build_detail(member, scores)
+            detail_df = build_detail(member, scores, rounds, mults)
             n_correct = (detail_df["Kết quả"] == "✅ Đúng").sum()
             n_wrong   = (detail_df["Kết quả"] == "❌ Sai").sum()
-            n_novote  = (detail_df["Kết quả"] == "⬜ Không vote").sum()
+            n_novote  = (detail_df["Kết quả"] == "❌ Không vote").sum()
 
             t_all, t_ok, t_bad, t_skip = st.tabs([
                 f"Tất cả  {len(detail_df)}",
                 f"✅ Đúng  {n_correct}",
                 f"❌ Sai  {n_wrong}",
-                f"⬜ Bỏ  {n_novote}",
+                f"❌ Không vote  {n_novote}",
             ])
 
             def render_detail_cards(df: pd.DataFrame):
@@ -979,41 +1124,47 @@ if page == "🏆 Bảng xếp hạng":
 
                 # Header
                 st.markdown("""
-                <div style="display:grid;grid-template-columns:1fr 80px 120px 110px;gap:12px;
-                            padding:6px 16px 8px;color:#94a3b8;font-size:.75rem;font-weight:700;
+                <div style="display:grid;grid-template-columns:1fr 90px 50px 80px 120px 90px;gap:8px;
+                            padding:6px 16px 8px;color:#94a3b8;font-size:.73rem;font-weight:700;
                             text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e2e8f0;margin-bottom:6px">
                     <span>Trận</span>
+                    <span style="text-align:center;display:block">Vòng</span>
+                    <span style="text-align:center;display:block">×</span>
                     <span style="text-align:center;display:block">Tỉ số</span>
                     <span style="text-align:center;display:block">Dự đoán</span>
                     <span style="text-align:right;display:block">Kết quả</span>
                 </div>
                 """, unsafe_allow_html=True)
 
-                # Từng row riêng biệt
                 for _, row in df.iterrows():
                     kq = str(row["Kết quả"])
+                    mult = int(row["×"])
                     if "✅" in kq:
-                        badge  = "<span style='background:#dcfce7;color:#166534;padding:3px 12px;border-radius:99px;font-size:.8rem;font-weight:700;white-space:nowrap'>✅ Đúng</span>"
+                        badge  = f"<span style='background:#dcfce7;color:#166534;padding:3px 10px;border-radius:99px;font-size:.78rem;font-weight:700;white-space:nowrap'>✅ +{mult}đ</span>"
                         border = "#bbf7d0"
                         bg     = "#f0fdf4"
-                    elif "❌" in kq:
-                        badge  = "<span style='background:#fee2e2;color:#991b1b;padding:3px 12px;border-radius:99px;font-size:.8rem;font-weight:700;white-space:nowrap'>❌ Sai</span>"
+                    elif "Không vote" in kq:
+                        badge  = f"<span style='background:#fef3c7;color:#92400e;padding:3px 10px;border-radius:99px;font-size:.78rem;font-weight:700;white-space:nowrap'>❌ Bỏ (×{mult})</span>"
+                        border = "#fde68a"
+                        bg     = "#fffbeb"
+                    else:
+                        badge  = "<span style='background:#fee2e2;color:#991b1b;padding:3px 10px;border-radius:99px;font-size:.78rem;font-weight:700;white-space:nowrap'>❌ Sai</span>"
                         border = "#fecaca"
                         bg     = "#fff5f5"
-                    else:
-                        badge  = "<span style='background:#f1f5f9;color:#64748b;padding:3px 12px;border-radius:99px;font-size:.8rem;font-weight:700;white-space:nowrap'>⬜ Bỏ</span>"
-                        border = "#e2e8f0"
-                        bg     = "#f8fafc"
+
+                    mult_badge = f"<span style='background:#fef3c7;color:#92400e;padding:1px 6px;border-radius:4px;font-size:.75rem;font-weight:700'>×{mult}</span>"
 
                     st.markdown(f"""
-                    <div style="display:grid;grid-template-columns:1fr 80px 120px 110px;
-                                align-items:center;gap:12px;
+                    <div style="display:grid;grid-template-columns:1fr 90px 50px 80px 120px 90px;
+                                align-items:center;gap:8px;
                                 background:{bg};border:1px solid {border};
                                 border-radius:10px;padding:10px 16px;margin-bottom:5px">
-                        <div style="font-weight:600;font-size:.88rem;color:#1e293b">{row["Trận"]}</div>
-                        <div style="text-align:center;font-weight:800;font-size:.95rem;
-                                    color:#1e40af;background:#eff6ff;border-radius:6px;padding:3px 6px">{row["Tỉ số"]}</div>
-                        <div style="text-align:center;color:#475569;font-size:.85rem">{row["Dự đoán"]}</div>
+                        <div style="font-weight:600;font-size:.86rem;color:#1e293b">{row["Trận"]}</div>
+                        <div style="text-align:center;font-size:.75rem;color:#64748b">{row["Vòng"]}</div>
+                        <div style="text-align:center">{mult_badge}</div>
+                        <div style="text-align:center;font-weight:800;font-size:.9rem;
+                                    color:#1e40af;background:#eff6ff;border-radius:6px;padding:2px 6px">{row["Tỉ số"]}</div>
+                        <div style="text-align:center;color:#475569;font-size:.83rem">{row["Dự đoán"]}</div>
                         <div style="text-align:right">{badge}</div>
                     </div>
                     """, unsafe_allow_html=True)
@@ -1021,7 +1172,7 @@ if page == "🏆 Bảng xếp hạng":
             with t_all:   render_detail_cards(detail_df)
             with t_ok:    render_detail_cards(detail_df[detail_df["Kết quả"] == "✅ Đúng"].reset_index(drop=True))
             with t_bad:   render_detail_cards(detail_df[detail_df["Kết quả"] == "❌ Sai"].reset_index(drop=True))
-            with t_skip:  render_detail_cards(detail_df[detail_df["Kết quả"] == "⬜ Không vote"].reset_index(drop=True))
+            with t_skip:  render_detail_cards(detail_df[detail_df["Kết quả"] == "❌ Không vote"].reset_index(drop=True))
 
 # ══════════════════════════════════════════════════════════════
 # PAGE 2: Quản lý trận đấu
@@ -1030,7 +1181,7 @@ elif page == "⚽ Quản lý trận đấu":
 
     st.markdown("### ⚽ Quản lý tỉ số trận đấu")
 
-    # Progress bar tổng quan
+    # Progress bar
     total_matches = len(raw_scores)
     done          = len(has_score)
     pct           = done / total_matches if total_matches else 0
@@ -1041,214 +1192,317 @@ elif page == "⚽ Quản lý trận đấu":
             <span><b style="color:#1e40af">{done}</b> / {total_matches} trận</span>
         </div>
         <div style="background:#e2e8f0;border-radius:99px;height:10px;overflow:hidden">
-            <div style="background:linear-gradient(90deg,#1e40af,#3b82f6);height:100%;width:{pct*100:.1f}%;border-radius:99px;transition:width .4s"></div>
+            <div style="background:linear-gradient(90deg,#1e40af,#3b82f6);height:100%;
+                        width:{pct*100:.1f}%;border-radius:99px;transition:width .4s"></div>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # ── Layout: danh sách trận | chi tiết vote ──
-    match_col, vote_col = st.columns([1, 1.4], gap="large")
+    list_col, panel_col = st.columns([1, 1.3], gap="large")
 
-    # ── Helper functions (defined outside columns so both sides can use them) ──
+    # ── Helpers ───────────────────────────────────────────────
 
     def render_match_votes(match: str):
-        """Hiển thị tất cả vote của mọi người cho một trận."""
         from collections import Counter
         score      = raw_scores.get(match)
         home, away = match.split(" vs ")
         hs, as_    = (score[0], score[1]) if score else (None, None)
+        score_str  = f"{hs} – {as_}" if score else "Chưa có kết quả"
 
-        # Header trận
-        score_str = f"{hs} – {as_}" if score else "Chưa có kết quả"
         st.markdown(f"""
         <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;
                     padding:14px 20px;margin-bottom:16px;text-align:center">
             <div style="font-size:.8rem;color:#64748b;font-weight:600;text-transform:uppercase;
-                        letter-spacing:.08em;margin-bottom:6px">Tỉ số</div>
-            <div style="font-size:1.1rem;font-weight:700;color:#1e293b">{home}</div>
-            <div style="font-size:1.8rem;font-weight:900;color:#1e40af;letter-spacing:4px;
+                        letter-spacing:.08em;margin-bottom:4px">Tỉ số</div>
+            <div style="font-size:1rem;font-weight:700;color:#1e293b">{home}</div>
+            <div style="font-size:2rem;font-weight:900;color:#1e40af;letter-spacing:6px;
                         margin:4px 0">{score_str}</div>
-            <div style="font-size:1.1rem;font-weight:700;color:#1e293b">{away}</div>
+            <div style="font-size:1rem;font-weight:700;color:#1e293b">{away}</div>
         </div>
         """, unsafe_allow_html=True)
 
-        # Tổng hợp vote
         vote_rows = []
         for m in members:
-            pred = m["votes"].get(match)
-            if score:
-                result = grade(pred, match, scores) if pred and str(pred).strip() else None
-            else:
-                result = None
+            pred   = m["votes"].get(match)
+            result = grade(pred, match, scores) if score and pred and str(pred).strip() else None
             vote_rows.append({"name": m["name"], "pred": pred, "result": result})
 
-        # Đếm
         n_voted   = sum(1 for r in vote_rows if r["pred"] and str(r["pred"]).strip())
         n_correct = sum(1 for r in vote_rows if r["result"] is True)
         n_wrong   = sum(1 for r in vote_rows if r["result"] is False)
-        n_novote  = sum(1 for r in vote_rows if not r["pred"] or not str(r["pred"]).strip())
+        n_novote  = len(vote_rows) - n_voted
 
         s1, s2, s3, s4 = st.columns(4)
-        s1.metric("Đã vote",  n_voted)
-        s2.metric("✅ Đúng",  n_correct)
-        s3.metric("❌ Sai",   n_wrong)
-        s4.metric("⬜ Bỏ",    n_novote)
+        s1.metric("Đã vote", n_voted)
+        s2.metric("✅ Đúng", n_correct)
+        s3.metric("❌ Sai",  n_wrong)
+        s4.metric("⬜ Bỏ",   n_novote)
 
-        st.markdown("<div style='margin:8px 0 4px'></div>", unsafe_allow_html=True)
-
-        # Tally dự đoán phổ biến
         pred_counts = Counter(
             str(r["pred"]).strip() for r in vote_rows
             if r["pred"] and str(r["pred"]).strip()
         )
         if pred_counts:
-            st.markdown("<div style='font-size:.78rem;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px'>Dự đoán phổ biến</div>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size:.76rem;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin:10px 0 5px'>Dự đoán phổ biến</div>", unsafe_allow_html=True)
             tally_cols = st.columns(min(len(pred_counts), 4))
-            for idx, (pred_val, cnt) in enumerate(pred_counts.most_common(4)):
-                tally_cols[idx].metric(pred_val, f"{cnt} người")
+            for idx, (pv, cnt) in enumerate(pred_counts.most_common(4)):
+                tally_cols[idx].metric(pv, f"{cnt} người")
 
-        st.markdown("<div style='margin:12px 0 4px'></div>", unsafe_allow_html=True)
-        st.markdown("<div style='font-size:.78rem;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px'>Danh sách vote</div>", unsafe_allow_html=True)
-
-        # Header
+        st.markdown("<div style='font-size:.76rem;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin:12px 0 5px'>Danh sách vote</div>", unsafe_allow_html=True)
         st.markdown("""
-        <div style="display:grid;grid-template-columns:1fr 130px 90px;gap:10px;
-                    padding:5px 14px 7px;color:#94a3b8;font-size:.74rem;font-weight:700;
-                    text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e2e8f0;margin-bottom:4px">
+        <div style="display:grid;grid-template-columns:1fr 130px 70px;gap:8px;
+                    padding:4px 12px 6px;color:#94a3b8;font-size:.72rem;font-weight:700;
+                    text-transform:uppercase;border-bottom:1px solid #e2e8f0;margin-bottom:3px">
             <span>Người</span>
             <span style="text-align:center;display:block">Dự đoán</span>
-            <span style="text-align:center;display:block">Kết quả</span>
-        </div>
-        """, unsafe_allow_html=True)
+            <span style="text-align:center;display:block">KQ</span>
+        </div>""", unsafe_allow_html=True)
 
         for r in vote_rows:
             pred_str = str(r["pred"]).strip() if r["pred"] and str(r["pred"]).strip() else "—"
             if r["result"] is True:
-                badge = "<span style='background:#dcfce7;color:#166534;padding:2px 10px;border-radius:99px;font-size:.78rem;font-weight:700'>✅</span>"
+                badge = "<span style='background:#dcfce7;color:#166534;padding:2px 8px;border-radius:99px;font-size:.76rem;font-weight:700'>✅</span>"
                 bg, border = "#f0fdf4", "#bbf7d0"
             elif r["result"] is False:
-                badge = "<span style='background:#fee2e2;color:#991b1b;padding:2px 10px;border-radius:99px;font-size:.78rem;font-weight:700'>❌</span>"
+                badge = "<span style='background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:99px;font-size:.76rem;font-weight:700'>❌</span>"
                 bg, border = "#fff5f5", "#fecaca"
             else:
-                badge = "<span style='background:#f1f5f9;color:#94a3b8;padding:2px 10px;border-radius:99px;font-size:.78rem;font-weight:700'>—</span>"
+                badge = "<span style='background:#f1f5f9;color:#94a3b8;padding:2px 8px;border-radius:99px;font-size:.76rem;font-weight:700'>—</span>"
                 bg, border = "#f8fafc", "#e2e8f0"
-
             st.markdown(f"""
-            <div style="display:grid;grid-template-columns:1fr 130px 90px;gap:10px;
-                        align-items:center;background:{bg};border:1px solid {border};
-                        border-radius:8px;padding:7px 14px;margin-bottom:4px">
-                <div style="font-size:.85rem;font-weight:600;color:#1e293b">{r["name"]}</div>
-                <div style="text-align:center;font-size:.83rem;color:#475569">{pred_str}</div>
+            <div style="display:grid;grid-template-columns:1fr 130px 70px;gap:8px;align-items:center;
+                        background:{bg};border:1px solid {border};border-radius:7px;
+                        padding:6px 12px;margin-bottom:3px">
+                <div style="font-size:.83rem;font-weight:600;color:#1e293b">{r["name"]}</div>
+                <div style="text-align:center;font-size:.81rem;color:#475569">{pred_str}</div>
                 <div style="text-align:center">{badge}</div>
-            </div>
-            """, unsafe_allow_html=True)
-
-    def render_score_editor(match_dict: dict, key_prefix: str):
-        if not match_dict:
-            st.markdown("""
-            <div style="text-align:center;color:#94a3b8;padding:48px">
-                <div style="font-size:2rem">🎉</div>
-                <div style="margin-top:8px">Tất cả trận đã có kết quả!</div>
             </div>""", unsafe_allow_html=True)
-            return
 
-        matches = list(match_dict.items())
-        edits   = {}
-        COLS    = 2   # 2 cột để còn chỗ cho nút xem vote
+    def render_edit_form(match: str):
+        home, away = match.split(" vs ")
+        score      = raw_scores.get(match)
+        grp        = match_groups.get(match, "—")
+        mult       = group_multiplier(grp, mults)
+        grp_lbl    = group_display_name(grp)
 
-        for i in range(0, len(matches), COLS):
-            cols = st.columns(COLS)
-            for j, col in enumerate(cols):
-                if i + j >= len(matches):
-                    break
-                match, score = matches[i + j]
-                home, away   = match.split(" vs ")
-                is_selected  = st.session_state.get("selected_match") == match
-                with col:
-                    border_style = "2px solid #3b82f6" if is_selected else "1px solid #e2e8f0"
-                    with st.container(border=True):
-                        # Tên trận + nút xem vote
-                        btn_col, title_col = st.columns([1, 5])
-                        with btn_col:
-                            if st.button(
-                                "👁",
-                                key=f"view_{key_prefix}_{i+j}",
-                                help="Xem vote của mọi người",
-                                type="primary" if is_selected else "secondary",
-                            ):
-                                st.session_state["selected_match"] = match
-                                st.rerun()
-                        with title_col:
-                            st.markdown(
-                                f"<div class='match-title' style='padding-top:6px'>{home} <span style='color:#64748b'>vs</span> {away}</div>",
-                                unsafe_allow_html=True,
-                            )
+        st.markdown(f"""
+        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;
+                    padding:14px 18px;margin-bottom:16px">
+            <div style="font-size:.76rem;color:#64748b;font-weight:700;text-transform:uppercase;
+                        letter-spacing:.06em;margin-bottom:4px">{grp_lbl} · ×{mult}</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#1e293b">{home} vs {away}</div>
+        </div>
+        """, unsafe_allow_html=True)
 
-                        ic1, ic2, ic3 = st.columns([5, 2, 5])
-                        with ic1:
-                            home_val = st.number_input(
-                                home, min_value=0, max_value=30,
-                                value=int(score[0]) if score else 0,
-                                key=f"{key_prefix}_{i+j}_h",
-                                label_visibility="collapsed",
-                            )
-                        with ic2:
-                            st.markdown("<div class='vs-text'>—</div>", unsafe_allow_html=True)
-                        with ic3:
-                            away_val = st.number_input(
-                                away, min_value=0, max_value=30,
-                                value=int(score[1]) if score else 0,
-                                key=f"{key_prefix}_{i+j}_a",
-                                label_visibility="collapsed",
-                            )
-                        st.markdown(
-                            f"<div class='score-badge'>{home_val} – {away_val}</div>",
-                            unsafe_allow_html=True,
-                        )
-                        edits[match] = [home_val, away_val]
+        ic1, ic2, ic3 = st.columns([5, 2, 5])
+        with ic1:
+            home_val = st.number_input(
+                home, min_value=0, max_value=30,
+                value=int(score[0]) if score else 0,
+                key="edit_home_val",
+            )
+        with ic2:
+            st.markdown("<div style='text-align:center;padding-top:30px;font-size:1.4rem;color:#94a3b8'>–</div>",
+                        unsafe_allow_html=True)
+        with ic3:
+            away_val = st.number_input(
+                away, min_value=0, max_value=30,
+                value=int(score[1]) if score else 0,
+                key="edit_away_val",
+            )
 
-        st.markdown("<div style='margin-top:16px'></div>", unsafe_allow_html=True)
-        sc1, sc2, _ = st.columns([1, 1, 4])
-        with sc1:
-            if st.button("💾 Lưu thay đổi", key=f"save_{key_prefix}", type="primary", width="stretch"):
+        st.markdown(
+            f"<div class='score-badge'>{home_val} – {away_val}</div>",
+            unsafe_allow_html=True,
+        )
+        st.markdown("<div style='margin-top:12px'></div>", unsafe_allow_html=True)
+
+        bs1, bs2 = st.columns(2)
+        with bs1:
+            if st.button("💾 Lưu tỉ số", type="primary", width="stretch", key="btn_save_edit"):
                 with open(SCORES_FILE, encoding="utf-8") as f:
                     current = json.load(f)
-                current.update(edits)
+                current[match] = [home_val, away_val]
                 with open(SCORES_FILE, "w", encoding="utf-8") as f:
                     json.dump(current, f, ensure_ascii=False, indent=2)
-                st.toast(f"✅ Đã lưu {len(edits)} trận!", icon="💾")
+                st.toast(f"✅ Đã lưu {match}!", icon="💾")
                 load_all.clear()
+                st.session_state["right_panel"] = "votes"
                 st.rerun()
-        with sc2:
-            if st.button("↺ Reset", key=f"reset_{key_prefix}", width="stretch"):
+        with bs2:
+            if st.button("✗ Hủy", width="stretch", key="btn_cancel_edit"):
+                st.session_state.pop("right_panel", None)
                 st.rerun()
 
-    # ── Render hai cột ──
-    with match_col:
-        m_tab1, m_tab2 = st.tabs([
-            f"✅ Đã có tỉ số  ({len(has_score)})",
-            f"⏳ Chưa có tỉ số  ({len(no_score)})",
-        ])
-        with m_tab1:
-            render_score_editor(has_score, "has")
-        with m_tab2:
-            if no_score:
-                st.info(f"⚠️ Còn **{len(no_score)}** trận chưa có kết quả. Nhập tỉ số và nhấn Lưu.")
-            render_score_editor(no_score, "no")
+    # ── Left: match list by group ──────────────────────────────
+    with list_col:
+        tab_list, tab_cfg = st.tabs(["📋 Danh sách theo bảng", "⚙️ Phân bảng & vòng"])
 
-    with vote_col:
-        selected_match = st.session_state.get("selected_match")
-        if selected_match and selected_match in raw_scores:
-            st.markdown(f"### 📊 Vote: {selected_match}")
-            render_match_votes(selected_match)
+        with tab_list:
+            # Group matches in display order
+            from collections import defaultdict
+            grouped: dict[str, list] = defaultdict(list)
+            for m in raw_scores:
+                g = match_groups.get(m, "—")
+                grouped[g].append(m)
+
+            for grp in ALL_GROUP_OPTIONS:
+                if grp not in grouped:
+                    continue
+                grp_matches = grouped[grp]
+                grp_lbl  = group_display_name(grp)
+                mult     = group_multiplier(grp, mults)
+                n_done   = sum(1 for m in grp_matches if raw_scores.get(m) is not None)
+
+                # Group header
+                st.markdown(f"""
+                <div style="display:flex;align-items:center;gap:10px;
+                            padding:8px 4px 4px;margin-top:6px">
+                    <span style="font-size:.95rem;font-weight:700;color:#1e293b">{grp_lbl}</span>
+                    <span style="background:#eff6ff;color:#1e40af;font-size:.72rem;font-weight:700;
+                                 padding:2px 8px;border-radius:99px">×{mult}</span>
+                    <span style="color:#94a3b8;font-size:.78rem;margin-left:auto">{n_done}/{len(grp_matches)} trận</span>
+                </div>
+                <div style="border-bottom:2px solid #e2e8f0;margin-bottom:6px"></div>
+                """, unsafe_allow_html=True)
+
+                # Match rows
+                for match in grp_matches:
+                    score    = raw_scores.get(match)
+                    home, away = match.split(" vs ")
+                    has_sc   = score is not None
+                    score_str = f"{score[0]} – {score[1]}" if has_sc else "– : –"
+                    sc_color  = "#1e40af" if has_sc else "#94a3b8"
+                    is_sel    = st.session_state.get("selected_match") == match
+                    row_bg    = "#eff6ff" if is_sel else "transparent"
+                    row_bd    = "#bfdbfe" if is_sel else "transparent"
+
+                    c_home, c_score, c_away, c_edit, c_view = st.columns([4, 2, 4, 1, 1])
+                    c_home.markdown(
+                        f"<div style='text-align:right;font-size:.85rem;font-weight:600;"
+                        f"color:#1e293b;padding:6px 4px'>{home}</div>",
+                        unsafe_allow_html=True,
+                    )
+                    c_score.markdown(
+                        f"<div style='text-align:center;font-size:.92rem;font-weight:800;"
+                        f"color:{sc_color};padding:6px 0'>{score_str}</div>",
+                        unsafe_allow_html=True,
+                    )
+                    c_away.markdown(
+                        f"<div style='font-size:.85rem;font-weight:500;"
+                        f"color:#1e293b;padding:6px 4px'>{away}</div>",
+                        unsafe_allow_html=True,
+                    )
+                    with c_edit:
+                        if st.button("✏️", key=f"edit_btn_{match}", help="Sửa tỉ số"):
+                            st.session_state["selected_match"] = match
+                            st.session_state["right_panel"]    = "edit"
+                            st.rerun()
+                    with c_view:
+                        if st.button("👁", key=f"view_btn_{match}", help="Xem vote",
+                                     type="primary" if (is_sel and st.session_state.get("right_panel") == "votes") else "secondary"):
+                            st.session_state["selected_match"] = match
+                            st.session_state["right_panel"]    = "votes"
+                            st.rerun()
+
+                st.markdown("<div style='margin-bottom:4px'></div>", unsafe_allow_html=True)
+
+        with tab_cfg:
+            # ── Hệ số điểm ──────────────────────────────────────
+            st.markdown("#### 🏅 Hệ số điểm theo vòng")
+            st.markdown("<p style='color:#64748b;font-size:.84rem;margin-bottom:10px'>Chỉnh hệ số nhân điểm cho từng vòng đấu.</p>", unsafe_allow_html=True)
+
+            mult_edits = {}
+            mult_cols = st.columns(len(ROUND_ORDER))
+            for col, rk in zip(mult_cols, ROUND_ORDER):
+                with col:
+                    mult_edits[rk] = st.number_input(
+                        ROUND_LABELS[rk],
+                        min_value=1, max_value=99,
+                        value=mults.get(rk, DEFAULT_MULTIPLIERS[rk]),
+                        key=f"mult_{rk}",
+                    )
+
+            ms1, ms2, _ = st.columns([1, 1, 5])
+            with ms1:
+                if st.button("💾 Lưu hệ số", key="save_mults", type="primary", width="stretch"):
+                    save_multipliers(mult_edits)
+                    st.toast("✅ Đã lưu hệ số!", icon="🏅")
+                    st.rerun()
+            with ms2:
+                if st.button("↺ Mặc định", key="reset_mults", width="stretch",
+                             help="Khôi phục: 1 · 2 · 3 · 5 · 7 · 9 · 12"):
+                    save_multipliers(dict(DEFAULT_MULTIPLIERS))
+                    st.toast("↺ Đã reset hệ số về mặc định")
+                    st.rerun()
+
+            st.markdown("<hr style='border:none;border-top:1px solid #e2e8f0;margin:18px 0 14px'>", unsafe_allow_html=True)
+
+            # ── Phân bảng ────────────────────────────────────────
+            st.markdown("#### 🗂️ Phân bảng từng trận")
+            st.markdown("<p style='color:#64748b;font-size:.84rem;margin-bottom:10px'>Gán mỗi trận vào bảng đấu. Hệ số tự động theo bảng được chọn.</p>", unsafe_allow_html=True)
+
+            cfg_edits = {}
+            all_matches_list = list(raw_scores.keys())
+            for i in range(0, len(all_matches_list), 2):
+                cc = st.columns(2)
+                for j, col in enumerate(cc):
+                    if i + j >= len(all_matches_list):
+                        break
+                    m = all_matches_list[i + j]
+                    cur = match_groups.get(m, "—")
+                    with col:
+                        sel = st.selectbox(
+                            m,
+                            options=ALL_GROUP_OPTIONS,
+                            format_func=lambda g: f"{group_display_name(g)}  ×{group_multiplier(g, mult_edits)}",
+                            index=ALL_GROUP_OPTIONS.index(cur) if cur in ALL_GROUP_OPTIONS else len(ALL_GROUP_OPTIONS) - 1,
+                            key=f"cfg_{i+j}",
+                        )
+                        cfg_edits[m] = sel
+
+            st.markdown("<div style='margin-top:12px'></div>", unsafe_allow_html=True)
+            gc1, gc2, _ = st.columns([1, 1, 4])
+            with gc1:
+                if st.button("💾 Lưu phân bảng", key="save_cfg", type="primary", width="stretch"):
+                    save_match_groups(cfg_edits)
+                    st.toast("✅ Đã lưu phân bảng!", icon="🗂️")
+                    st.rerun()
+            with gc2:
+                if st.button("↺ Reset", key="reset_cfg", width="stretch"):
+                    st.rerun()
+
+    # ── Right: edit form or vote viewer ───────────────────────
+    with panel_col:
+        sel_match  = st.session_state.get("selected_match")
+        right_mode = st.session_state.get("right_panel")
+
+        if sel_match and sel_match in raw_scores:
+            home, away = sel_match.split(" vs ")
+            grp_lbl    = group_display_name(match_groups.get(sel_match, "—"))
+
+            if right_mode == "edit":
+                st.markdown(f"### ✏️ Sửa tỉ số")
+                render_edit_form(sel_match)
+
+            elif right_mode == "votes":
+                st.markdown(f"### 📊 {grp_lbl}: {home} vs {away}")
+                render_match_votes(sel_match)
+
+            else:
+                st.markdown("""
+                <div style="margin-top:80px;text-align:center;color:#94a3b8">
+                    <div style="font-size:3rem">👈</div>
+                    <div style="font-size:1rem;margin-top:10px;font-weight:600">Chọn một trận đấu</div>
+                    <div style="font-size:.88rem;margin-top:5px">✏️ để sửa tỉ số · 👁 để xem vote</div>
+                </div>""", unsafe_allow_html=True)
         else:
             st.markdown("""
             <div style="margin-top:80px;text-align:center;color:#94a3b8">
                 <div style="font-size:3rem">👈</div>
-                <div style="font-size:1.1rem;margin-top:12px;font-weight:600">Chọn một trận đấu</div>
-                <div style="font-size:.9rem;margin-top:6px">Nhấn 👁 để xem vote của mọi người</div>
-            </div>
-            """, unsafe_allow_html=True)
+                <div style="font-size:1rem;margin-top:10px;font-weight:600">Chọn một trận đấu</div>
+                <div style="font-size:.88rem;margin-top:5px">✏️ để sửa tỉ số · 👁 để xem vote</div>
+            </div>""", unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════
 # PAGE 3: Xuất báo cáo
@@ -1265,7 +1519,7 @@ elif page == "📤 Xuất báo cáo":
             st.markdown("#### 🖱️ HTML tương tác")
             st.markdown("<p style='color:#94a3b8;font-size:.88rem'>Bảng xếp hạng + click để xem chi tiết từng người.</p>", unsafe_allow_html=True)
             if st.button("Tạo file", key="gen_interactive", width="stretch"):
-                html_bytes = export_html(match_names, scores, members, ranking_df, member_map)
+                html_bytes = export_html(match_names, scores, members, ranking_df, member_map, rounds, mults)
                 st.download_button(
                     label="⬇️ Tải report.html",
                     data=html_bytes,
@@ -1279,7 +1533,7 @@ elif page == "📤 Xuất báo cáo":
             st.markdown("#### 📄 HTML đầy đủ")
             st.markdown("<p style='color:#94a3b8;font-size:.88rem'>Toàn bộ trang — tất cả chi tiết hiển thị sẵn, cuộn xuống là thấy.</p>", unsafe_allow_html=True)
             if st.button("Tạo file", key="gen_full", width="stretch"):
-                html_bytes = export_full_html(scores, members, ranking_df, member_map)
+                html_bytes = export_full_html(scores, members, ranking_df, member_map, rounds, mults)
                 st.download_button(
                     label="⬇️ Tải report_full.html",
                     data=html_bytes,
