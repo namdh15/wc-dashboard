@@ -14,6 +14,7 @@ from openpyxl import load_workbook
 
 POLL_FILE   = "poll_results_1.xlsx"
 SCORES_FILE = "scores.json"
+OUTPUT_FILE = POLL_FILE
 
 st.set_page_config(
     page_title="Dự đoán bóng đá",
@@ -828,7 +829,7 @@ with st.sidebar:
     st.markdown("### 🔄 Cập nhật dữ liệu")
 
     # ── Nút 1: Kéo poll Telegram ──
-    if st.button("📡 Kéo poll Telegram", use_container_width=True,
+    if st.button("📡 Kéo poll Telegram", width="stretch",
                  help="Lấy lại vote từ Telegram → poll_results_1.xlsx"):
         with st.spinner("Đang kéo poll từ Telegram..."):
             result = subprocess.run(
@@ -853,7 +854,7 @@ with st.sidebar:
             st.code(output)
 
     # ── Nút 2: Fetch kết quả ESPN ──
-    if st.button("🌐 Fetch kết quả ESPN", use_container_width=True,
+    if st.button("🌐 Fetch kết quả ESPN", width="stretch",
                  help="Tự động lấy tỉ số từ ESPN → scores.json"):
         with st.spinner("Đang fetch từ ESPN..."):
             result = subprocess.run(
@@ -873,7 +874,7 @@ with st.sidebar:
         st.rerun()
 
     # ── Nút 3: Cập nhật ranking ──
-    if st.button("🏆 Tính lại xếp hạng", use_container_width=True,
+    if st.button("🏆 Tính lại xếp hạng", width="stretch",
                  help="Tính lại BXH từ poll_results_1.xlsx + scores.json hiện tại"):
         load_all.clear()
         st.toast("✅ Đã tính lại xếp hạng!")
@@ -922,7 +923,6 @@ if page == "🏆 Bảng xếp hạng":
         st.caption("Chọn một hàng để xem chi tiết dự đoán →")
         event = st.dataframe(
             ranking_df,
-            use_container_width=True,
             selection_mode="single-row",
             on_select="rerun",
             height=640,
@@ -1100,7 +1100,7 @@ elif page == "⚽ Quản lý trận đấu":
         st.markdown("<div style='margin-top:16px'></div>", unsafe_allow_html=True)
         sc1, sc2, _ = st.columns([1, 1, 4])
         with sc1:
-            if st.button("💾 Lưu thay đổi", key=f"save_{key_prefix}", type="primary", use_container_width=True):
+            if st.button("💾 Lưu thay đổi", key=f"save_{key_prefix}", type="primary", width="stretch"):
                 with open(SCORES_FILE, encoding="utf-8") as f:
                     current = json.load(f)
                 current.update(edits)
@@ -1110,7 +1110,7 @@ elif page == "⚽ Quản lý trận đấu":
                 load_all.clear()
                 st.rerun()
         with sc2:
-            if st.button("↺ Reset", key=f"reset_{key_prefix}", use_container_width=True):
+            if st.button("↺ Reset", key=f"reset_{key_prefix}", width="stretch"):
                 st.rerun()
 
     with m_tab1:
@@ -1134,26 +1134,26 @@ elif page == "📤 Xuất báo cáo":
         with st.container(border=True):
             st.markdown("#### 🖱️ HTML tương tác")
             st.markdown("<p style='color:#94a3b8;font-size:.88rem'>Bảng xếp hạng + click để xem chi tiết từng người.</p>", unsafe_allow_html=True)
-            if st.button("Tạo file", key="gen_interactive", use_container_width=True):
+            if st.button("Tạo file", key="gen_interactive", width="stretch"):
                 html_bytes = export_html(match_names, scores, members, ranking_df, member_map)
                 st.download_button(
                     label="⬇️ Tải report.html",
                     data=html_bytes,
                     file_name="report.html",
                     mime="text/html",
-                    use_container_width=True,
+                    width="stretch",
                 )
 
     with ec2:
         with st.container(border=True):
             st.markdown("#### 📄 HTML đầy đủ")
             st.markdown("<p style='color:#94a3b8;font-size:.88rem'>Toàn bộ trang — tất cả chi tiết hiển thị sẵn, cuộn xuống là thấy.</p>", unsafe_allow_html=True)
-            if st.button("Tạo file", key="gen_full", use_container_width=True):
+            if st.button("Tạo file", key="gen_full", width="stretch"):
                 html_bytes = export_full_html(scores, members, ranking_df, member_map)
                 st.download_button(
                     label="⬇️ Tải report_full.html",
                     data=html_bytes,
                     file_name="report_full.html",
                     mime="text/html",
-                    use_container_width=True,
+                    width="stretch",
                 )
