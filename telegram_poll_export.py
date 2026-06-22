@@ -513,9 +513,10 @@ Ví dụ:
         """,
     )
     parser.add_argument("--poll-file",  type=str, default=OUTPUT_FILE, help="File Excel kết quả poll (mặc định: poll_results_1.xlsx)")
-    parser.add_argument("--skip-poll",    action="store_true", help="Bỏ qua bước lấy poll từ Telegram")
-    parser.add_argument("--fetch-scores", action="store_true", help="Tự động fetch điểm từ ESPN")
-    parser.add_argument("--skip-ranking", action="store_true", help="Bỏ qua bước tính bảng xếp hạng")
+    parser.add_argument("--skip-poll",         action="store_true", help="Bỏ qua bước lấy poll từ Telegram")
+    parser.add_argument("--fetch-scores",      action="store_true", help="Tự động fetch điểm từ ESPN")
+    parser.add_argument("--skip-fetch-scores", action="store_true", help="Bỏ qua bước fetch ESPN (alias)")
+    parser.add_argument("--skip-ranking",      action="store_true", help="Bỏ qua bước tính bảng xếp hạng")
     return parser.parse_args()
 
 
@@ -528,7 +529,7 @@ if __name__ == "__main__":
         print("=" * 50)
         asyncio.run(fetch_polls())
 
-    if not args.fetch_scores:
+    if args.fetch_scores:
         print("\n" + "=" * 50)
         print("BƯỚC 2: Tự động fetch điểm từ ESPN")
         print("=" * 50)

@@ -745,47 +745,144 @@ document.querySelectorAll(".member-header").forEach(h => {{
 import subprocess
 import sys
 
-st.title("⚽ Bảng xếp hạng dự đoán bóng đá")
+# ── Custom CSS ────────────────────────────────────────────────
+st.markdown("""
+<style>
+/* ── Metric cards ── */
+[data-testid="metric-container"] {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 20px;
+}
+[data-testid="stMetricValue"] { color: #1e40af; font-size: 1.5rem; font-weight: 700; }
+[data-testid="stMetricLabel"] { color: #64748b; font-size: .82rem; }
 
-# ─────────────────────────────────────────────────────────────
-# Toolbar: nút cập nhật nhanh
-# ─────────────────────────────────────────────────────────────
-tb1, tb2, tb3 = st.columns([1, 1, 6])
+/* ── Tabs ── */
+[data-testid="stTabs"] button[role="tab"] { font-weight: 600; }
 
-with tb1:
-    if st.button("📡 Kéo poll Telegram", use_container_width=True, help="Chạy lại bước lấy poll từ Telegram và ghi ra poll_results_1.xlsx"):
+/* ── Dataframe ── */
+[data-testid="stDataFrame"] { border-radius: 10px; overflow: hidden; }
+
+/* ── Containers ── */
+[data-testid="stVerticalBlockBorderWrapper"] {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px;
+}
+
+/* ── Number input ── */
+[data-testid="stNumberInput"] input {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* ── Alert ── */
+[data-testid="stAlert"] { border-radius: 10px; }
+
+/* ── Score badge ── */
+.score-badge {
+    display: block;
+    background: #eff6ff;
+    border: 2px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 6px 0;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1e40af;
+    letter-spacing: 4px;
+    text-align: center;
+    margin-top: 8px;
+}
+.match-title {
+    font-size: .88rem;
+    font-weight: 600;
+    color: #475569;
+    text-align: center;
+    margin-bottom: 8px;
+}
+.vs-text {
+    font-size: .8rem;
+    color: #94a3b8;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 32px;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# ── Sidebar ───────────────────────────────────────────────────
+with st.sidebar:
+    st.markdown("## ⚽ WC Dashboard")
+    st.markdown("---")
+
+    page = st.radio(
+        "Chọn trang",
+        ["🏆 Bảng xếp hạng", "⚽ Quản lý trận đấu", "📤 Xuất báo cáo"],
+        label_visibility="collapsed",
+    )
+
+    st.markdown("---")
+    st.markdown("### 🔄 Cập nhật dữ liệu")
+
+    # ── Nút 1: Kéo poll Telegram ──
+    if st.button("📡 Kéo poll Telegram", use_container_width=True,
+                 help="Lấy lại vote từ Telegram → poll_results_1.xlsx"):
         with st.spinner("Đang kéo poll từ Telegram..."):
             result = subprocess.run(
-                [sys.executable, "telegram_poll_export.py", "--skip-ranking"],
+                [sys.executable, "telegram_poll_export.py",
+                 "--skip-ranking", "--skip-fetch-scores"],
                 capture_output=True, text=True, cwd="."
             )
-        if result.returncode == 0:
-            st.toast("Kéo poll thành công!", icon="✅")
+        output = (result.stdout or "") + (result.stderr or "")
+        # Coi là thành công nếu có file được tạo, dù returncode != 0
+        # (có thể có PollVoteRequiredError đã được skip trong code)
+        import os
+        poll_ok = os.path.exists(OUTPUT_FILE)
+        if poll_ok:
+            st.toast("✅ Kéo poll xong!")
+            if output:
+                with st.expander("Log", expanded=False):
+                    st.code(output, language=None)
             load_all.clear()
             st.rerun()
         else:
-            st.error("Lỗi khi kéo poll:")
-            st.code(result.stderr or result.stdout)
+            st.error("Kéo poll thất bại")
+            st.code(output)
 
-with tb2:
-    if st.button("🌐 Fetch kết quả ESPN", use_container_width=True, help="Tự động lấy tỉ số các trận từ ESPN và cập nhật scores.json"):
-        with st.spinner("Đang fetch kết quả từ ESPN..."):
+    # ── Nút 2: Fetch kết quả ESPN ──
+    if st.button("🌐 Fetch kết quả ESPN", use_container_width=True,
+                 help="Tự động lấy tỉ số từ ESPN → scores.json"):
+        with st.spinner("Đang fetch từ ESPN..."):
             result = subprocess.run(
-                [sys.executable, "telegram_poll_export.py", "--skip-poll", "--fetch-scores", "--skip-ranking"],
+                [sys.executable, "telegram_poll_export.py",
+                 "--skip-poll", "--fetch-scores", "--skip-ranking"],
                 capture_output=True, text=True, cwd="."
             )
+        output = (result.stdout or "") + (result.stderr or "")
         if result.returncode == 0:
-            st.toast("Fetch điểm thành công!", icon="✅")
-            # Hiển thị log output
-            if result.stdout:
-                with st.expander("Xem log ESPN", expanded=False):
-                    st.code(result.stdout)
-            load_all.clear()
-            st.rerun()
+            st.toast("✅ Fetch kết quả xong!")
         else:
-            st.error("Lỗi khi fetch ESPN:")
-            st.code(result.stderr or result.stdout)
+            st.warning("Fetch xong (có thể một số trận chưa khớp)")
+        if output:
+            with st.expander("Log ESPN", expanded=True):
+                st.code(output, language=None)
+        load_all.clear()
+        st.rerun()
 
+    # ── Nút 3: Cập nhật ranking ──
+    if st.button("🏆 Tính lại xếp hạng", use_container_width=True,
+                 help="Tính lại BXH từ poll_results_1.xlsx + scores.json hiện tại"):
+        load_all.clear()
+        st.toast("✅ Đã tính lại xếp hạng!")
+        st.rerun()
+
+    st.markdown("---")
+    st.caption("Telegram poll & ESPN API")
+
+# ── Load data ─────────────────────────────────────────────────
 try:
     match_names, scores, members = load_all()
 except FileNotFoundError as e:
@@ -795,156 +892,180 @@ except FileNotFoundError as e:
 ranking_df = build_ranking(members, scores)
 member_map = {m["name"]: m for m in members}
 
-# Metrics tổng quan
-c1, c2, c3, c4 = st.columns(4)
-c1.metric("Số trận có kết quả",  len(scores))
-c2.metric("Số người tham gia",   len(members))
-c3.metric("Tỷ lệ đúng TB",      f"{ranking_df['Tỷ lệ (%)'].mean():.1f}%")
-c4.metric("Người đứng đầu",      ranking_df.iloc[0]["Tên"] if not ranking_df.empty else "—")
+with open(SCORES_FILE, encoding="utf-8") as f:
+    raw_scores = json.load(f)
+has_score = {k: v for k, v in raw_scores.items() if v is not None}
+no_score  = {k: v for k, v in raw_scores.items() if v is None}
 
-st.divider()
+# ── Header metrics ────────────────────────────────────────────
+st.markdown("# ⚽ World Cup 2026 — Dự đoán")
+st.markdown(f"<p style='color:#64748b;margin-top:-12px;margin-bottom:20px'>Tổng <b style='color:#1e40af'>{len(scores)}</b> trận có kết quả / <b style='color:#d97706'>{len(no_score)}</b> trận chờ</p>", unsafe_allow_html=True)
 
-tab_rank, tab_matches = st.tabs(["🏆 Bảng xếp hạng", "⚽ Quản lý trận đấu"])
+c1, c2, c3, c4, c5 = st.columns(5)
+c1.metric("🏟️ Tổng trận poll",     len(match_names))
+c2.metric("✅ Đã có kết quả",       len(scores))
+c3.metric("👥 Người tham gia",      len(members))
+c4.metric("📊 Tỷ lệ đúng TB",      f"{ranking_df['Tỷ lệ (%)'].mean():.1f}%")
+c5.metric("🥇 Dẫn đầu",            ranking_df.iloc[0]["Tên"] if not ranking_df.empty else "—")
+
+st.markdown("<div style='margin-top:8px'></div>", unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════
-# TAB 1: Bảng xếp hạng
+# PAGE 1: Bảng xếp hạng
 # ══════════════════════════════════════════════════════════════
-with tab_rank:
+if page == "🏆 Bảng xếp hạng":
+
     left, right = st.columns([1, 1.6], gap="large")
 
     with left:
-        st.subheader("🏆 Bảng xếp hạng")
-        st.caption("Nhấp vào một hàng để xem chi tiết dự đoán.")
+        st.markdown("### 🏆 Bảng xếp hạng")
+        st.caption("Chọn một hàng để xem chi tiết dự đoán →")
         event = st.dataframe(
             ranking_df,
             use_container_width=True,
             selection_mode="single-row",
             on_select="rerun",
-            height=620,
+            height=640,
             column_config={
-                "Tỷ lệ (%)": st.column_config.ProgressColumn(
-                    "Tỷ lệ (%)",
-                    min_value=0,
-                    max_value=100,
-                    format="%.1f%%",
-                ),
+                "Tên": st.column_config.TextColumn("Tên", width="medium"),
+                "Đúng": st.column_config.NumberColumn("✅ Đúng", width="small"),
+                "Sai":  st.column_config.NumberColumn("❌ Sai",  width="small"),
+                "Tỷ lệ (%)": st.column_config.NumberColumn("📊 Tỷ lệ", format="%.1f%%"),
             },
         )
         selected_rows = event.selection.rows
 
     with right:
         if not selected_rows:
-            st.info("👈 Chọn một người trong bảng xếp hạng để xem chi tiết dự đoán.")
+            st.markdown("""
+            <div style="margin-top:80px;text-align:center;color:#94a3b8">
+                <div style="font-size:3rem">👈</div>
+                <div style="font-size:1.1rem;margin-top:12px;font-weight:600">Chọn một người trong bảng xếp hạng</div>
+                <div style="font-size:.9rem;margin-top:6px">để xem chi tiết từng trận dự đoán</div>
+            </div>
+            """, unsafe_allow_html=True)
         else:
             row_idx  = selected_rows[0]
             row_data = ranking_df.iloc[row_idx]
             name     = row_data["Tên"]
-            rank     = ranking_df.index[row_idx]
+            rank     = int(ranking_df.index[row_idx])
             member   = member_map[name]
 
-            st.subheader(f"📋 {name}")
+            medal = {1: "🥇", 2: "🥈", 3: "🥉"}.get(rank, f"#{rank}")
+            st.markdown(f"### {medal} {name}")
 
             mc1, mc2, mc3, mc4 = st.columns(4)
-            mc1.metric("Hạng",   f"#{rank}")
-            mc2.metric("Đúng",   int(row_data["Đúng"]))
-            mc3.metric("Sai",    int(row_data["Sai"]))
-            mc4.metric("Tỷ lệ", f"{row_data['Tỷ lệ (%)']:.1f}%")
+            mc1.metric("Hạng",    medal)
+            mc2.metric("✅ Đúng", int(row_data["Đúng"]))
+            mc3.metric("❌ Sai",  int(row_data["Sai"]))
+            mc4.metric("📊 Tỷ lệ", f"{row_data['Tỷ lệ (%)']:.1f}%")
 
             detail_df = build_detail(member, scores)
-
             n_correct = (detail_df["Kết quả"] == "✅ Đúng").sum()
             n_wrong   = (detail_df["Kết quả"] == "❌ Sai").sum()
             n_novote  = (detail_df["Kết quả"] == "⬜ Không vote").sum()
 
-            t_all, t_correct, t_wrong, t_novote = st.tabs([
-                f"Tất cả ({len(detail_df)})",
-                f"✅ Đúng ({n_correct})",
-                f"❌ Sai ({n_wrong})",
-                f"⬜ Không vote ({n_novote})",
+            t_all, t_ok, t_bad, t_skip = st.tabs([
+                f"Tất cả  {len(detail_df)}",
+                f"✅ Đúng  {n_correct}",
+                f"❌ Sai  {n_wrong}",
+                f"⬜ Bỏ  {n_novote}",
             ])
 
-            def show_table(df: pd.DataFrame):
-                def highlight(val):
-                    if "✅" in str(val):
-                        return "background-color:#d4edda; color:#155724; font-weight:bold"
-                    if "❌" in str(val):
-                        return "background-color:#f8d7da; color:#721c24; font-weight:bold"
-                    return "color:#888"
-                styled = df.style.map(highlight, subset=["Kết quả"])
-                st.dataframe(styled, use_container_width=True, hide_index=True, height=520)
+            def render_detail_cards(df: pd.DataFrame):
+                if df.empty:
+                    st.info("Không có dữ liệu.")
+                    return
 
-            with t_all:
-                show_table(detail_df)
-            with t_correct:
-                show_table(detail_df[detail_df["Kết quả"] == "✅ Đúng"].reset_index(drop=True))
-            with t_wrong:
-                show_table(detail_df[detail_df["Kết quả"] == "❌ Sai"].reset_index(drop=True))
-            with t_novote:
-                show_table(detail_df[detail_df["Kết quả"] == "⬜ Không vote"].reset_index(drop=True))
+                # Header
+                st.markdown("""
+                <div style="display:grid;grid-template-columns:1fr 80px 120px 110px;gap:12px;
+                            padding:6px 16px 8px;color:#94a3b8;font-size:.75rem;font-weight:700;
+                            text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e2e8f0;margin-bottom:6px">
+                    <span>Trận</span>
+                    <span style="text-align:center;display:block">Tỉ số</span>
+                    <span style="text-align:center;display:block">Dự đoán</span>
+                    <span style="text-align:right;display:block">Kết quả</span>
+                </div>
+                """, unsafe_allow_html=True)
 
-    st.divider()
-    st.subheader("📤 Xuất báo cáo")
-    col_btn1, col_btn2, _ = st.columns([1, 1, 4])
-    with col_btn1:
-        if st.button("🖨️ HTML tương tác", use_container_width=True):
-            html_bytes = export_html(match_names, scores, members, ranking_df, member_map)
-            st.download_button(
-                label="⬇️ Tải report.html",
-                data=html_bytes,
-                file_name="report.html",
-                mime="text/html",
-                use_container_width=True,
-            )
-    with col_btn2:
-        if st.button("📄 HTML đầy đủ", use_container_width=True):
-            html_bytes = export_full_html(scores, members, ranking_df, member_map)
-            st.download_button(
-                label="⬇️ Tải report_full.html",
-                data=html_bytes,
-                file_name="report_full.html",
-                mime="text/html",
-                use_container_width=True,
-            )
+                # Từng row riêng biệt
+                for _, row in df.iterrows():
+                    kq = str(row["Kết quả"])
+                    if "✅" in kq:
+                        badge  = "<span style='background:#dcfce7;color:#166534;padding:3px 12px;border-radius:99px;font-size:.8rem;font-weight:700;white-space:nowrap'>✅ Đúng</span>"
+                        border = "#bbf7d0"
+                        bg     = "#f0fdf4"
+                    elif "❌" in kq:
+                        badge  = "<span style='background:#fee2e2;color:#991b1b;padding:3px 12px;border-radius:99px;font-size:.8rem;font-weight:700;white-space:nowrap'>❌ Sai</span>"
+                        border = "#fecaca"
+                        bg     = "#fff5f5"
+                    else:
+                        badge  = "<span style='background:#f1f5f9;color:#64748b;padding:3px 12px;border-radius:99px;font-size:.8rem;font-weight:700;white-space:nowrap'>⬜ Bỏ</span>"
+                        border = "#e2e8f0"
+                        bg     = "#f8fafc"
+
+                    st.markdown(f"""
+                    <div style="display:grid;grid-template-columns:1fr 80px 120px 110px;
+                                align-items:center;gap:12px;
+                                background:{bg};border:1px solid {border};
+                                border-radius:10px;padding:10px 16px;margin-bottom:5px">
+                        <div style="font-weight:600;font-size:.88rem;color:#1e293b">{row["Trận"]}</div>
+                        <div style="text-align:center;font-weight:800;font-size:.95rem;
+                                    color:#1e40af;background:#eff6ff;border-radius:6px;padding:3px 6px">{row["Tỉ số"]}</div>
+                        <div style="text-align:center;color:#475569;font-size:.85rem">{row["Dự đoán"]}</div>
+                        <div style="text-align:right">{badge}</div>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+            with t_all:   render_detail_cards(detail_df)
+            with t_ok:    render_detail_cards(detail_df[detail_df["Kết quả"] == "✅ Đúng"].reset_index(drop=True))
+            with t_bad:   render_detail_cards(detail_df[detail_df["Kết quả"] == "❌ Sai"].reset_index(drop=True))
+            with t_skip:  render_detail_cards(detail_df[detail_df["Kết quả"] == "⬜ Không vote"].reset_index(drop=True))
 
 # ══════════════════════════════════════════════════════════════
-# TAB 2: Quản lý trận đấu
+# PAGE 2: Quản lý trận đấu
 # ══════════════════════════════════════════════════════════════
-with tab_matches:
-    st.subheader("⚽ Quản lý tỉ số trận đấu")
-    st.caption("Chỉnh sửa trực tiếp rồi nhấn **Lưu** để cập nhật scores.json và tính lại xếp hạng.")
+elif page == "⚽ Quản lý trận đấu":
 
-    # Đọc toàn bộ scores.json (kể cả trận null)
-    with open(SCORES_FILE, encoding="utf-8") as f:
-        raw_scores = json.load(f)
+    st.markdown("### ⚽ Quản lý tỉ số trận đấu")
 
-    # Tách thành 2 nhóm
-    all_match_names = list(raw_scores.keys())
-    has_score   = {k: v for k, v in raw_scores.items() if v is not None}
-    no_score    = {k: v for k, v in raw_scores.items() if v is None}
-
-    st.markdown(
-        f"**{len(has_score)}** trận có kết quả &nbsp;|&nbsp; "
-        f"**{len(no_score)}** trận chưa có tỉ số",
-        unsafe_allow_html=True,
-    )
+    # Progress bar tổng quan
+    total_matches = len(raw_scores)
+    done          = len(has_score)
+    pct           = done / total_matches if total_matches else 0
+    st.markdown(f"""
+    <div style="margin-bottom:16px">
+        <div style="display:flex;justify-content:space-between;color:#64748b;font-size:.85rem;margin-bottom:6px">
+            <span>Tiến độ nhập kết quả</span>
+            <span><b style="color:#1e40af">{done}</b> / {total_matches} trận</span>
+        </div>
+        <div style="background:#e2e8f0;border-radius:99px;height:10px;overflow:hidden">
+            <div style="background:linear-gradient(90deg,#1e40af,#3b82f6);height:100%;width:{pct*100:.1f}%;border-radius:99px;transition:width .4s"></div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     m_tab1, m_tab2 = st.tabs([
-        f"✅ Đã có tỉ số ({len(has_score)})",
-        f"⏳ Chưa có tỉ số ({len(no_score)})",
+        f"✅ Đã có tỉ số  ({len(has_score)})",
+        f"⏳ Chưa có tỉ số  ({len(no_score)})",
     ])
 
     def render_score_editor(match_dict: dict, key_prefix: str):
-        """Render form chỉnh sửa tỉ số cho một nhóm trận."""
         if not match_dict:
-            st.info("Không có trận nào trong nhóm này.")
+            st.markdown("""
+            <div style="text-align:center;color:#94a3b8;padding:48px">
+                <div style="font-size:2rem">🎉</div>
+                <div style="margin-top:8px">Tất cả trận đã có kết quả!</div>
+            </div>""", unsafe_allow_html=True)
             return
 
-        # Mỗi 2 cột = 1 trận
         matches = list(match_dict.items())
         edits   = {}
+        COLS    = 3
 
-        for i in range(0, len(matches), 2):
-            cols = st.columns(2)
+        for i in range(0, len(matches), COLS):
+            cols = st.columns(COLS)
             for j, col in enumerate(cols):
                 if i + j >= len(matches):
                     break
@@ -952,41 +1073,87 @@ with tab_matches:
                 home, away   = match.split(" vs ")
                 with col:
                     with st.container(border=True):
-                        st.markdown(f"**{match}**")
-                        c1, c2, c3 = st.columns([2, 1, 2])
-                        with c1:
+                        st.markdown(f"<div class='match-title'>{home} <span style='color:#64748b'>vs</span> {away}</div>", unsafe_allow_html=True)
+                        ic1, ic2, ic3 = st.columns([5, 2, 5])
+                        with ic1:
                             home_val = st.number_input(
                                 home, min_value=0, max_value=30,
                                 value=int(score[0]) if score else 0,
-                                key=f"{key_prefix}_{i+j}_home",
-                                label_visibility="visible",
+                                key=f"{key_prefix}_{i+j}_h",
+                                label_visibility="collapsed",
                             )
-                        with c2:
-                            st.markdown("<div style='text-align:center;padding-top:28px;font-size:1.3rem;font-weight:700'>–</div>", unsafe_allow_html=True)
-                        with c3:
+                        with ic2:
+                            st.markdown("<div class='vs-text'>—</div>", unsafe_allow_html=True)
+                        with ic3:
                             away_val = st.number_input(
                                 away, min_value=0, max_value=30,
                                 value=int(score[1]) if score else 0,
-                                key=f"{key_prefix}_{i+j}_away",
-                                label_visibility="visible",
+                                key=f"{key_prefix}_{i+j}_a",
+                                label_visibility="collapsed",
                             )
+                        st.markdown(
+                            f"<div class='score-badge'>{home_val} – {away_val}</div>",
+                            unsafe_allow_html=True,
+                        )
                         edits[match] = [home_val, away_val]
 
-        st.markdown("")
-        if st.button("💾 Lưu thay đổi", key=f"save_{key_prefix}", type="primary"):
-            with open(SCORES_FILE, encoding="utf-8") as f:
-                current = json.load(f)
-            current.update(edits)
-            with open(SCORES_FILE, "w", encoding="utf-8") as f:
-                json.dump(current, f, ensure_ascii=False, indent=2)
-            st.success(f"Đã lưu {len(edits)} trận vào {SCORES_FILE}")
-            load_all.clear()
-            st.rerun()
+        st.markdown("<div style='margin-top:16px'></div>", unsafe_allow_html=True)
+        sc1, sc2, _ = st.columns([1, 1, 4])
+        with sc1:
+            if st.button("💾 Lưu thay đổi", key=f"save_{key_prefix}", type="primary", use_container_width=True):
+                with open(SCORES_FILE, encoding="utf-8") as f:
+                    current = json.load(f)
+                current.update(edits)
+                with open(SCORES_FILE, "w", encoding="utf-8") as f:
+                    json.dump(current, f, ensure_ascii=False, indent=2)
+                st.toast(f"✅ Đã lưu {len(edits)} trận!", icon="💾")
+                load_all.clear()
+                st.rerun()
+        with sc2:
+            if st.button("↺ Reset", key=f"reset_{key_prefix}", use_container_width=True):
+                st.rerun()
 
     with m_tab1:
         render_score_editor(has_score, "has")
-
     with m_tab2:
         if no_score:
-            st.info("Nhập tỉ số cho các trận chưa có kết quả. Để 0-0 nếu chưa diễn ra.")
+            st.info(f"⚠️ Còn **{len(no_score)}** trận chưa có kết quả. Nhập tỉ số và nhấn Lưu.")
         render_score_editor(no_score, "no")
+
+# ══════════════════════════════════════════════════════════════
+# PAGE 3: Xuất báo cáo
+# ══════════════════════════════════════════════════════════════
+elif page == "📤 Xuất báo cáo":
+
+    st.markdown("### 📤 Xuất báo cáo HTML")
+    st.markdown("<p style='color:#64748b'>File HTML tự chứa — gửi cho bất kỳ ai mà không cần cài đặt gì.</p>", unsafe_allow_html=True)
+
+    ec1, ec2 = st.columns(2)
+
+    with ec1:
+        with st.container(border=True):
+            st.markdown("#### 🖱️ HTML tương tác")
+            st.markdown("<p style='color:#94a3b8;font-size:.88rem'>Bảng xếp hạng + click để xem chi tiết từng người.</p>", unsafe_allow_html=True)
+            if st.button("Tạo file", key="gen_interactive", use_container_width=True):
+                html_bytes = export_html(match_names, scores, members, ranking_df, member_map)
+                st.download_button(
+                    label="⬇️ Tải report.html",
+                    data=html_bytes,
+                    file_name="report.html",
+                    mime="text/html",
+                    use_container_width=True,
+                )
+
+    with ec2:
+        with st.container(border=True):
+            st.markdown("#### 📄 HTML đầy đủ")
+            st.markdown("<p style='color:#94a3b8;font-size:.88rem'>Toàn bộ trang — tất cả chi tiết hiển thị sẵn, cuộn xuống là thấy.</p>", unsafe_allow_html=True)
+            if st.button("Tạo file", key="gen_full", use_container_width=True):
+                html_bytes = export_full_html(scores, members, ranking_df, member_map)
+                st.download_button(
+                    label="⬇️ Tải report_full.html",
+                    data=html_bytes,
+                    file_name="report_full.html",
+                    mime="text/html",
+                    use_container_width=True,
+                )
