@@ -1,0 +1,791 @@
+NGÂN HÀNG TMCP CÔNG THƯƠNG VN NGÂN HÀNG TMCP CÔNG THƯƠNG VN NGÂN HÀNG TMCP CÔNG THƯƠNG VN CHI NHÁNH Header.1 CHI NHÁNH  CHI NHÁNH  Header.1 Header.1 PHÒNG  Header.2 PHÒNG   PHÒNG   Header.2 Header.2 Data từ hệ thống Tính toán tự động Data từ hệ thống Tính toán tự động Data từ hệ thống Tính toán tự động Data API bên ngoài Data API bên ngoài Data API bên ngoài Data từ File scan OCR Data từ File scan OCR Data từ File scan OCR Data từ AI Data từ AI Data từ AI Data Textbox Data Textbox Data Textbox Nhập liệu thủ công tự do Nhập liệu thủ công tự do Nhập liệu thủ công tự do GIẤY ĐỀ NGHỊ VAY VỐN KIÊM PHƯƠNG ÁN VAY– TRẢ NỢ  GIẤY ĐỀ NGHỊ VAY VỐN KIÊM PHƯƠNG ÁN VAY– TRẢ NỢ  GIẤY ĐỀ NGHỊ VAY VỐN KIÊM PHƯƠNG ÁN VAY– TRẢ NỢ  KIÊM TỜ TRÌNH THẨM ĐỊNH, PHÊ DUYỆT/ THẨM ĐỊNH PHÊ DUYỆT, CẤP GIỚI HẠN TÍN DỤNG KIÊM TỜ TRÌNH THẨM ĐỊNH, PHÊ DUYỆT/ THẨM ĐỊNH PHÊ DUYỆT, CẤP GIỚI HẠN TÍN DỤNG KIÊM TỜ TRÌNH THẨM ĐỊNH, PHÊ DUYỆT/ THẨM ĐỊNH PHÊ DUYỆT, CẤP GIỚI HẠN TÍN DỤNG  PHỤC VỤ HOẠT ĐỘNG KINH DOANH DÀNH CHO KHDN VỪA VÀ NHỎ CÓ TÀI SẢN BẢO ĐẢM ĐẦY ĐỦ  PHỤC VỤ HOẠT ĐỘNG KINH DOANH DÀNH CHO KHDN VỪA VÀ NHỎ CÓ TÀI SẢN BẢO ĐẢM ĐẦY ĐỦ  PHỤC VỤ HOẠT ĐỘNG KINH DOANH DÀNH CHO KHDN VỪA VÀ NHỎ CÓ TÀI SẢN BẢO ĐẢM ĐẦY ĐỦ PHẦN A: NỘI DUNG ĐỀ NGHỊ CỦA KHÁCH HÀNG PHẦN A: NỘI DUNG ĐỀ NGHỊ CỦA KHÁCH HÀNG PHẦN A: NỘI DUNG ĐỀ NGHỊ CỦA KHÁCH HÀNG Kính gửi:  Ngân hàng TMCP Công Thương Việt Nam - Chi nhánh Header.3 Kính gửi: Kính gửi:   Ngân hàng TMCP Công Thương Việt Nam - C   Ngân hàng TMCP Công Thương Việt Nam - C hi nhánh  hi nhánh  Header.3 Header.3 THÔNG TIN VỀ KHÁCH HÀNG  THÔNG TIN VỀ KHÁCH HÀNG  THÔNG TIN VỀ KHÁCH HÀNG  Tên khách hàng: Tên khách hàng: Tên khách hàng: ĐK doanh nghiệp số:   ĐK doanh nghiệp số:   ĐK doanh nghiệp số:   (No.1)............................................................................................................................................. ( ( No.1 No.1 ) ) ............................................................................................................................................. ............................................................................................................................................. (B.I.2.1.1).......................................Nơi cấp: B.I.2.1.3.........Ngày cấp: B.I.2.1.2; thay đổi lần thứ ….. (B.I.2.1.4) ngày ........ (B.I.2.1.5) ( ( B.I.2.1.1 B.I.2.1.1 ) ) .......................................Nơi cấp: .......................................Nơi cấp:     B.I.2.1. B.I.2.1. 3 3 .........Ngày cấp:  .........Ngày cấp:  B.I.2.1. B.I.2.1. 2; thay đổi lần thứ …..  2; thay đổi lần thứ …..  (B.I.2.1.4 (B.I.2.1.4 ) )  ngày ........   ngày ........  (B.I.2.1.5) (B.I.2.1.5) Ngành nghề kinh doanh: Ngành nghề kinh doanh: Ngành nghề kinh doanh: (B.I.2.2.1).........................................Số năm hoạt động trong nghề: (B.I.2.1.8) ( ( B.I.2.2.1 B.I.2.2.1 ) ) .........................................Số năm hoạt động trong nghề: .........................................Số năm hoạt động trong nghề:  (  ( B.I.2.1.8 B.I.2.1.8 ) ) Địa chỉ kinh doanh:  Địa chỉ kinh doanh:  Địa chỉ kinh doanh:  (B.I.2.3.1.0)................................................................................................................................. ( ( B.I.2.3.1.0 B.I.2.3.1.0 ) ) ................................................................................................................................. ................................................................................................................................. Sở hữu đối với địa điểm kinh doanh Sở hữu đối với địa điểm kinh doanh Sở hữu đối với địa điểm kinh doanh (
+SME.A.1.4.1) ( ( 
+SME.A.1.4.1) 
+SME.A.1.4.1) Trường hợp thuê dài hạn: Trường hợp thuê dài hạn: Trường hợp thuê dài hạn: - Thời hạn còn lại: (
+SME.A.1.4.4) tháng - Thời hạn còn lại:  - Thời hạn còn lại:  ( ( 
+SME.A.1.4.4 
+SME.A.1.4.4 ) )  tháng  tháng - Thông tin hợp đồng thuê (nếu có): Hợp đồng thuê nhà số: 
+SME.A.1.4.5, ngày 
+SME.A.1.4.5.1, bên cho thuê: 
+SME.A.1.4.5.2   - Thông tin hợp đồng thuê (nếu có): Hợp đồng thuê nhà số:  - Thông tin hợp đồng thuê (nếu có): Hợp đồng thuê nhà số:  
+SME.A.1.4.5,  
+SME.A.1.4.5,  n n gày gày     
+SME.A.1.4.5.1 
+SME.A.1.4.5.1 , bên cho thuê:  , bên cho thuê:  
+SME.A.1.4.5.2 
+SME.A.1.4.5.2       Loại hình DN: Loại hình DN: Loại hình DN: B.I.2.3.1 B.I.2.3.1 B.I.2.3.1 Số lượng CBCNV: (
+SME.A.1.5.2) người Số lượng CBCNV:  Số lượng CBCNV:  (
+SME.A.1.5.2) (
+SME.A.1.5.2)     người người Tổ chức hoạt động Tổ chức hoạt động Tổ chức hoạt động 
+SME.A.1.6.0   
+SME.A.1.6.0 
+SME.A.1.6.0       Vốn ĐKKD/VĐL Vốn ĐKKD/VĐL Vốn ĐKKD/VĐL Vốn điều lệ/VCP: (B.I.2.5.1)VNĐ Vốn điều lệ/VCP: ( Vốn điều lệ/VCP: ( B.I.2.5.1 B.I.2.5.1 ) ) VNĐ VNĐ 
+SME.A.1.7.2  
+SME.A.1.7.2 
+SME.A.1.7.2     Trường hợp chưa góp đủ: Trường hợp chưa góp đủ: Trường hợp chưa góp đủ: - Vốn góp còn thiếu: (
+SME.A.1.7.3) VNĐ - Vốn góp còn thiếu:  - Vốn góp còn thiếu:  (
+SME.A.1.7.3) (
+SME.A.1.7.3)     VNĐ VNĐ - Tiến độ góp vốn còn thiếu: (B.I.2.5.3.8)  - Tiến độ góp vốn còn thiếu: - Tiến độ góp vốn còn thiếu:  (  ( B.I.2.5.3.8 B.I.2.5.3.8 ) )     Cơ cấu góp vốn (danh sách cổ đông/thành viên góp vốn):  Cơ cấu góp vốn (danh sách cổ đông/thành viên góp vốn):  Cơ cấu góp vốn (danh sách cổ đông/thành viên góp vốn):  Tên cổ đông/ TVGV Tên cổ đông/ TVGV Tên cổ đông/ TVGV ID cổ đông ID cổ đông ID cổ đông (mst/ CCCD) (mst/ CCCD) (mst/ CCCD) Vốn góp  đăng ký Vốn góp  đăng ký Vốn góp  đăng ký Tỷ lệ (%) Tỷ lệ (%) Tỷ lệ (%) Vốn thực góp Vốn thực góp Vốn thực góp Thông tin về các cổ đông/TVGV lớn Thông tin về các cổ đông/TVGV lớn Thông tin về các cổ đông/TVGV lớn Tình hình QHTD Tình hình QHTD Tình hình QHTD Mối quan hệ giữa các cổ đông/ TVGV Mối quan hệ giữa các cổ đông/ TVGV Mối quan hệ giữa các cổ đông/ TVGV (B.I.2.5.2.1) (B.I.2.5.2.1) (B.I.2.5.2.1) (B.I.2.5.2.2) (B.I.2.5.2.2) (B.I.2.5.2.2) (B.I.2.5.2.3) (B.I.2.5.2.3) (B.I.2.5.2.3) (B.I.2.5.2.4) (B.I.2.5.2.4) (B.I.2.5.2.4) (B.I.2.5.2.5) (B.I.2.5.2.5) (B.I.2.5.2.5) (B.I.2.5.2.6) (B.I.2.5.2.6) (B.I.2.5.2.6) (B.I.2.5.2.7) (B.I.2.5.2.7) (B.I.2.5.2.7) + Ngày CIC:  + Ngày CIC:  + Ngày CIC:  + TCTD:  + TCTD:  + TCTD:  + Tổng số dư tín dụng: + Tổng số dư tín dụng: + Tổng số dư tín dụng: + Nhóm nợ: + Nhóm nợ: + Nhóm nợ: + Lịch sử tín dụng: + Lịch sử tín dụng: + Lịch sử tín dụng: (B.I.2.5.2.8 (B.I.2.5.2.8 (B.I.2.5.2.8 Người đại diện pháp luật: Người đại diện pháp luật: Người đại diện pháp luật: Ông/bà (B.I.2.6.1)                             Chức vụ: (B.I.2.6.2). Ông/bà  Ông/bà  ( ( B.I.2.6.1 B.I.2.6.1 ) )                              Chức vụ:                               Chức vụ:  ( ( B.I.2.6.2 B.I.2.6.2 ) ) . . Thông tin CIC: Thông tin CIC Thông tin CIC : : - Các TCTD đang quan hệ: ( B.I.2.6.5) -  -  Các TCTD đang quan hệ:  Các TCTD đang quan hệ:  ( B.I.2.6.5) ( B.I.2.6.5) - Tổng số dư tín dụng: ( B.I.2.6.6) - Tổng số dư tín dụng:  - Tổng số dư tín dụng:  ( B.I.2.6.6) ( B.I.2.6.6) - Nhóm nợ: ( B.I.2.6.7) - Nhóm nợ:  - Nhóm nợ:  ( B.I.2.6.7) ( B.I.2.6.7) - Lịch sử tín dụng:.( B.I.2.6.8) - Lịch sử tín dụng:. - Lịch sử tín dụng:. ( B.I.2.6.8) ( B.I.2.6.8) (Trường hợp người đại diện thay đổi so với kỳ GHTD trước thì bổ sung thêm thông tin) (Trường hợp người đại diện thay đổi so với kỳ GHTD trước thì bổ sung thêm thông tin) (Trường hợp người đại diện thay đổi so với kỳ GHTD trước thì bổ sung thêm thông tin) CMND/CCCD/hộ chiếu số: CMND/CCCD/hộ chiếu số: CMND/CCCD/hộ chiếu số: B.I.2.6.3 B.I.2.6.3 B.I.2.6.3 Do (
+SME.A.1.10.2) Do  Do  (
+SME.A.1.10.2) (
+SME.A.1.10.2) cấp ngày (
+SME.A.1.10.3)  cấp ngày  cấp ngày  (
+SME.A.1.10.3 (
+SME.A.1.10.3 ) )     Theo giấy ủy quyền số: Theo giấy ủy quyền số: Theo giấy ủy quyền số: (
+SME.1.11.0)  (
+SME.1.11.0) (
+SME.1.11.0)     Địa chỉ hiện tại:  Địa chỉ hiện tại:  Địa chỉ hiện tại:  (
+SME.1.12.0) (
+SME.1.12.0) (
+SME.1.12.0) Điện thoại liên lạc: Điện thoại liên lạc: Điện thoại liên lạc: Cố định:  (
+SME.A.1.12.1) Cố định:  Cố định:   (
+SME.A.1.12.1)  (
+SME.A.1.12.1) Di động:   (
+SME.A.1.12.2) Di động:    Di động:    (
+SME.A.1.12.2) (
+SME.A.1.12.2) Email: (
+SME.A.1.12.2.1) Email:  Email:  (
+SME.A.1.12.2.1) (
+SME.A.1.12.2.1) Người điều hành chi phối đến hoạt động của Công ty (nếu có) Người điều hành chi phối đến hoạt động của Công ty (nếu có) Người điều hành chi phối đến hoạt động của Công ty (nếu có) Ông/bà B.I.2.7.1                          Chức vụ: B.I.2.7.2            Ông/bà  Ông/bà  B.I.2.7.1 B.I.2.7.1                                                       Chức vụ:  Chức vụ:  B.I.2.7.2 B.I.2.7.2                         Thông tin CIC:  Thông tin CIC:  Thông tin CIC:  - Các TCTD đang quan hệ: ( B.I.2.7.5) - Các TCTD đang quan hệ:  - Các TCTD đang quan hệ:  ( B.I.2.7.5) ( B.I.2.7.5) - Tổng số dư tín dụng: ( B.I.2.7.6) - Tổng số dư tín dụng:  - Tổng số dư tín dụng:  ( B.I.2.7.6) ( B.I.2.7.6) - Nhóm nợ: ( B.I.2.7.7) - Nhóm nợ:  - Nhóm nợ:  ( B.I.2.7.7) ( B.I.2.7.7) - Lịch sử tín dụng: ( B.I.2.7.8) - Lịch sử tín dụng:  - Lịch sử tín dụng:  ( B.I.2.7.8) ( B.I.2.7.8) (Trường hợp người điều hành chi phối đến hoạt động của Công ty thay đổi so với kỳ GHTD trước thì bổ sung thêm thông tin) (Trường hợp người điều hành chi phối đến hoạt động của Công ty thay đổi so với kỳ GHTD trước thì bổ sung thêm thông tin) (Trường hợp người điều hành chi phối đến hoạt động của Công ty thay đổi so với kỳ GHTD trước thì bổ sung thêm thông tin) HOẠT ĐỘNG SXKD, TÌNH HÌNH TÀI CHÍNH HOẠT ĐỘNG SXKD, TÌNH HÌNH TÀI CHÍNH HOẠT ĐỘNG SXKD, TÌNH HÌNH TÀI CHÍNH Hoạt động sản xuất kinh doanh Hoạt động sản xuất kinh doanh Hoạt động sản xuất kinh doanh  (
+SME.A.2.1.1)  (
+SME.A.2.1.1)  (
+SME.A.2.1.1) Nguyên nhân thu hẹp: 
+SME.A.2.1.3 Nguyên nhân thu hẹp:  Nguyên nhân thu hẹp:  
+SME.A.2.1.3 
+SME.A.2.1.3 Tình hình tài chính Tình hình tài chính Tình hình tài chính  (
+SME.A.2.2.1)  (
+SME.A.2.2.1)  (
+SME.A.2.2.1) Cụ thể dấu hiệu suy giảm: (
+SME.A.2.2.2) Cụ thể dấu hiệu suy giảm:  Cụ thể dấu hiệu suy giảm:  (
+SME.A.2.2.2) (
+SME.A.2.2.2) Vốn lưu động ròng (tài sản ngắn hạn – nợ ngắn hạn):  Vốn lưu động ròng (tài sản ngắn hạn – nợ ngắn hạn):  Vốn lưu động ròng (tài sản ngắn hạn – nợ ngắn hạn):  (
+SME.A.2.3.0) (
+SME.A.2.3.0) (
+SME.A.2.3.0) Vốn chủ sở hữu:  Vốn chủ sở hữu:  Vốn chủ sở hữu:  (
+SME.A.2.4.0) (
+SME.A.2.4.0) (
+SME.A.2.4.0) Phải thu khó đòi    Phải thu khó đòi    Phải thu khó đòi    (
+SME.A.2.5.0) (
+SME.A.2.5.0) (
+SME.A.2.5.0) Hàng tồn kho chậm luân chuyển Hàng tồn kho chậm luân chuyển Hàng tồn kho chậm luân chuyển (
+SME.A.2.6.0) (
+SME.A.2.6.0) (
+SME.A.2.6.0) Các chỉ tiêu cần lưu khác (nêu có) Các chỉ tiêu cần lưu khác (nêu có) Các chỉ tiêu cần lưu khác (nêu có) (
+SME.A.2.7.0) (
+SME.A.2.7.0) (
+SME.A.2.7.0) PHƯƠNG ÁN KINH DOANH PHƯƠNG ÁN KINH DOANH PHƯƠNG ÁN KINH DOANH Sản phẩm/ hàng hoá/ dịch vụ chủ yếu Sản phẩm/ hàng hoá/ dịch vụ chủ yếu Sản phẩm/ hàng hoá/ dịch vụ chủ yếu (
+SME.A.3.1.0) (
+SME.A.3.1.0) (
+SME.A.3.1.0) Doanh số bán hàng Doanh số bán hàng Doanh số bán hàng (
+SME.A.3.2.0) triệu đồng (
+SME.A.3.2.0) (
+SME.A.3.2.0)  triệu đồng  triệu đồng Chi phí Chi phí Chi phí (
+SME.A.3.3.0) triệu đồng (
+SME.A.3.3.0) (
+SME.A.3.3.0)  triệu đồng  triệu đồng Hiệu quả của phương án (lãi/lỗ) Hiệu quả của phương án (lãi/lỗ) Hiệu quả của phương án (lãi/lỗ) (
+SME.A.3.4.0) (
+SME.A.3.4.0) (
+SME.A.3.4.0) ĐỀ NGHỊ CẤP GIỚI HẠN TÍN DỤNG ĐỀ NGHỊ CẤP GIỚI HẠN TÍN DỤNG ĐỀ NGHỊ CẤP GIỚI HẠN TÍN DỤNG Mục đích: (
+SME.A.4.1.0) Mục đích:  Mục đích:  (
+SME.A.4.1.0) (
+SME.A.4.1.0) Giới hạn tín dụng (số dư tín dụng cao nhất): Giới hạn tín dụng ( Giới hạn tín dụng ( số dư tín dụng cao nhất số dư tín dụng cao nhất ): ): (
+SME.A.4.2.0) (
+SME.A.4.2.0) (
+SME.A.4.2.0) VND/USD VND/USD VND/USD Trong đó: Trong đó: Trong đó: VND/USD VND/USD VND/USD Giới hạn cho vay (dư nợ cao nhất): Giới hạn cho vay ( Giới hạn cho vay ( dư nợ cao nhất dư nợ cao nhất ): ): (
+SME.A.4.3.0) (
+SME.A.4.3.0) (
+SME.A.4.3.0) VND/USD VND/USD VND/USD Giới hạn bảo lãnh (số dư bảo lãnh cao nhất): Giới hạn bảo lãnh ( Giới hạn bảo lãnh ( số dư bảo lãnh cao nhất số dư bảo lãnh cao nhất ): ): (
+SME.A.4.4.0) (
+SME.A.4.4.0) (
+SME.A.4.4.0) VND/USD VND/USD VND/USD Giới hạn chiết khấu (số dư chiết khấu cao nhất): Giới hạn chiết khấu  Giới hạn chiết khấu  (số dư chiết khấu cao nhất) (số dư chiết khấu cao nhất) : : (
+SME.A.4.5.0) (
+SME.A.4.5.0) (
+SME.A.4.5.0) VND/USD VND/USD VND/USD Giới hạn bao thanh toán (số dư BTT cao nhất): Giới hạn bao thanh toán  Giới hạn bao thanh toán  (số dư BTT cao nhất) (số dư BTT cao nhất) : : (
+SME.A.4.6.0) (
+SME.A.4.6.0) (
+SME.A.4.6.0) VND/USD VND/USD VND/USD Giới hạn mở LC(số dư LC cao nhất) Giới hạn mở LC Giới hạn mở LC (số dư LC cao nhất) (số dư LC cao nhất) (
+SME.A.4.7.0) (
+SME.A.4.7.0) (
+SME.A.4.7.0) VND/USD VND/USD VND/USD Giới hạn thẻ tín dụng (số dư thẻ TD cao nhất) Giới hạn thẻ tín dụng  Giới hạn thẻ tín dụng  (số dư thẻ TD cao nhất) (số dư thẻ TD cao nhất) (
+SME.A.4.8.0) (
+SME.A.4.8.0) (
+SME.A.4.8.0) VND/USD VND/USD VND/USD Giới hạn khác (nếu có) Giới hạn khác (nếu có) Giới hạn khác (nếu có) (
+SME.A.4.9.0) (
+SME.A.4.9.0) (
+SME.A.4.9.0) VND/USD VND/USD VND/USD Thời hạn duy trì:  Thời hạn duy trì:  Thời hạn duy trì:        đến hết ngày (
+SME.A.4.10.2) đến hết ngày  đến hết ngày  ( ( 
+SME.A.4.10.2 
+SME.A.4.10.2 ) ) NHU CẦU VỐN NHU CẦU VỐN NHU CẦU VỐN Tổng nhu cầu vốn Tổng nhu cầu vốn Tổng nhu cầu vốn (
+SME.A.5.1.0) triệu đồng (
+SME.A.5.1.0) (
+SME.A.5.1.0)  triệu đồng  triệu đồng Vốn tự có Vốn tự có Vốn tự có (
+SME.A.5.2.0) triệu đồng (
+SME.A.5.2.0) (
+SME.A.5.2.0)  triệu đồng  triệu đồng Số tiền đề nghị vay Số tiền đề nghị vay Số tiền đề nghị vay (
+SME.A.5.3.0) triệu đồng (
+SME.A.5.3.0) (
+SME.A.5.3.0)  triệu đồng  triệu đồng Mục đích vay vốn Mục đích vay vốn Mục đích vay vốn (
+SME.A.5.4.0)  (
+SME.A.5.4.0) (
+SME.A.5.4.0)     Thời hạn vay vốn Thời hạn vay vốn Thời hạn vay vốn (
+SME.A.5.5.1) (
+SME.A.5.5.1) (
+SME.A.5.5.1) Lãi suất: (
+SME.A.5.5.2)  %.năm Lãi suất:  Lãi suất:  (
+SME.A.5.5.2) (
+SME.A.5.5.2)      %.năm  %.năm Phương thức vay vốn Phương thức vay vốn Phương thức vay vốn (
+SME.A.5.6.0) ( ( 
+SME.A.5.6.0) 
+SME.A.5.6.0) Nguồn trả nợ Nguồn trả nợ Nguồn trả nợ (
+SME.A.5.7.1) ( ( 
+SME.A.5.7.1) 
+SME.A.5.7.1) Ghi rõ nguồn khác: (
+SME.A.5.7.2) Ghi rõ nguồn khác:  Ghi rõ nguồn khác:  (
+SME.A.5.7.2) (
+SME.A.5.7.2) Kỳ hạn trả nợ gốc Kỳ hạn trả nợ gốc Kỳ hạn trả nợ gốc ☒ 
+SME.5.8.1 tháng/kỳ ☒ ☒     
+SME.5.8.1 
+SME.5.8.1     tháng/kỳ tháng/kỳ 	Cuối kỳ 
+SME.5.8.1.1 ☐ ☐ 	Cuối kỳ  Cuối kỳ  
+SME.5.8.1.1 
+SME.5.8.1.1 	Khác, ghi rõ: (
+SME.A.5.8.2) ☐ ☐ 	Khác, ghi rõ:  Khác, ghi rõ:  (
+SME.A.5.8.2) (
+SME.A.5.8.2) NHU CẦU BẢO LÃNH NHU CẦU BẢO LÃNH NHU CẦU BẢO LÃNH Tổng nhu cầu phát hành bảo lãnh (Số dư bảo lãnh cao nhất) Tổng nhu cầu phát hành bảo lãnh  Tổng nhu cầu phát hành bảo lãnh  (Số dư bảo lãnh cao nhất) (Số dư bảo lãnh cao nhất) (
+SME.A.6.1.0)    triệu đồng (
+SME.A.6.1.0) (
+SME.A.6.1.0)        triệu đồng    triệu đồng Thời hạn duy trì Thời hạn duy trì Thời hạn duy trì (
+SME.A.6.2.0) (
+SME.A.6.2.0) (
+SME.A.6.2.0) NHU CẦU L/C NHU CẦU L/C NHU CẦU L/C Tổng nhu cầu phát hành L/C Tổng nhu cầu phát hành L/C Tổng nhu cầu phát hành L/C (
+SME.A.7.1.0)  triệu đồng (
+SME.A.7.1.0) (
+SME.A.7.1.0)       triệu đồng triệu đồng Thời hạn duy trì Thời hạn duy trì Thời hạn duy trì (
+SME.A.7.2.0) (
+SME.A.7.2.0) (
+SME.A.7.2.0) TÀI SẢN BẢO ĐẢM TÀI SẢN BẢO ĐẢM TÀI SẢN BẢO ĐẢM Tài sản bảo đảm là: (
+SME.A.8.1.0) Tài sản bảo đảm là Tài sản bảo đảm là :  :  (
+SME.A.8.1.0) (
+SME.A.8.1.0) Giá trị ước tính:  Giá trị ước tính Giá trị ước tính :  :  (
+SME.A.8.2.0)  triệu đồng  (
+SME.A.8.2.0)   (
+SME.A.8.2.0)   triệu đồng  triệu đồng  Lưu ý: trường hợp có thêm TSBD, chi nhánh bổ sung thêm thông tin tương tự như đối với TSBĐ 1 để KH khai báo Lưu ý:  Lưu ý:  trường hợp có thêm TSBD, chi nhánh bổ sung thêm thông tin tương tự như đối với TSBĐ 1 để KH khai báo trường hợp có thêm TSBD, chi nhánh bổ sung thêm thông tin tương tự như đối với TSBĐ 1 để KH khai báo ĐỀ NGHỊ ĐĂNG KÝ SỬ DỤNG DỊCH VỤ ĐỀ NGHỊ ĐĂNG KÝ SỬ DỤNG DỊCH VỤ ĐỀ NGHỊ ĐĂNG KÝ SỬ DỤNG DỊCH VỤ Đăng ký mở tài khoản ATM/CA tại VietinBank để nhận nợ/ trả nợ (Trường hợp khách hàng chưa có tài khoản ATM/CA tại VietinBank) Đăng ký mở tài khoản ATM/CA tại VietinBank để nhận nợ/ trả nợ Đăng ký mở tài khoản ATM/CA tại VietinBank để nhận nợ/ trả nợ  (Trường hợp khách hàng chưa có tài khoản ATM/CA tại VietinBank)  (Trường hợp khách hàng chưa có tài khoản ATM/CA tại VietinBank) (
+SME.A.9.1.0)  (
+SME.A.9.1.0) (
+SME.A.9.1.0)     Đăng ký sử dụng dịch vụ VietinBank iPay/eFast  Đăng ký sử dụng dịch vụ VietinBank iPay/eFast Đăng ký sử dụng dịch vụ VietinBank iPay/eFast      (
+SME.A.9.2.0)      (
+SME.A.9.2.0) (
+SME.A.9.2.0)     Gói dịch vụ Gói dịch vụ Gói dịch vụ  (
+SME.A.9.3.0)     ( ( 
+SME.A.9.3.0) 
+SME.A.9.3.0) Phương thức xác thực (Để đảm bảo an toàn trong giao dịch, tôi chấp thuận việc đăng ký IB kèm dịch vụ BĐSD Phương thức xác thực ( Phương thức xác thực ( Để đảm bảo an toàn trong giao dịch, tôi chấp thuận việc đăng ký IB kèm dịch vụ BĐSD Để đảm bảo an toàn trong giao dịch, tôi chấp thuận việc đăng ký IB kèm dịch vụ BĐSD  (
+SME.A.9.4.0)                      ( ( 
+SME.A.9.4.0) 
+SME.A.9.4.0)                                     Đăng ký sử dụng dịch vụ SMS Banking  Đăng ký sử dụng dịch vụ SMS Banking  Đăng ký sử dụng dịch vụ SMS Banking   (
+SME.A.9.5.0)     ( ( 
+SME.A.9.5.0) 
+SME.A.9.5.0) ☒ Nhắc nợ khoản vay ☒ ☒  Nhắc nợ khoản vay  Nhắc nợ khoản vay  Biến động số dư TK  ☐ ☐  Biến động số dư TK   Biến động số dư TK   Dịch vụ tài chính   ☐ ☐     Dịch vụ tài chính  Dịch vụ tài chính      XÁC NHẬN XÁC NHẬN XÁC NHẬN Tôi/chúng tôi cam kết: Tôi/chúng tôi cam kết: Tôi/chúng tôi cam kết: Những thông tin trên đây là đúng sự thật và tôi/chúng tôi hoàn toàn chịu trách nhiệm về các thông tin đã cung cấp; Những thông tin trên đây là đúng sự thật và tôi/chúng tôi hoàn toàn chịu trách nhiệm về các thông tin đã cung cấp; Những thông tin trên đây là đúng sự thật và tôi/chúng tôi hoàn toàn chịu trách nhiệm về các thông tin đã cung cấp; Chấp hành mọi quy định của Ngân hàng TMCP Công thương Việt Nam liên quan đến việc vay vốn và bảo đảm tiền vay; Chấp hành mọi quy định của Ngân hàng TMCP Công thương Việt Nam liên quan đến việc vay vốn và bảo đảm tiền vay; Chấp hành mọi quy định của Ngân hàng TMCP Công thương Việt Nam liên quan đến việc vay vốn và bảo đảm tiền vay; Chấp thuận vô điều kiện để Ngân hàng toàn quyền định đoạt đối với (các) tài sản bảo đảm nói trên để thu hồi nợ gốc, lãi và phí (nếu có) trong trường hợp tôi/chúng tôi vi phạm Hợp đồng tín dụng, không trả được nợ hoặc trả nợ không đúng thỏa thuận. Chấp thuận vô điều kiện để Ngân hàng toàn quyền định đoạt đối với (các) tài sản bảo đảm nói trên để thu hồi nợ gốc, lãi và phí (nếu có) trong trường hợp tôi/chúng tôi vi phạm Hợp đồng tín dụng, không trả được nợ hoặc trả nợ không đúng thỏa thuận. Chấp thuận vô điều kiện để Ngân hàng toàn quyền định đoạt đối với (các) tài sản bảo đảm nói trên để thu hồi nợ gốc, lãi và phí (nếu có) trong trường hợp tôi/chúng tôi vi phạm Hợp đồng tín dụng, không trả được nợ hoặc trả nợ không đúng thỏa thuận. Tôi/chúng tôi đồng ý rằng Ngân hàng TMCP Công thương Việt Nam có quyền sử dụng các thông tin trên Giấy đề nghị này để cung cấp, giới thiệu, hỗ trợ tôi/chúng tôi về các thông tin liên quan đến sản phẩm dịch vụ của Ngân hàng. Tôi/chúng tôi đồng ý rằng Ngân hàng TMCP Công thương Việt Nam có quyền sử dụng các thông tin trên Giấy đề nghị này để cung cấp, giới thiệu, hỗ trợ tôi/chúng tôi về các thông tin liên quan đến sản phẩm dịch vụ của Ngân hàng. Tôi/chúng tôi đồng ý rằng Ngân hàng TMCP Công thương Việt Nam có quyền sử dụng các thông tin trên Giấy đề nghị này để cung cấp, giới thiệu, hỗ trợ tôi/chúng tôi về các thông tin liên quan đến sản phẩm dịch vụ của Ngân hàng. Trong trường hợp tôi/chúng tôi vi phạm những cam kết trên, tôi/chúng tôi xin hoàn toàn chịu trách nhiệm trước pháp luật/ Trong trường hợp tôi/chúng tôi vi phạm những cam kết trên, tôi/chúng tôi xin hoàn toàn chịu trách nhiệm trước pháp luật/ Trong trường hợp tôi/chúng tôi vi phạm những cam kết trên, tôi/chúng tôi xin hoàn toàn chịu trách nhiệm trước pháp luật/ 		……………, ngày….tháng….năm…….. 		 ……………, ngày….tháng….năm…….. ……………, ngày….tháng….năm……..    Khách hàng    Khách hàng    Khách hàng (Chữ ký, họ tên (Chữ ký, họ tên (Chữ ký, họ tên PHẦN B: NỘI DUNG THẨM ĐỊNH CỦA NGÂN HÀNG PHẦN B: NỘI DUNG THẨM ĐỊNH CỦA NGÂN HÀNG PHẦN B: NỘI DUNG THẨM ĐỊNH CỦA NGÂN HÀNG Áp dụng theo Giải pháp cấp tín dụng dành cho KHDN vừa và nhỏ có TSBĐ đầy đủ, Áp dụng theo Giải pháp cấp tín dụng dành cho KHDN vừa và nhỏ có TSBĐ đầy đủ, Áp dụng theo Giải pháp cấp tín dụng dành cho KHDN vừa và nhỏ có TSBĐ đầy đủ,  mã nhận diện trên hệ thống: mã sản phẩm cho vay chi tiết: 80044  mã nhận diện trên hệ thống: mã sản phẩm cho vay chi tiết: 80044  mã nhận diện trên hệ thống: mã sản phẩm cho vay chi tiết: 80044 Kính trình: Header.5 Kính trình Kính trình :  :  Header.5 Header.5 (Ghi rõ cấp phê duyệt cụ thể trong trường hợp xác định được cấp thẩm quyền phê duyệt) ( ( Ghi rõ cấp phê duyệt cụ thể trong trường hợp xác định được cấp thẩm quyền phê duyệt Ghi rõ cấp phê duyệt cụ thể trong trường hợp xác định được cấp thẩm quyền phê duyệt ) ) THÔNG TIN KHÁCH HÀNG  THÔNG TIN KHÁCH HÀNG  THÔNG TIN KHÁCH HÀNG   Theo thông tin Phần A – Mục 1. Thông tin về khách hàng ☐ ☐  Theo thông tin Phần A – Mục 1. Thông tin về khách hàng  Theo thông tin Phần A – Mục 1. Thông tin về khách hàng     Điều chỉnh/bổ sung nội dung: (
+SME.B.I.1.0)         ☐ ☐  Điều chỉnh/bổ sung nội dung:   Điều chỉnh/bổ sung nội dung:  (
+SME.B.I.1.0) (
+SME.B.I.1.0) THẨM ĐỊNH KHÁCH HÀNG THẨM ĐỊNH KHÁCH HÀNG THẨM ĐỊNH KHÁCH HÀNG 1 1 1 Hồ sơ tín dụng khách hàng (bao gồm hồ sơ pháp lý, hồ sơ tín dụng, hồ sơ TSBĐ….) Hồ sơ tín dụng khách hàng  Hồ sơ tín dụng khách hàng  (bao gồm hồ sơ pháp lý, hồ sơ tín dụng, hồ sơ TSBĐ….) (bao gồm hồ sơ pháp lý, hồ sơ tín dụng, hồ sơ TSBĐ….) (
+SME.B.I.1.1.0) (
+SME.B.I.1.1.0) (
+SME.B.I.1.1.0) Chi nhánh nêu tài liệu còn thiếu, lý do thiếu hồ sơ, thời hạn hoàn thiện dự kiến): 
+SME.B.I.1.1.0.1) Chi nhánh nêu tài liệu còn thiếu, lý do thiếu hồ sơ, thời hạn hoàn thiện dự kiến): Chi nhánh nêu tài liệu còn thiếu, lý do thiếu hồ sơ, thời hạn hoàn thiện dự kiến):     
+SME.B.I.1.1.0.1) 
+SME.B.I.1.1.0.1) 2 2 2 Tư cách pháp lý khách hàng Tư cách pháp lý khách hàng Tư cách pháp lý khách hàng - - - Tổ chức có đủ năng lực phát luật dân sự? Tổ chức có đủ năng lực phát luật dân sự? Tổ chức có đủ năng lực phát luật dân sự? (
+SME.B.I.2.1) ( ( 
+SME.B.I.2.1) 
+SME.B.I.2.1) - - - Người đại diện theo pháp luật có đủ năng lực hành vi dân sự?      Người đại diện theo pháp luật có đủ năng lực hành vi dân sự?      Người đại diện theo pháp luật có đủ năng lực hành vi dân sự?      (
+SME.B.I.2.2) ( ( 
+SME.B.I.2.2) 
+SME.B.I.2.2) - - - Ngành nghề kinh doanh của KH Ngành nghề kinh doanh của KH Ngành nghề kinh doanh của KH  (
+SME.B.I.2.3)    (
+SME.B.I.2.3)  (
+SME.B.I.2.3)       3 3 3 Đối tượng khách hàng Đối tượng khách hàng Đối tượng khách hàng (
+SME.B.I.2.4)   (
+SME.B.I.2.4) (
+SME.B.I.2.4)       Thời gian QHTD với NHCT (KH cũ): 
+SME.B.I.2.4.1 năm Thời gian QHTD với NHCT (KH cũ):  Thời gian QHTD với NHCT (KH cũ):  
+SME.B.I.2.4.1 
+SME.B.I.2.4.1  năm  năm Khách hàng có thuộc Khách hàng và người có liên quan theo quy định Khách hàng có thuộc Khách hàng và người có liên quan theo quy định Khách hàng có thuộc Khách hàng và người có liên quan theo quy định 
+SME.B.I.2.4.1 
+SME.B.I.2.4.1 
+SME.B.I.2.4.1 (Nếu có, Chi nhánh thực hiện kê khai theo bảng dưới đây): (Nếu có, Chi nhánh thực hiện kê khai theo bảng dưới đây): (Nếu có, Chi nhánh thực hiện kê khai theo bảng dưới đây): Tên Khách hàng/Người có liên quan Tên Khách hàng/Người có liên quan Tên Khách hàng/Người có liên quan (B.I.2.9.1) (B.I.2 (B.I.2 .9.1) .9.1) Số CIF Số CIF Số CIF (B.I.2.9.2) (B.I.2.9.2) (B.I.2.9.2) Chi nhánh nơi QHTD Chi nhánh nơi QHTD Chi nhánh nơi QHTD (B.I.2.9.3) (B.I.2.9.3) (B.I.2.9.3) Tổng số dư tín cấp tín dụng tối đa/Khoản tín dụng được cấp Tổng số dư tín cấp tín dụng tối đa/Khoản tín dụng được cấp Tổng số dư tín cấp tín dụng tối đa/Khoản tín dụng được cấp (B.I.2.9.4) (B.I.2.9.4) (B.I.2.9.4) Số dư tín dụng tại thời điểm thẩm định Số dư tín dụng tại thời điểm thẩm định Số dư tín dụng tại thời điểm thẩm định (B.I.2.9.5) (B.I.2.9.5) (B.I.2.9.5) Mối quan hệ với khách hàng Mối quan hệ với khách hàng Mối quan hệ với khách hàng (B.I.2.9.6) (B.I.2.9.6) (B.I.2.9.6) Khách hàng Khách hàng Khách hàng NCLQ NCLQ NCLQ Tổng đối với KH và NCLQ Tổng đối với KH và NCLQ Tổng đối với KH và NCLQ B.I.2.9.7.0 B.I.2.9.7.0 B.I.2.9.7.0 B.I.2.9.7.1 B.I.2.9.7.1 B.I.2.9.7.1 Tỷ lệ GHTD KH&NCLQ/ VTC NHCT Tỷ lệ GHTD KH&NCLQ/ VTC Tỷ lệ GHTD KH&NCLQ/ VTC  NHCT  NHCT (B.I.2.9.11) (B.I.2.9.11) (B.I.2.9.11) (B.I.2.9.11.1) (B.I.2.9.11.1) (B.I.2.9.11.1) Mức độ ảnh hưởng của KHLQ tới KH chính: Mức độ ảnh hưởng của KHLQ tới KH chính: Mức độ ảnh hưởng của KHLQ tới KH chính: 4 4 4 Quan hệ tín dụng, tiền gửi tại các TCTD Quan hệ tín dụng, tiền gửi tại các TCTD Quan hệ tín dụng, tiền gửi tại các TCTD 4.1 4.1 4.1 Quan hệ tín dụng tại các TCTD khác Quan hệ tín dụng tại các TCTD khác Quan hệ tín dụng tại các TCTD khác 
+SME.B.3.1 
+SME.B.3.1 
+SME.B.3.1 Thông tin về tình hình quan hệ tín dụng của khách hàng tại các TCTD theo bản vấn tin CIC số (B.I.3.1.1)  ngày (B.I.3.1.2):         Thông tin về tình hình quan hệ tín dụng của khách hàng tại các TCTD theo bản vấn tin CIC số  Thông tin về tình hình quan hệ tín dụng của khách hàng tại các TCTD theo bản vấn tin CIC số  (B.I.3.1.1) (B.I.3.1.1)   ngày    ngày  (B.I.3.1.2) (B.I.3.1.2) : :                   Tên TCTD  Tên TCTD  Tên TCTD  (đvt: triệu đồng) (đvt: triệu đồng) (đvt: triệu đồng) (B.I.3.1.3) (B.I.3.1.3) (B.I.3.1.3) Vay NH Vay NH Vay NH (B.I.3.1.4) (B.I.3.1.4) (B.I.3.1.4) Vay TDH Vay TDH Vay TDH (B.I.3.1.5) (B.I.3.1.5) (B.I.3.1.5) Dư nợ khác Dư nợ khác Dư nợ khác (B.I.3.1.6) (B.I.3.1.6) (B.I.3.1.6) CKNB CKNB CKNB (B.I.3.1.7) (B.I.3.1.7) (B.I.3.1.7) Thẻ TD Thẻ TD Thẻ TD (B.I.3.1.8) (B.I.3.1.8) (B.I.3.1.8) Tổng cộng Tổng cộng Tổng cộng (B.I.3.1.9) (B.I.3.1.9) (B.I.3.1.9) Giá trị TSBĐ Giá trị TSBĐ Giá trị TSBĐ (B.I.3.1.11) (B.I.3.1.11) (B.I.3.1.11) Tỷ lệ CTD có BĐ Tỷ lệ CTD có BĐ Tỷ lệ CTD có BĐ (B.I.3.1.13) (B.I.3.1.13) (B.I.3.1.13) Tổng cộng  Tổng cộng  Tổng cộng  
+SME.4.1.0 
+SME.4.1.0 
+SME.4.1.0 
+SME.4.1.0.1 
+SME.4.1.0 
+SME.4.1.0 .1 .1 
+SME.4.1.0.2 
+SME.4.1.0 
+SME.4.1.0 .2 .2 
+SME.4.1.0.3 
+SME.4.1.0 
+SME.4.1.0 .3 .3 
+SME.4.1.0.4 
+SME.4.1.0 
+SME.4.1.0 .4 .4 
+SME.4.1.0.5 
+SME.4.1.0 
+SME.4.1.0 .5 .5 
+SME.4.1.0.6 
+SME.4.1.0 
+SME.4.1.0 .6 .6 Đánh giá mức độ tín nhiệm của khách hàng Đánh giá mức độ tín nhiệm của khách hàng Đánh giá mức độ tín nhiệm của khách hàng Khách hàng không còn nợ nhóm 2, nợ xấu tại bất cứ TCTD nào (trừ nợ xấu là nợ khoanh, nợ vay thanh toán công nợ) Khách hàng không còn nợ nhóm 2, nợ xấu tại bất cứ TCTD nào (trừ nợ xấu là nợ khoanh, nợ vay thanh toán công nợ) Khách hàng không còn nợ nhóm 2, nợ xấu tại bất cứ TCTD nào (trừ nợ xấu là nợ khoanh, nợ vay thanh toán công nợ) 
+SME.II.4.1.1 
+SME.II.4.1.1 
+SME.II.4.1.1 Khách hàng không còn nợ tại bất cứ TCTD nào đã được bán cho VAMC nhận trái phiếu đặc biệt  Khách hàng không còn nợ tại bất cứ TCTD nào đã được bán cho VAMC nhận trái phiếu đặc biệt  Khách hàng không còn nợ tại bất cứ TCTD nào đã được bán cho VAMC nhận trái phiếu đặc biệt  Không còn nợ xử lý rủi ro tại NHCT Không còn nợ xử lý rủi ro tại NHCT Không còn nợ xử lý rủi ro tại NHCT Không phát sinh các khoản nợ xấu đã được NHCT bán nợ (trừ trường hợp  Không phát sinh các khoản nợ xấu đã được NHCT bán nợ (trừ trường hợp  Không phát sinh các khoản nợ xấu đã được NHCT bán nợ (trừ trường hợp  
+SME.II.4.1.3 
+SME.II.4.1.3 
+SME.II.4.1.3 Nêu rõ Nguyên nhân/Lý do phát sinh/Biện pháp khắc phục: 
+SME.II.4.1.5 Nêu rõ Nguyên nhân/Lý do phát sinh/Biện pháp khắc phục:  Nêu rõ Nguyên nhân/Lý do phát sinh/Biện pháp khắc phục:  
+SME.II.4.1.5 
+SME.II.4.1.5 Đánh giá mức độ tín nhiệm đối với cổ đông và thành viên góp vốn Đánh giá mức độ tín nhiệm đối với cổ đông và thành viên góp vốn Đánh giá mức độ tín nhiệm đối với cổ đông và thành viên góp vốn Không có nợ nhóm 2 trong vòng 12 tháng gần nhất tại tất cả các TCTD tính tới thời điểm đề nghị cấp tín dụng tại NHCT. Không có nợ nhóm 2 trong vòng 12 tháng gần nhất tại tất cả các TCTD tính tới thời điểm đề nghị cấp tín dụng tại NHCT. Không có nợ nhóm 2 trong vòng 12 tháng gần nhất tại tất cả các TCTD tính tới thời điểm đề nghị cấp tín dụng tại NHCT. Không còn nợ xấu (trừ nợ xấu là nợ khoanh, nợ vay thanh toán công nợ), nợ bán VAMC tại bất cứ TCTD nào; không còn nợ xử lý rủi ro tại NHCT; không phát sinh các khoản nợ xấu đã được NHCT bán nợ (trừ trường hợp bán nợ cho VAMC nhận trái phiếu đặc biệt) trong vòng 3 năm gần nhất tính tới thời điểm đề nghị cấp tín dụng tại NHCT. Không còn nợ xấu (trừ nợ xấu là nợ khoanh, nợ vay thanh toán công nợ), nợ bán VAMC tại bất cứ TCTD nào; không còn nợ xử lý rủi ro tại NHCT; không phát sinh các khoản nợ xấu đã được NHCT bán nợ (trừ trường hợp bán nợ cho VAMC nhận trái phiếu đặc biệt) trong vòng 3 năm gần nhất tính tới thời điểm đề nghị cấp tín dụng tại NHCT. Không còn nợ xấu (trừ nợ xấu là nợ khoanh, nợ vay thanh toán công nợ), nợ bán VAMC tại bất cứ TCTD nào; không còn nợ xử lý rủi ro tại NHCT; không phát sinh các khoản nợ xấu đã được NHCT bán nợ (trừ trường hợp bán nợ cho VAMC nhận trái phiếu đặc biệt) trong vòng 3 năm gần nhất tính tới thời điểm đề nghị cấp tín dụng tại NHCT. 
+SME.II.4.1.5.1 
+SME.II.4.1.5.1 
+SME.II.4.1.5.1 Nêu rõ Nguyên nhân/Lý do phát sinh/Biện pháp khắc phục Nêu rõ Nguyên nhân/Lý do phát sinh/Biện pháp khắc phục Nêu rõ Nguyên nhân/Lý do phát sinh/Biện pháp khắc phục 
+SME.II.4.1.7 
+SME.II.4.1.7 
+SME.II.4.1.7 Thông tin về lịch sử phát sinh nợ cơ cấu/cần chú ý/nợ xấu/nợ XLRR/nợ bán cho VAMC Thông tin về lịch sử phát sinh nợ cơ cấu/cần chú ý/nợ xấu/nợ XLRR/nợ bán cho VAMC Thông tin về lịch sử phát sinh nợ cơ cấu/cần chú ý/nợ xấu/nợ XLRR/nợ bán cho VAMC 
+SME.II.4.1.8        
+SME.II.4.1.8 
+SME.II.4.1.8                 Nêu rõ Nguyên nhân/Lý do phát sinh/Biện pháp khắc phục 
+SME.II.4.1.8.1 Nêu rõ Nguyên nhân/Lý do phát sinh/Biện pháp khắc phục  Nêu rõ Nguyên nhân/Lý do phát sinh/Biện pháp khắc phục  
+SME.II.4.1.8.1 
+SME.II.4.1.8.1 Đánh giá và kết luận về uy tín trong QHTD Đánh giá và kết luận về uy tín trong QHTD Đánh giá và kết luận về uy tín trong QHTD 
+SME.II.4.1.9 
+SME.II.4.1.9 
+SME.II.4.1.9 Nêu rõ Nguyên nhân/Lý do phát sinh/Biện pháp khắc phục: 
+SME.II.4.1.10              Nêu rõ Nguyên nhân/Lý do phát sinh/Biện pháp khắc phục:  Nêu rõ Nguyên nhân/Lý do phát sinh/Biện pháp khắc phục:  
+SME.II.4.1.10 
+SME.II.4.1.10                             4.2 4.2 4.2 Quan hệ tín dụng tại NHCT Quan hệ tín dụng tại NHCT Quan hệ tín dụng tại NHCT Xếp hạng tín dụng khách hàng Xếp hạng tín dụng khách hàng Xếp hạng tín dụng khách hàng Điều kiện của sản phẩm: PD01 – PD09      Điều kiện của sản phẩm: PD01 – PD09      Điều kiện của sản phẩm: PD01 – PD09      Kỳ xếp hạng: Tháng No.5 		Hạng CR: No.6		Hạng PD: No.7 Kỳ xếp hạng: Tháng  Kỳ xếp hạng: Tháng  No.5 No.5  		Hạng CR:    Hạng CR:  No.6 No.6 		Hạng PD:  Hạng PD:  No.7 No.7 
+SME.II.4.2.1 
+SME.II.4.2.1 
+SME.II.4.2.1 - - - GHTD đã được cấp, gồm: GHTD đã được cấp, gồm: GHTD đã được cấp, gồm: Giới hạn cho vay ngắn hạn: Giới hạn cho vay ngắn hạn: Giới hạn cho vay ngắn hạn: 
+SME.II.1.11 tỷ đồng 
+SME.II.1.11  
+SME.II.1.11  tỷ đồng tỷ đồng Giới hạn cho vay trung dài hạn Giới hạn cho vay trung dài hạn Giới hạn cho vay trung dài hạn 
+SME.II.1.12 tỷ đồng 
+SME.II.1.12  
+SME.II.1.12  tỷ đồng tỷ đồng Giới hạn bảo lãnh Giới hạn bảo lãnh Giới hạn bảo lãnh 
+SME.II.1.13 tỷ đồng 
+SME.II.1.13  
+SME.II.1.13  tỷ đồng tỷ đồng Giới hạn LC Giới hạn LC Giới hạn LC 
+SME.II.1.14 tỷ đồng 
+SME.II.1.14  
+SME.II.1.14  tỷ đồng tỷ đồng Giới Chiết khấu: Giới Chiết khấu: Giới Chiết khấu: 
+SME.II.1.15 tỷ đồng 
+SME.II.1.15  
+SME.II.1.15  tỷ đồng tỷ đồng Giới hạn khác Giới hạn khác Giới hạn khác 
+SME.II.1.16 tỷ đồng 
+SME.II.1.16  
+SME.II.1.16  tỷ đồng tỷ đồng - - - Tình hình sử dụng GHTD tại NHCT Tình hình sử dụng GHTD tại NHCT Tình hình sử dụng GHTD tại NHCT Chỉ tiêu Chỉ tiêu Chỉ tiêu GHTD đã duyệt GHTD đã duyệt GHTD đã duyệt Doanh số cho vay/phát sinh nợ Doanh số cho vay/phát sinh nợ Doanh số cho vay/phát sinh nợ Số dư tại thời điểm thẩm định Số dư tại thời điểm thẩm định Số dư tại thời điểm thẩm định Số dư tín dụng cao nhất Số dư tín dụng cao nhất Số dư tín dụng cao nhất Năm X Năm X Năm X (B.I.3.2.2) (B.I.3.2.2) (B.I.3.2.2) Năm X-1 Năm X-1 Năm X-1 B.I.3.2.3 B.I.3.2.3 B.I.3.2.3 1. Cho vay, trong đó: 1. Cho vay, trong đó: 1. Cho vay, trong đó: Cho vay ngắn hạn Cho vay ngắn hạn Cho vay ngắn hạn 
+SME.II.1.11 
+SME.II.1.11 
+SME.II.1.11 (B.I.3.2.13.1) (B.I.3.2.13.1) (B.I.3.2.13.1) (B.I.3.2.13.2) (B.I.3.2.13.2) (B.I.3.2.13.2) 
+SME.II.4.2.5.1 
+SME.II.4.2.5 
+SME.II.4.2.5 .1 .1 
+SME.II.4.2.3 
+SME.II.4.2.3 
+SME.II.4.2.3 Cho vay TDH Cho vay TDH Cho vay TDH 
+SME.II.1.12 
+SME.II.1.12 
+SME.II.1.12 (B.I.3.2.15.1) (B.I.3.2.15.1) (B.I.3.2.15.1) (B.I.3.2.15.2) (B.I.3.2.15.2) (B.I.3.2.15.2) 
+SME.II.4.2.5.2 
+SME.II.4.2.5 
+SME.II.4.2.5 .2 .2 
+SME.II.4.2.4 
+SME.II.4.2.4 
+SME.II.4.2.4 2. Bảo lãnh 2. Bảo lãnh 2. Bảo lãnh 
+SME.II.1.13 
+SME.II.1.13 
+SME.II.1.13 (B.I.3.2.23.1) (B.I.3.2.23.1) (B.I.3.2.23.1) (B.I.3.2.23.2) (B.I.3.2.23.2) (B.I.3.2.23.2) 
+SME.II.4.2.5 
+SME.II.4.2.5 
+SME.II.4.2.5 
+SME.II.4.2.6 
+SME.II.4.2.6 
+SME.II.4.2.6 3. L/C 3. L/C 3. L/C 
+SME.II.1.14 
+SME.II.1.14 
+SME.II.1.14 (B.I.3.2.19.1) (B.I.3.2.19.1) (B.I.3.2.19.1) (B.I.3.2.19.2) (B.I.3.2.19.2) (B.I.3.2.19.2) 
+SME.II.4.2.7 
+SME.II.4.2.7 
+SME.II.4.2.7 
+SME.II.4.2.8 
+SME.II.4.2.8 
+SME.II.4.2.8 4. chiết khấu 4. chiết khấu 4. chiết khấu 
+SME.II.1.15 
+SME.II.1.15 
+SME.II.1.15 (B.I.3.2.21.1) (B.I.3.2.21.1) (B.I.3.2.21.1) (B.I.3.2.21.2) (B.I.3.2.21.2) (B.I.3.2.21.2) 
+SME.II.4.2.9 
+SME.II.4.2.9 
+SME.II.4.2.9 
+SME.II.4.2.10 
+SME.II.4.2.10 
+SME.II.4.2.10 4.Khác  4.Khác  4.Khác  
+SME.II.4.2.16 
+SME.II.4.2.16 
+SME.II.4.2.16 
+SME.II.4.2.12 
+SME.II.4.2.12 
+SME.II.4.2.12 
+SME.II.4.2.13 
+SME.II.4.2.13 
+SME.II.4.2.13 
+SME.II.4.2.14 
+SME.II.4.2.14 
+SME.II.4.2.14 
+SME.II.4.2.15 
+SME.II.4.2.15 
+SME.II.4.2.15 - - - Tình hình quan hệ tiền gửi tại NHCT Tình hình quan hệ tiền gửi tại NHCT Tình hình quan hệ tiền gửi tại NHCT Chỉ tiêu Chỉ tiêu Chỉ tiêu Đvt Đvt Đvt Năm X (năm hiện tại) Năm X  Năm X  (năm hiện tại) (năm hiện tại) (B.I.3.2.2) (B.I.3.2.2) (B.I.3.2.2) Năm X-1 Năm X-1 Năm X-1 (B.I.3.2.3) (B.I.3.2.3) (B.I.3.2.3) Doanh số chuyển tiền qua tài khoản mở tại Chi nhánh, trong đó: Doanh số chuyển tiền qua tài khoản mở tại Chi nhánh, trong đó: Doanh số chuyển tiền qua tài khoản mở tại Chi nhánh, trong đó: Trđ Trđ Trđ (B.I.3.2.5.1) (B.I.3.2.5.1) (B.I.3.2.5.1) (B.I.3.2.5.2) (B.I.3.2.5.2) (B.I.3.2.5.2) + Doanh số chuyển tiền từ các hợp đồng đầu ra + Doanh số chuyển tiền từ các hợp đồng đầu ra + Doanh số chuyển tiền từ các hợp đồng đầu ra (B.I.3.2.6.1) (B.I.3.2.6.1) (B.I.3.2.6.1) (B.I.3.2.6.2) (B.I.3.2.6.2) (B.I.3.2.6.2) + Doanh số chuyển tiền/điều chuyển vốn từ các TCTD khác  + Doanh số chuyển tiền/điều chuyển vốn từ các TCTD khác  + Doanh số chuyển tiền/điều chuyển vốn từ các TCTD khác  (B.I.3.2.9.1) (B.I.3.2.9.1) (B.I.3.2.9.1) (B.I.3.2.9.2) (B.I.3.2.9.2) (B.I.3.2.9.2) + Doanh số nộp tiền mặt + Doanh số nộp tiền mặt + Doanh số nộp tiền mặt (B.I.3.2.10.1) (B.I.3.2.10.1) (B.I.3.2.10.1) (B.I.3.2.10.2) (B.I.3.2.10.2) (B.I.3.2.10.2) Doanh số chuyển tiền /Doanh thu thuần Doanh số chuyển tiền /Doanh thu thuần Doanh số chuyển tiền /Doanh thu thuần % % % (B.I.3.2.32) (B.I.3.2.32) (B.I.3.2.32) (B.I.3.2.32.1) (B.I.3.2.32.1) (B.I.3.2.32.1) Doanh số chuyển tiền /Doanh số cho vay  Doanh số chuyển tiền /Doanh số cho vay  Doanh số chuyển tiền /Doanh số cho vay  % % % (B.I.3.2.33.1) (B.I.3.2.33.1) (B.I.3.2.33.1) (B.I.3.2.33.2) (B.I.3.2.33.2) (B.I.3.2.33.2) - - - Kết quả kiểm tra thông tin tại các phần mềm quản lý Kết quả kiểm tra thông tin tại các phần mềm quản lý Kết quả kiểm tra thông tin tại các phần mềm quản lý Hệ thống cảnh báo sớm EWS Hệ thống cảnh báo sớm EWS Hệ thống cảnh báo sớm EWS 
+SME.II.4.2.16.1 
+SME.II.4.2.16.1 
+SME.II.4.2.16.1 Hệ thống VCOM Hệ thống VCOM Hệ thống VCOM 
+SME.II.4.2.17 
+SME.II.4.2.17 
+SME.II.4.2.17 Đánh giá việc thực hiện điều kiện tín dụng theo CVPD năm gần nhất Đánh giá việc thực hiện điều kiện tín dụng theo CVPD năm gần nhất Đánh giá việc thực hiện điều kiện tín dụng theo CVPD năm gần nhất   Đáp ứng       ☐ ☐  Đáp ứng    Đáp ứng   ☐ Không đáp ứng (nguyên nhân chưa đáp ứng điều kiện và biện pháp khắc phục) ☐ ☐  Không đáp ứng   Không đáp ứng  (nguyên nhân chưa đáp ứng điều kiện và biện pháp khắc phục) (nguyên nhân chưa đáp ứng điều kiện và biện pháp khắc phục) Chi tiết Chi tiết Chi tiết Chi tiết Chi tiết Chi tiết Theo Thông báo PDTD/Tờ trình phê duyệt số … ngày … (B.I.3.2.48) Theo Thông báo PDTD/Tờ trình phê duyệt số … ngày …  Theo Thông báo PDTD/Tờ trình phê duyệt số … ngày …  ( ( B.I.3.2.48 B.I.3.2.48 ) ) Về Dòng tiền:  Về Dòng tiền:  Về Dòng tiền:  
+SME.II.4.2.16 
+SME.II.4.2.16 
+SME.II.4.2.16 Về cung cấp tài liệu:  Về cung cấp tài liệu:  Về cung cấp tài liệu:  
+SME.II.4.2.17 
+SME.II.4.2.17 
+SME.II.4.2.17 Về cam kết tài chính:  Về cam kết tài chính:  Về cam kết tài chính:  
+SME.II.4.2.18 
+SME.II.4.2.18 
+SME.II.4.2.18 Về tài sản đảm bảo: Về  Về  tài sản đảm bảo: tài sản đảm bảo: 
+SME.II.4.2.19 
+SME.II.4.2.19 
+SME.II.4.2.19 Về điều kiện cam kết khác Về điều kiện cam kết khác Về điều kiện cam kết khác 
+SME.II.4.2.20 
+SME.II.4.2.20 
+SME.II.4.2.20 5 5 5 Định hướng tín dụng  NHCT  Định hướng tín dụng  NHCT Định hướng tín dụng  NHCT     (Đối với ngành kinh doanh chính của khách hàng theo VB số (B.I.4.2.10): (B.I.4.2.11) (Đối với ngành kinh doanh chính của khách hàng  (Đối với ngành kinh doanh chính của khách hàng  theo VB số  theo VB số  (B.I.4.2.10 (B.I.4.2.10 ):  ):  (B.I.4.2.11 (B.I.4.2.11 ) ) Trường hợp thuộc ngành kiểm soát đặc biệt, nêu lý do đề xuất cấp 
+SME.II.5.2 Trường hợp thuộc ngành kiểm soát đặc biệt, nêu lý do đề xuất cấp  Trường hợp thuộc ngành kiểm soát đặc biệt, nêu lý do đề xuất cấp  
+SME.II.5.2 
+SME.II.5.2 6 6 6 Năng lực SXKD của khách hàng Năng lực SXKD của khách hàng Năng lực SXKD của khách hàng - - - Thời gian hoạt động Thời gian hoạt động Thời gian hoạt động 
+SME.II.6.1 năm 
+SME.II.6.1 
+SME.II.6.1  năm  năm Mức độ đáp ứng kinh nghiệm trong hoạt động SXKD Mức độ đáp ứng kinh nghiệm trong hoạt động SXKD Mức độ đáp ứng kinh nghiệm trong hoạt động SXKD KH đã có tối thiểu 1 năm kinh nghiệm trong lĩnh vực kinh doanh chính/lĩnh vực đề nghị cấp tín dụng tính đến thời điểm xét cấp tín dụng. KH đã có tối thiểu 1 năm kinh nghiệm KH đã có tối thiểu 1 năm kinh nghiệm  trong lĩnh vực kinh doanh chính/lĩnh vực đề nghị cấp tín dụng tính đến thời điểm xét cấp tín dụng.  trong lĩnh vực kinh doanh chính/lĩnh vực đề nghị cấp tín dụng tính đến thời điểm xét cấp tín dụng. Đối với KH có dưới 1 năm kinh nghiệm/KH mới thành lập để thực hiện dự án đầu tư thì yêu cầu: người quản lý doanh nghiệp hoặc cổ đông/thành viên góp vốn chính phải có tối thiểu 02 năm kinh nghiệm trong lĩnh vực kinh doanh chính/lĩnh vực đề nghị cấp tín dụng tính đến thời điểm xét cấp tín dụng.   Đối với KH có dưới 1 năm kinh nghiệm/KH mới thành lập để thực hiện dự án đầu tư thì yêu cầu: người quản lý doanh nghiệp hoặc cổ đông/thành viên góp vốn chính phải có tối thiểu 02 năm kinh nghiệm Đối với KH có dưới 1 năm kinh nghiệm/KH mới thành lập để thực hiện dự án đầu tư thì yêu cầu: người quản lý doanh nghiệp hoặc cổ đông/thành viên góp vốn chính phải có tối thiểu 02 năm kinh nghiệm  trong lĩnh vực kinh doanh chính/lĩnh vực đề nghị cấp tín dụng tính đến thời điểm xét cấp tín dụng.    trong lĩnh vực kinh doanh chính/lĩnh vực đề nghị cấp tín dụng tính đến thời điểm xét cấp tín dụng.   
+SME.II.6.2 
+SME.II.6.2 
+SME.II.6.2 - - - Năng lực SXKD Năng lực SXKD Năng lực SXKD Trụ sở giao dịch:   Trụ sở giao dịch:   Trụ sở giao dịch:   
+SME.2.6.2 
+SME.2.6.2 
+SME.2.6.2 GCN QSDĐ số: 
+SME.2.6.4 GCN QSDĐ số: GCN QSDĐ số:  
+SME.2.6.  
+SME.2.6. 4 4 Ngày 
+SME.2.6.5 Ngày  Ngày  
+SME.2.6.5 
+SME.2.6.5 Sở hữu của 
+SME.2.6.6                  Sở hữu của  Sở hữu của  
+SME.2.6.6 
+SME.2.6.6                                     Hợp đồng thuê nhà số: 
+SME.2.6.9 Ngày 
+SME.2.6.7 Hợp đồng thuê nhà số:  Hợp đồng thuê nhà số:  
+SME.2.6.9  
+SME.2.6.9  Ngày Ngày  
+SME.2.6.7  
+SME.2.6.7 Ngày hết hạn thuê: 
+SME.2.6.8  Ngày hết hạn  Ngày hết hạn  thuê:  thuê:  
+SME.2.6.8 
+SME.2.6.8     Nhà máy, nhà xưởng Nhà máy, nhà xưởng Nhà máy, nhà xưởng 
+SME.2.6.10 
+SME.2.6.10 
+SME.2.6.10 GCN QSDĐ số 
+SME.2.6.12  GCN QSDĐ số  GCN QSDĐ số  
+SME.2.6.12 
+SME.2.6.12     Ngày 
+SME.6.13 Ngày  Ngày  
+SME.6.13 
+SME.6.13 Sở hữu của 
+SME.2.6.14                Sở hữu của  Sở hữu của  
+SME.2.6.14 
+SME.2.6.14                                 Hợp đồng thuê nhà số: 
+SME.2.6.15 Hợp đồng thuê nhà số:  Hợp đồng thuê nhà số:  
+SME.2.6.15 
+SME.2.6.15 Ngày 
+SME.2.6.16 Ngày  Ngày  
+SME.2.6.16 
+SME.2.6.16 Thời hạn thuê: 
+SME.2.6.17 Thời hạn thuê:  Thời hạn thuê:  
+SME.2.6.17 
+SME.2.6.17 Máy móc thiết bị, cơ sở hạ tầng Máy móc thiết bị, cơ sở hạ tầng Máy móc thiết bị, cơ sở hạ tầng 
+SME.2.6.17.1 
+SME.2.6.17.1 
+SME.2.6.17.1 - - - Nguồn nhân lực Nguồn nhân lực Nguồn nhân lực Số lượng: 
+SME.2.6.18               Số lượng:  Số lượng:  
+SME.2.6.18 
+SME.2.6.18                               Trình độ lao động: Đại học/Trên đại học 
+SME.2.6.19, Lao đông phổ thông 
+SME.2.6.20%. Trình độ lao động: Đại học/Trên đại học Trình độ lao động: Đại học/Trên đại học     
+SME.2.6.19, 
+SME.2.6.19,  Lao đông phổ thông   Lao đông phổ thông  
+SME.2.6.20 
+SME.2.6.20 %. %. 
+SME.2.6.21 
+SME.2.6.21 
+SME.2.6.21 - - - Phương thức tổ chức sản xuất và hoạt động của khách hàng Phương thức tổ chức sản xuất và hoạt động của khách hàng Phương thức tổ chức sản xuất và hoạt động của khách hàng Đánh giá thị trường đầu vào: Đánh giá thị trường đầu vào: Đánh giá thị trường đầu vào: Hàng hóa, nguyên liệu chính và Tỷ trọng trong GVHB. 
+SME.2.6.23 Hàng hóa, nguyên liệu chính và Tỷ trọng trong GVHB Hàng hóa, nguyên liệu chính và Tỷ trọng trong GVHB . .     
+SME.2.6.23 
+SME.2.6.23 Phương thức thanh toán Phương thức thanh toán Phương thức thanh toán  Trả trước; Tỷ lệ 
+SME.2.6.24%  ☐ ☐  Trả trước; Tỷ lệ   Trả trước; Tỷ lệ  
+SME.2.6.24 
+SME.2.6.24 % %      Trả ngay; Tỷ lệ: 
+SME.2.6.25           %  ☐ ☐  Trả ngay; Tỷ lệ:   Trả ngay; Tỷ lệ:  
+SME.2.6.25 
+SME.2.6.25            %             %   Trả chậm; Tỷ lệ 
+SME.2.6.25.1           %; Thời gian trả chậm bình quân: B.I.5.3.168 ngày.  ☐ ☐  Trả chậm; Tỷ lệ   Trả chậm; Tỷ lệ  
+SME.2.6.25.1 
+SME.2.6.25.1            %; Thời gian trả chậm bình quân:            %; Thời gian trả chậm bình quân:  B.I.5.3.168  B.I.5.3.168     ngày. ngày.     Tối thiểu 03 nhà cung cấp chính/Tỷ trọng:   
+SME.2.6.27             Tối thiểu 03 nhà cung cấp chính/Tỷ trọng:    Tối thiểu 03 nhà cung cấp chính/Tỷ trọng:    
+SME.2.6.27 
+SME.2.6.27                           Đánh giá thị trường đầu ra: Đánh giá thị trường đầu ra: Đánh giá thị trường đầu ra: Hàng hóa đầu ra chính và Tỷ trọng trong DTT: 
+SME.2.6.23.1 Hàng hóa đầu ra chính và Tỷ trọng trong DTT:  Hàng hóa đầu ra chính và Tỷ trọng trong DTT:  
+SME.2.6.23.1 
+SME.2.6.23.1 Phương thức thanh toán 
+SME.2.6.28 Phương thức thanh toán  Phương thức thanh toán  
+SME.2.6.28 
+SME.2.6.28  Trả trước; Tỷ lệ…..% 
+SME.2.6.29 ☐ ☐  Trả trước; Tỷ lệ…..%   Trả trước; Tỷ lệ…..%  
+SME.2.6.29 
+SME.2.6.29  Trả ngay; Tỷ lệ…..%  
+SME.2.6.30           ☐ ☐  Trả ngay; Tỷ lệ…..%    Trả ngay; Tỷ lệ…..%   
+SME.2.6.30 
+SME.2.6.30                        Trả chậm; Tỷ lệ 
+SME.2.6.31.%; Thời gian trả chậm bình quân: 
+SME.2.6.31.1 ngày  ☐ ☐  Trả chậm; Tỷ lệ   Trả chậm; Tỷ lệ  
+SME.2.6.31 
+SME.2.6.31 .%; Thời gian trả chậm bình quân: .%; Thời gian trả chậm bình quân:  
+SME.2.6.31.1  
+SME.2.6.31.1  ngày   ngày     Tỷ lệ chuyển khoản: …% 
+SME.2.6.32       ☐ ☐  Tỷ lệ chuyển khoản: …%   Tỷ lệ chuyển khoản: …%  
+SME.2.6.32 
+SME.2.6.32 Tối thiểu 03 KH chính/Tỷ trọng:  
+SME.2.6.33            Tối thiểu 03 KH chính/Tỷ trọng:   Tối thiểu 03 KH chính/Tỷ trọng:   
+SME.2.6.33 
+SME.2.6.33                         7 7 7 Kết quả SXKD và tình hình tài chính Kết quả SXKD và tình hình tài chính Kết quả SXKD và tình hình tài chính Nguồn dữ liệu:  Nguồn dữ liệu:  Nguồn dữ liệu:  BCTC: 
+SME.2.7.4 BCTC:  BCTC:  
+SME.2.7.4 
+SME.2.7.4 Thời điểm báo cáo tài chính: 
+SME.2.7.6 Thời điểm báo cáo tài chính:  Thời điểm báo cáo tài chính:  
+SME.2.7.6 
+SME.2.7.6  Năm liền kề ☐ ☐  Năm liền kề  Năm liền kề  Khác:….. (cụ thể)            ☐ ☐  Khác:….. (cụ thể)             Khác:….. (cụ thể)            Chỉ tiêu Chỉ tiêu Chỉ tiêu Giá trị  Giá trị  Giá trị  (triệu đồng) (triệu đồng) (triệu đồng) Đánh giá Đánh giá Đánh giá (so với cùng kỳ năm trước) ( ( so với cùng kỳ năm trước so với cùng kỳ năm trước ) ) Doanh thu thuần  Doanh thu thuần  Doanh thu thuần  B.I.5.1.12.3 B.I.5.1.12.3 B.I.5.1.12.3 B.I.5.1.16.3 B.I.5.1.16.3 B.I.5.1.16.3 Lợi nhuận sau thuế  Lợi nhuận sau thuế Lợi nhuận sau thuế     B.I.5.1.12.17 B.I.5.1.12.17 B.I.5.1.12.17 B.I.5.1.16.17 B.I.5.1.16.17 B.I.5.1.16.17 Vốn lưu động ròng:  Vốn lưu động ròng:  Vốn lưu động ròng:  B.I.5.3.140.1 B.I.5.3.140.1 B.I.5.3.140.1 - Tăng/giảm: 
+SME.2.7.9 - T - T ăng/giảm:  ăng/giảm:  
+SME.2.7.9 
+SME.2.7.9 - 
+SME.2.7.10 - 
+SME.2.7.10 - 
+SME.2.7.10 Vốn chủ sở hữu:  Vốn chủ sở hữu:  Vốn chủ sở hữu:  B.I.5.3.3.14 B.I.5.3.3.14 B.I.5.3.3.14 - Tăng/giảm: B.I.5.3.6.14 - Tăng/giảm:  - Tăng/giảm:  B.I.5.3.6.14 B.I.5.3.6.14 - 
+SME.2.7.13 - 
+SME.2.7.13 - 
+SME.2.7.13 Phải thu khó đòi   Phải thu khó đòi   Phải thu khó đòi   
+SME.2.7.14 
+SME.2.7.14 
+SME.2.7.14 - 
+SME.2.7.15 -  -  
+SME.2.7.15 
+SME.2.7.15 - Tăng/giảm: 
+SME.2.7.16 - Tăng/giảm:  - Tăng/giảm:  
+SME.2.7.16 
+SME.2.7.16 - Lý do tăng/Khả năng thu hồi: 
+SME.2. 7.17 - Lý do tăng/Khả năng thu hồi:  - Lý do tăng/Khả năng thu hồi:  
+SME.2. 7.17 
+SME.2. 7.17 Hàng tồn kho chậm luân chuyển Hàng tồn kho chậm luân chuyển Hàng tồn kho chậm luân chuyển 
+SME.2.7.18 
+SME.2.7.18 
+SME.2.7.18  - 
+SME.2.7.19     -  -  
+SME.2.7.19 
+SME.2.7.19  - Tăng/giảm: 
+SME.2.7.20  - Tăng/giảm:   - Tăng/giảm:  
+SME.2.7.20 
+SME.2.7.20 - Lý do tăng/ Kế hoạch giải phóng HTK: 
+SME.2.7.21 - Lý do tăng/ Kế hoạch giải phóng HTK:  - Lý do tăng/ Kế hoạch giải phóng HTK:  
+SME.2.7.21 
+SME.2.7.21 Các khoản mục khác ảnh hưởng trọng yếu đến tình hình tài chính KH (nếu có) và/hoặc chỉ tiêu tài chính cần lưu ý (nếu có) và/hoặc cập nhật số liệu thời điểm (nếu có) 
+SME.2.7.22 Các khoản mục khác ảnh hưởng trọng yếu đến tình hình tài chính KH (nếu có) và/hoặc chỉ tiêu tài chính cần lưu ý (nếu có) và/hoặc cập nhật số liệu thời điểm (nếu có)  Các khoản mục khác ảnh hưởng trọng yếu đến tình hình tài chính KH (nếu có) và/hoặc chỉ tiêu tài chính cần lưu ý (nếu có) và/hoặc cập nhật số liệu thời điểm (nếu có)  
+SME.2.7.22 
+SME.2.7.22 Mức độ đáp ứng chỉ tiêu kinh doanh và tài chính Mức độ đáp ứng chỉ tiêu kinh doanh và tài chính Mức độ đáp ứng chỉ tiêu kinh doanh và tài chính Kết quả kinh doanh có lãi, không còn lỗ lũy kế, trừ trường hợp có lỗ theo kế hoạch do: Kết quả kinh doanh có lãi, không còn lỗ lũy kế, trừ trường hợp có lỗ theo kế hoạch do: Kết quả kinh doanh có lãi, không còn lỗ lũy kế, trừ trường hợp có lỗ theo kế hoạch do: Khách hàng mới thành lập, hoặc; Khách hàng mới thành lập, hoặc; Khách hàng mới thành lập, hoặc; Khách hàng được thành lập để thực hiện dự án và dự án đi vào hoạt động chưa quá 36 tháng, có khả năng thực hiện đúng kế hoạch. Khách hàng được thành lập để thực hiện dự án và dự án đi vào hoạt động chưa quá 36 tháng, có khả năng thực hiện đúng kế hoạch. Khách hàng được thành lập để thực hiện dự án và dự án đi vào hoạt động chưa quá 36 tháng, có khả năng thực hiện đúng kế hoạch. Trường hợp có lỗ theo kế hoạch tại mục (i), (ii) thì vốn chủ sở hữu vẫn phải >0. Trường hợp có lỗ theo kế hoạch tại mục (i), (ii) thì vốn chủ sở hữu vẫn phải >0. Trường hợp có lỗ theo kế hoạch tại mục (i), (ii) thì vốn chủ sở hữu vẫn phải >0. 
+SME.2.7.23 
+SME.2.7.23 
+SME.2.7.23 8 8 8 Kết quả chấm điểm và xếp hạng tín dụng của Khách hàng Kết quả chấm điểm và xếp hạng tín dụng của Khách hàng Kết quả chấm điểm và xếp hạng tín dụng của Khách hàng Kỳ chấm điểm Kỳ chấm điểm Kỳ chấm điểm Điểm Điểm Điểm Hạng tín dụng Hạng tín dụng Hạng tín dụng Ghi chú đáp ứng điều kiện của sản phẩm (PD01-09) Ghi chú đáp ứng điều kiện của sản phẩm (PD01-09) Ghi chú đáp ứng điều kiện của sản phẩm (PD01-09) 
+SME.2.8.2.1 
+SME.2.8.2.1 
+SME.2.8.2.1 
+SME.2.8.2 
+SME.2.8.2 
+SME.2.8.2 
+SME.2.8.2.2 
+SME.2.8.2.2 
+SME.2.8.2.2 
+SME.2.8.4 
+SME.2.8.4 
+SME.2.8.4 THẨM ĐỊNH NHU CẦU CẤP TÍN DỤNG THẨM ĐỊNH NHU CẦU CẤP TÍN DỤNG THẨM ĐỊNH NHU CẦU CẤP TÍN DỤNG 3.1. Tóm tắt phương án/Kê hoạch kinh doanh (CN loại bỏ các thông tin không cần thiết) 3.1. Tóm tắt phương án/Kê hoạch kinh doanh ( 3.1. Tóm tắt phương án/Kê hoạch kinh doanh ( CN loại bỏ các thông tin không cần thiết) CN loại bỏ các thông tin không cần thiết) 3.1.1. Kế hoạch kinh doanh  3.1.1. Kế hoạch kinh doanh  3.1.1. Kế hoạch kinh doanh  (Lưu ý: Trường hợp trình thời gian duy trì GHTD  tối đa 15 tháng thì không cần lập và đánh giá kế hoạch năm X+1). (Lưu ý: Trường hợp trình thời gian duy trì GHTD  tối đa 15 tháng thì không cần lập và đánh giá kế hoạch năm X+1). (Lưu ý: Trường hợp trình thời gian duy trì GHTD  tối đa 15 tháng thì không cần lập và đánh giá kế hoạch năm X+1). Chỉ tiêu Chỉ tiêu Chỉ tiêu Thực hiện năm X -1 Thực hiện năm X -1 Thực hiện năm X -1 Kế hoạch năm X Kế hoạch năm X Kế hoạch năm X Tăng/ Tăng/ Tăng/ giảm giảm giảm Kế hoạch năm X+1 Kế hoạch năm X+1 Kế hoạch năm X+1 Tăng/ Tăng/ Tăng/ giảm giảm giảm Doanh thu/Giá trị sản lượng Doanh thu/Giá trị sản lượng Doanh thu/Giá trị sản lượng 
+SME.3.1.1.1 
+SME.3.1.1.1 
+SME.3.1.1.1 
+SME.3.1.1.2 
+SME.3.1.1.2 
+SME.3.1.1.2 
+SME.3.1.1.3 
+SME.3.1.1.3 
+SME.3.1.1.3 
+SME.3.1.1.4 
+SME.3.1.1.4 
+SME.3.1.1.4 
+SME.3.1.1.5 
+SME.3.1.1.5 
+SME.3.1.1.5 Chi phí Chi phí Chi phí B.I.6.1.8 B.I.6.1.8 B.I.6.1.8 
+SME.3.1.1.7 
+SME.3.1.1.7 
+SME.3.1.1.7 
+SME.3.1.1.8 
+SME.3.1.1.8 
+SME.3.1.1.8 
+SME.3.1.1.9 
+SME.3.1.1.9 
+SME.3.1.1.9 
+SME.3.1.1.10 
+SME.3.1.1.10 
+SME.3.1.1.10 Lợi nhuận sau thuế Lợi nhuận sau thuế Lợi nhuận sau thuế 
+SME.3.1.1.11 
+SME.3.1.1.11 
+SME.3.1.1.11 
+SME.3.1.1.12 
+SME.3.1.1.12 
+SME.3.1.1.12 
+SME.3.1.1.13 
+SME.3.1.1.13 
+SME.3.1.1.13 
+SME.3.1.1.14 
+SME.3.1.1.14 
+SME.3.1.1.14 
+SME.3.1.1.15 
+SME.3.1.1.15 
+SME.3.1.1.15 3.1.2. Phương án sản xuất kinh doanh có phù hợp với đăng ký kinh doanh của khách hàng? 3.1.2. Phương án sản xuất kinh doanh có phù hợp với đăng ký kinh doanh của khách hàng? 3.1.2. Phương án sản xuất kinh doanh có phù hợp với đăng ký kinh doanh của khách hàng? 
+SME.3.1.2.1 
+SME.3.1.2.1 
+SME.3.1.2.1 Tính pháp lý của Phương án kinh doanh Tính pháp lý của Phương án kinh doanh Tính pháp lý của Phương án kinh doanh Thẩm quyền phê duyệt: 
+SME.3.1.2.4 Thẩm quyền phê duyệt:  Thẩm quyền phê duyệt:  
+SME.3.1.2.4 
+SME.3.1.2.4 
+SME.3.1.2.3 
+SME.3.1.2.3 
+SME.3.1.2.3 3.1.3. Kế hoạch sản xuất kinh doanh có khả thi hay không? Cụ thể như sau: 3.1.3. Kế hoạch sản xuất kinh doanh có khả thi hay không? Cụ thể như sau: 3.1.3. Kế hoạch sản xuất kinh doanh có khả thi hay không? Cụ thể như sau: 
+SME.3.1.3.1                  S S ME.3.1.3. ME.3.1.3. 1 1                                     Về quy mô doanh thu/chi phí/lợi nhuận, tốc độ tăng trưởng có phù hợp với kết quả kinh doanh thực tế trong 3 năm gần nhất và kết quả kinh doanh cập nhật kỳ gần nhất?         Về quy mô doanh thu/chi phí/lợi nhuận, tốc độ tăng trưởng có phù hợp với kết quả kinh doanh thực tế trong 3 năm gần nhất và kết quả kinh doanh cập nhật kỳ gần nhất?         Về quy mô doanh thu/chi phí/lợi nhuận, tốc độ tăng trưởng có phù hợp với kết quả kinh doanh thực tế trong 3 năm gần nhất và kết quả kinh doanh cập nhật kỳ gần nhất?         
+SME.3.1.3.3                
+SME.3.1.3.3 
+SME.3.1.3.3                                 Cơ sở đánh giá phù hợp/không phù hợp: 
+SME.3.1.3.5                Cơ sở đánh giá phù hợp/không phù hợp:  Cơ sở đánh giá phù hợp/không phù hợp:  
+SME.3.1.3.5 
+SME.3.1.3.5                                 Khả năng đáp ứng của năng lực SXKD (CSHT, MMTB, nguồn nhân lực, đầu vào, đầu ra) cho Kế hoạch SXKD?       Khả năng đáp ứng của năng lực SXKD (CSHT, MMTB, nguồn nhân lực, đầu vào, đầu ra) cho Kế hoạch SXKD?       Khả năng đáp ứng của năng lực SXKD (CSHT, MMTB, nguồn nhân lực, đầu vào, đầu ra) cho Kế hoạch SXKD?       
+SME.3.1.3.6 
+SME.3.1.3.6 
+SME.3.1.3.6 Kết luận Kết luận Kết luận Theo kết quả thẩm định của Tổ thẩm định: Theo kết quả thẩm định của Tổ thẩm định: Theo kết quả thẩm định của Tổ thẩm định: - 
+SME.3.1.3.8                                       -  -  
+SME.3.1.3.8 
+SME.3.1.3.8                                                                               - Trường hợp chỉ thực hiện được một phần kế hoạch: (được bao nhiêu % doanh thu/lợi nhuận). 
+SME.3.1.3.9                - Tr - Tr ường hợp chỉ thực hiện được một phần kế hoạch:  ường hợp chỉ thực hiện được một phần kế hoạch:  ( ( được bao nhiêu % doanh thu/lợi nhuận được bao nhiêu % doanh thu/lợi nhuận ).  ).  
+SME.3.1.3.9 
+SME.3.1.3.9                                 3.1.4. Bảng tính nhu cầu vay vốn ngắn hạn 3.1.4. Bảng tính nhu cầu vay vốn ngắn hạn 3.1.4. Bảng tính nhu cầu vay vốn ngắn hạn                                                                                                        Đơn vị tính: tỷ đồng                                                                                                        Đơn vị tính: tỷ đồng                                                                                                        Đơn vị tính: tỷ đồng TT TT TT Chỉ tiêu Chỉ tiêu Chỉ tiêu Giá trị Giá trị Giá trị Căn cứ Căn cứ Căn cứ 1 1 1 Tổng chi phí hoặc Giá trị sản lượng (đối với DN thi công xây lắp) Tổng chi phí hoặc Giá trị sản lượng (đối với DN thi công xây lắp) Tổng chi phí hoặc Giá trị sản lượng (đối với DN thi công xây lắp) 
+SME.3.1.4.1 
+SME.3.1.4.1 
+SME.3.1.4.1 Khấu hao N X-1 là 
+SME.3.1.4.3 Khấu hao N X-1 là  Khấu hao N X-1 là  
+SME.3.1.4.3 
+SME.3.1.4.3 2 2 2 Khấu hao Khấu hao Khấu hao 
+SME.3.1.4.2 
+SME.3.1.4.2 
+SME.3.1.4.2 3 3 3 Tổng chi phí đã loại trừ khấu hao Tổng chi phí đã loại trừ khấu hao Tổng chi phí đã loại trừ khấu hao 
+SME.3.1.4.4 
+SME.3.1.4.4 
+SME.3.1.4.4 = (1) - (2) = (1) - (2) = (1) - (2) 4 4 4 Vòng quay vốn lưu động Vòng quay vốn lưu động Vòng quay vốn lưu động 
+SME.3.1.4.5 
+SME.3.1.4.5 
+SME.3.1.4.5 
+SME.3.1.4.6 
+SME.3.1.4.6 
+SME.3.1.4.6 5 5 5 Tổng nhu cầu vốn lưu động cần thiết Tổng nhu cầu vốn lưu động cần thiết Tổng nhu cầu vốn lưu động cần thiết 
+SME.3.1.4.7 
+SME.3.1.4. 
+SME.3.1.4. 7 7 = (3)/(4) = (3)/(4) = (3)/(4) 6 6 6 Vốn tự có và chiếm dụng Vốn tự có và chiếm dụng Vốn tự có và chiếm dụng 
+SME.3.1.4.8 
+SME.3.1.4.8 
+SME.3.1.4.8 - Vốn lưu động ròng đến thời điểm thẩm định đến thời điểm BCTC cập nhật năm X-1 (sau điều chỉnh):  
+SME.3.1.4.8.1 - Vốn lưu động ròng đến thời điểm thẩm định đến thời điểm BCTC cập nhật năm X-1 (sau điều chỉnh):   - Vốn lưu động ròng đến thời điểm thẩm định đến thời điểm BCTC cập nhật năm X-1 (sau điều chỉnh):   
+SME.3.1.4.8.1 
+SME.3.1.4.8.1 - Vốn chiếm dụng đến đến thời điểm BCTC cập nhật năm X-1: 
+SME.3.1.4.8.2 - Vốn chiếm dụng đến đến thời điểm BCTC cập nhật năm X-1:  - Vốn chiếm dụng đến đến thời điểm BCTC cập nhật năm X-1:  
+SME.3.1.4.8. 
+SME.3.1.4.8. 2 2 - Các nguồn vốn mang tính chất thời điểm, thay đổi tuỳ theo chính sách thanh toán công nợ của Công ty, chính sách bán hàng của bên bán. - Các nguồn vốn mang tính chất thời điểm, thay đổi tuỳ theo chính sách thanh toán công nợ của Công ty, chính sách bán hàng của bên bán. - Các nguồn vốn mang tính chất thời điểm, thay đổi tuỳ theo chính sách thanh toán công nợ của Công ty, chính sách bán hàng của bên bán. Khách hàng có khả năng thu xếp đủ vốn thực hiện KHKD, tùy thời điểm và chi phí sử dụng vốn mà Khách hàng cân đối sử dụng các nguồn vốn dự kiến như sau để tối ưu hiệu quả. Khách hàng có khả năng thu xếp đủ vốn thực hiện KHKD, tùy thời điểm và chi phí sử dụng vốn mà Khách hàng cân đối sử dụng các nguồn vốn dự kiến như sau để tối ưu hiệu quả. Khách hàng có khả năng thu xếp đủ vốn thực hiện KHKD, tùy thời điểm và chi phí sử dụng vốn mà Khách hàng cân đối sử dụng các nguồn vốn dự kiến như sau để tối ưu hiệu quả. 7 7 7 Vốn vay TCTD khác Vốn vay TCTD khác Vốn vay TCTD khác 
+SME.3.1.4.9 
+SME.3.1.4.9 
+SME.3.1.4.9 - Vốn vay TCTD khác theo CIC cập nhật gần nhất:  B.I.6.2.11 - Vốn vay TCTD khác theo CIC cập nhật gần nhất:   - Vốn vay TCTD khác theo CIC cập nhật gần nhất:   B.I.6.2.11 B.I.6.2.11 - Tuỳ vào chính sách tín dụng, các điều kiện ưu đãi, lãi suất…tại các TCTD, Công ty sẽ cân đối lựa chọn sử dụng sản phẩm của TCTD phù hợp, đảm bảo hiệu quả sử dụng vốn. - -  Tuỳ vào chính sách tín dụng, các điều kiện ưu đãi, lãi suất…tại các TCTD, Công ty sẽ cân đối lựa chọn sử dụng sản phẩm của TCTD phù hợp, đảm bảo hiệu quả sử dụng vốn.  Tuỳ vào chính sách tín dụng, các điều kiện ưu đãi, lãi suất…tại các TCTD, Công ty sẽ cân đối lựa chọn sử dụng sản phẩm của TCTD phù hợp, đảm bảo hiệu quả sử dụng vốn. 8 8 8 Vốn vay NHCT Vốn vay NHCT Vốn vay NHCT 
+SME.3.1.4.10 
+SME.3.1.4.10 
+SME.3.1.4.10 = (5) - (6) - (7)  = (5) - (6) - (7)  = (5) - (6) - (7)  Kết quả thẩm định nhu cầu vốn của Khách hàng Kết quả thẩm định nhu cầu vốn của Khách hàng Kết quả thẩm định nhu cầu vốn của Khách hàng Tính khả thi của nguồn vốn thực hiện kế hoạch: 
+SME.3.1.4.11.1 Tính khả thi của nguồn vốn thực hiện kế hoạch:  Tính khả thi của nguồn vốn thực hiện kế hoạch:  
+SME.3.1.4.11.1 
+SME.3.1.4.11.1 Số tiền cho vay: 
+SME.3.1.4.11 Số tiền cho vay:  Số tiền cho vay:  
+SME.3.1.4.11 
+SME.3.1.4.11 Đồng tiền cho vay: 
+SME.3.1.4.12 Đồng tiền cho vay:  Đồng tiền cho vay:  
+SME.3.1.4.12 
+SME.3.1.4.12 Trường hợp Khách hàng vay vốn bằng ngoại tệ, Chi nhánh thẩm định và đánh giá mức độ đáp ứng các điều kiện cho vay bằng ngoại tệ theo quy định hiện hành của NHCT và NHNN khi nhận nợ bằng ngoại tệ. Trường hợp Khách hàng vay vốn bằng ngoại tệ, Chi nhánh thẩm định và đánh giá mức độ đáp ứng các điều kiện cho vay bằng ngoại tệ theo quy định hiện hành của NHCT và NHNN khi nhận nợ bằng ngoại tệ. Trường hợp Khách hàng vay vốn bằng ngoại tệ, Chi nhánh thẩm định và đánh giá mức độ đáp ứng các điều kiện cho vay bằng ngoại tệ theo quy định hiện hành của NHCT và NHNN khi nhận nợ bằng ngoại tệ. Phương thức cho vay: 
+SME.3.1.4.13  Phương thức cho vay:  Phương thức cho vay:  
+SME.3.1.4.13 
+SME.3.1.4.13     Thời gian cho vay tối đa trên một Giấy nhận nợ (trường hợp cho vay theo phương thức hạn mức): 
+SME.3.1.4.14 tháng/GNN, phù hợp do: 01 chu kỳ vốn dự kiến ~ B.I.6.2.24 tháng, Cơ sở đề xuất thời gian cho vay: 
+SME.3.1.4.15 Thời gian cho vay tối đa trên một Giấy nhận nợ (trường hợp cho vay theo phương thức hạn mức): Thời gian cho vay tối đa trên một Giấy nhận nợ (trường hợp cho vay theo phương thức hạn mức):  
+SME.3.1.4.14  
+SME.3.1.4.14     tháng/GNN, phù hợp do: 01 chu kỳ vốn dự kiến ~ tháng/GNN, phù hợp do: 01 chu kỳ vốn dự kiến ~  B.I.6.2.24   B.I.6.2.24  tháng, Cơ sở đề xuất thời gian cho vay:  tháng, Cơ sở đề xuất thời gian cho vay:  
+SME.3.1.4.15 
+SME.3.1.4.15 Lưu ý: đối với khách hàng thu hút QHTD từ TCTD khác, Chi nhánh nêu rõ lộ trình chuyển dịch dư nợ, tài sản bảo đảm từ TCTD khác. Lưu ý: đối với khách hàng thu hút QHTD từ TCTD khác, Chi nhánh nêu rõ lộ trình chuyển dịch dư nợ, tài sản bảo đảm từ TCTD khác. Lưu ý: đối với khách hàng thu hút QHTD từ TCTD khác, Chi nhánh nêu rõ lộ trình chuyển dịch dư nợ, tài sản bảo đảm từ TCTD khác. Nhu cầu bảo lãnh (nếu có) Nhu cầu bảo lãnh (nếu có) Nhu cầu bảo lãnh (nếu có) Tổng nhu cầu bảo lãnh thực hiện hợp đồng, bảo lãnh tiền ứng trước, bảo lãnh thanh toán,…của các hợp đồng kinh tế đã ký kết và dự kiến sẽ ký kết: 
+SME.3.1.4.16 Tổng nhu cầu bảo lãnh thực hiện hợp đồng, bảo lãnh tiền ứng trước, bảo lãnh thanh toán,…của các hợp đồng kinh tế đã ký kết và dự kiến sẽ ký kết:  Tổng nhu cầu bảo lãnh thực hiện hợp đồng, bảo lãnh tiền ứng trước, bảo lãnh thanh toán,…của các hợp đồng kinh tế đã ký kết và dự kiến sẽ ký kết:  
+SME.3.1.4.16 
+SME.3.1.4.16 Phương thức bảo lãnh: 
+SME.3.1.4.17 Phương thức bảo lãnh:  Phương thức bảo lãnh:  
+SME.3.1.4.17 
+SME.3.1.4.17 Trường hợp phát hành theo phương thức hạn mức, đáp ứng quy định của NHCT về phát hành bảo lãnh theo phương thức hạn mức: 
+SME.3.1.4.17.1 Trường hợp phát hành theo phương thức hạn mức, đáp ứng quy định của NHCT về phát hành bảo lãnh theo phương thức hạn mức:  Trường hợp phát hành theo phương thức hạn mức, đáp ứng quy định của NHCT về phát hành bảo lãnh theo phương thức hạn mức:  
+SME.3.1.4.17 
+SME.3.1.4.17 .1 .1 Đáp ứng quy định cấp Hạn mức theo công văn số: B.I.6.3.19 Đáp ứng quy định cấp Hạn mức theo công văn số:  Đáp ứng quy định cấp Hạn mức theo công văn số:  B.I.6.3.19 B.I.6.3.19 Nội dung Nội dung Nội dung B.I.6.3.19.1 B.I.6.3.19.1 B.I.6.3.19.1 Yêu cầu Yêu cầu Yêu cầu B.I.6.3.19.2 B.I.6.3.19.2 B.I.6.3.19.2 Đáp ứng Đáp ứng Đáp ứng 
+SME.3.1.4.18 
+SME.3.1.4.18 
+SME.3.1.4.18 Nhu cầu phát hành L/C của khách hàng Nhu cầu  Nhu cầu  phát hành L/C của khách hàng phát hành L/C của khách hàng Phương thức phát hành L/C: 
+SME.3.1.4.19.1 Phương thức phát hành L/C:  Phương thức phát hành L/C:  
+SME.3.1.4.19.1 
+SME.3.1.4.19.1 Tổng nhu cầu phát hành L/C của các hợp đồng kinh tế đã ký kết và dự kiến sẽ ký kết: 
+SME.3.1.4.19.2 Tổng nhu cầu phát hành L/C của các hợp đồng kinh tế đã ký kết và dự kiến sẽ ký kết:  Tổng nhu cầu phát hành L/C của các hợp đồng kinh tế đã ký kết và dự kiến sẽ ký kết:  
+SME.3.1.4.19.2 
+SME.3.1.4.19.2 Đáp ứng quy định cấp Hạn mức theo công văn số: B.I.6.3.12 Đáp ứng quy định cấp Hạn mức theo công văn số:  Đáp ứng quy định cấp Hạn mức theo công văn số:  B.I.6.3.12 B.I.6.3.12 Nội dung Nội dung Nội dung B.I.6.3.12.1 B.I.6.3.12.1 B.I.6.3.12.1 Yêu cầu Yêu cầu Yêu cầu B.I.6.3.12.2 B.I.6.3.12. B.I.6.3.12. 2 2 Đáp ứng Đáp ứng Đáp ứng 
+SME.3.1.4.19 
+SME.3.1.4.19 
+SME.3.1.4.19 THẨM ĐỊNH BIỆN PHÁP BẢO ĐẢM  THẨM ĐỊNH BIỆN PHÁP BẢO ĐẢM  THẨM ĐỊNH BIỆN PHÁP BẢO ĐẢM  Biện pháp bảo đảm Biện pháp bảo đảm Biện pháp bảo đảm Có bảo đảm đầy đủ bằng tài sản Có bảo đảm đầy đủ bằng tài sản Có bảo đảm đầy đủ bằng tài sản Loại TSBĐ Loại TSBĐ Loại TSBĐ 
+SME.3.1.4.19.4 
+SME.3.1.4.19.4 
+SME.3.1.4.19.4 Chi tiết TSBĐ: Chi tiết TSBĐ: Chi tiết TSBĐ: TT TT TT Tên TSBĐ Tên TSBĐ Tên TSBĐ (B.I.7.4) (B.I.7.4) (B.I.7.4) Hồ sơ pháp lý Hồ sơ pháp lý Hồ sơ pháp lý (
+SME.3.1.4.20) ( ( 
+SME.3.1.4.20) 
+SME.3.1.4.20) Chủ sở hữu TSBĐ  Chủ sở hữu TSBĐ  Chủ sở hữu TSBĐ  
+SME.3.1.4.21 
+SME.3.1.4. 
+SME.3.1.4. 21 21 Giá trị thẩm định gần nhất (Đồng) (3) Giá trị thẩm định gần nhất (Đồng) (3) Giá trị thẩm định gần nhất (Đồng) (3) (
+SME.3.1.4.22) ( ( 
+SME.3.1.4. 
+SME.3.1.4. 22 22 ) ) Tỷ lệ cấp TD/ TSBĐ (%) (4) Tỷ lệ cấp TD/ TSBĐ (%) (4) Tỷ lệ cấp TD/ TSBĐ (%) (4) (
+SME.3.1.4.23) ( ( 
+SME.3.1.4. 
+SME.3.1.4. 23 23 ) ) Mức cấp tín dụng tối đa (Đồng) = (3)*(4) Mức cấp tín dụng tối đa (Đồng) = (3)*(4) Mức cấp tín dụng tối đa (Đồng) = (3)*(4) (
+SME.3.1.4.24) ( ( 
+SME.3.1.4. 
+SME.3.1.4. 24 24 ) ) Tổng cộng Tổng cộng Tổng cộng Nhận xét về TSBĐ : Nhận xét về TSBĐ : Nhận xét về TSBĐ : Vị trí của TSBĐ Vị trí của TSBĐ Vị trí của TSBĐ 
+SME.3.1.4.25 
+SME.3.1.4.25 
+SME.3.1.4.25 Tính thanh khoản của TSBĐ Tính thanh khoản của TSBĐ Tính thanh khoản của TSBĐ 
+SME.3.1.4.26 
+SME.3.1.4.26 
+SME.3.1.4.26 Tư cách pháp lý của bên bảo đảm Tư cách pháp lý của bên bảo đảm Tư cách pháp lý của bên bảo đảm 
+SME.3.1.4.27 
+SME.3.1.4.27 
+SME.3.1.4.27 Đánh giá mức độ đáp ứng các điều kiện nhận làm TSBĐ của NHCT  Đánh giá mức độ đáp ứng các điều kiện nhận làm TSBĐ của NHCT  Đánh giá mức độ đáp ứng các điều kiện nhận làm TSBĐ của NHCT  
+SME.3.1.4.28 
+SME.3.1.4.28 
+SME.3.1.4.28 Đánh giá về các rủi ro và biện pháp giảm thiểu rủi ro về biện pháp bảo đảm của khách hàng (nếu có) Đánh giá về các rủi ro và biện pháp giảm thiểu rủi ro về biện pháp bảo đảm của khách hàng (nếu có) Đánh giá về các rủi ro và biện pháp giảm thiểu rủi ro về biện pháp bảo đảm của khách hàng (nếu có) Rủi ro về pháp lý của TSBĐ Rủi ro về pháp lý của TSBĐ Rủi ro về pháp lý của TSBĐ 
+SME.3.1.4.29 
+SME.3.1.4.29 
+SME.3.1.4.29 Biện pháp:  
+SME.3.1.4.32 Biện pháp:   Biện pháp:   
+SME.3.1.4.3 
+SME.3.1.4.3 2 2 Rủi ro về việc giảm giá của TSBĐ Rủi ro về việc giảm giá của TSBĐ Rủi ro về việc giảm giá của TSBĐ 
+SME.3.1.4.30 
+SME.3.1.4.30 
+SME.3.1.4.30 Biện pháp: 
+SME.3.1.4.33 Biện pháp:  Biện pháp:  
+SME.3.1.4.3 
+SME.3.1.4.3 3 3 Rủi ro về tính thanh khoản của TSBĐ Rủi ro về tính thanh khoản của TSBĐ Rủi ro về tính thanh khoản của TSBĐ 
+SME.3.1.4.31 
+SME.3.1.4.31 
+SME.3.1.4.31 Biện pháp: 
+SME.3.1.4.34 Biện pháp:  Biện pháp:  
+SME.3.1.4.3 
+SME.3.1.4.3 4 4 KẾT LUẬN VÀ ĐỀ XUẤT CỦA CHI NHÁNH KẾT LUẬN VÀ ĐỀ XUẤT CỦA CHI NHÁNH KẾT LUẬN VÀ ĐỀ XUẤT CỦA CHI NHÁNH Kết luận: Kết luận: Kết luận: Mức độ đáp ứng điều kiện cấp GHTD theo quy định hiện hành của NHCT Mức độ đáp ứng điều kiện cấp GHTD theo quy định hiện hành của NHCT Mức độ đáp ứng điều kiện cấp GHTD theo quy định hiện hành của NHCT 
+SME.3.1.4.35 
+SME.3.1.4.3 
+SME.3.1.4.3 5 5 Nêu lý do chưa đáp ứng : 
+SME.3.1.4.36 Nêu lý do chưa đáp ứng :  Nêu lý do chưa đáp ứng :  
+SME.3.1.4.3 
+SME.3.1.4.3 6 6 Mức độ đáp ứng điều kiện cấp tín dụng theo sản phẩm (quy định tại QĐ số……………./TGĐ-NHCT56.2 ngày………)  Mức độ đáp ứng điều kiện cấp tín dụng theo sản phẩm  Mức độ đáp ứng điều kiện cấp tín dụng theo sản phẩm  (quy định tại QĐ số……………./TGĐ-NHCT56.2 ngày………) (quy định tại QĐ số……………./TGĐ-NHCT56.2 ngày………)     
+SME.3.1.4.37 
+SME.3.1.4.3 
+SME.3.1.4.3 7 7 Nêu lý do chưa đáp ứng : 
+SME.3.1.4.38 Nêu lý do chưa đáp ứng :  Nêu lý do chưa đáp ứng :  
+SME.3.1.4.3 
+SME.3.1.4.3 8 8 ĐỀ XUẤT CỦA PHÒNG KHÁCH HÀNG/PHÒNG GIAO DỊCH ĐỀ XUẤT CỦA PHÒNG KHÁCH HÀNG/PHÒNG GIAO DỊCH ĐỀ XUẤT CỦA PHÒNG KHÁCH HÀNG/PHÒNG GIAO DỊCH Xác định cấp có thẩm quyền Xác định cấp có thẩm quyền Xác định cấp có thẩm quyền 
+SME.3.1.4.39  
+SME.3.1.4.39 
+SME.3.1.4.39     Cơ sở xác định cấp thẩm quyền: 
+SME.3.1.4.40 Cơ sở xác định cấp thẩm quyền:  Cơ sở xác định cấp thẩm quyền:  
+SME.3.1.4.40 
+SME.3.1.4.40 Đề xuất Đề xuất Đề xuất 
+SME.3.1.4.41 
+SME.3.1.4.41 
+SME.3.1.4.41 Các nội dung đề xuất như sau: Các nội dung đề xuất như sau: Các nội dung đề xuất như sau: Giới hạn tín dụng Giới hạn tín dụng Giới hạn tín dụng Giới hạn tín dụng: Giới hạn tín dụng: Giới hạn tín dụng: 
+SME.3.1.4.42 triệu đồng, trong đó: 
+SME.3.1.4.42 
+SME.3.1.4.42  triệu đồng, trong đó:  triệu đồng, trong đó: Giới hạn cho vay ngắn hạn Giới hạn cho vay ngắn hạn Giới hạn cho vay ngắn hạn 
+SME.3.1.4.43 triệu đồng 
+SME.3.1.4.43 
+SME.3.1.4.43  triệu đồng  triệu đồng Giới hạn cho vay trung dài hạn Giới hạn cho vay trung dài hạn Giới hạn cho vay trung dài hạn 
+SME.3.1.4.44 triệu đồng 
+SME.3.1.4.4 
+SME.3.1.4.4 4 4  triệu đồng  triệu đồng Giới hạn bảo lãnh Giới hạn bảo lãnh Giới hạn bảo lãnh 
+SME.3.1.4.45 triệu đồng 
+SME.3.1.4.4 
+SME.3.1.4.4 5 5  triệu đồng  triệu đồng Giới hạn LC Giới hạn LC Giới hạn LC 
+SME.3.1.4.46 triệu đồng 
+SME.3.1.4.4 
+SME.3.1.4.4 6 6  triệu đồng  triệu đồng Giới hạn chiết khấu Giới hạn chiết khấu Giới hạn chiết khấu 
+SME.3.1.4.47 triệu đồng 
+SME.3.1.4.4 
+SME.3.1.4.4 7 7  triệu đồng  triệu đồng Giới hạn khác (nếu có) Giới hạn khác (nếu có) Giới hạn khác (nếu có) 
+SME.3.1.4.48 triệu đồng 
+SME.3.1.4.4 
+SME.3.1.4.4 8 8  triệu đồng  triệu đồng Mục đích cấp tín dụng Mục đích cấp tín dụng Mục đích cấp tín dụng 
+SME.3.1.4.49 
+SME.3.1.4.49 
+SME.3.1.4.49 Phương thức cấp tín dụng Phương thức cấp tín dụng Phương thức cấp tín dụng 
+SME.3.1.4.50 
+SME.3.1.4.50 
+SME.3.1.4.50 Thời hạn duy trì GHTD Thời hạn duy trì GHTD Thời hạn duy trì GHTD 
+SME.3.1.4.51 
+SME.3.1.4.51 
+SME.3.1.4.51 Biện pháp bảo đảm Biện pháp bảo đảm Biện pháp bảo đảm Có bảo đảm đầy đủ bằng tài sản Có bảo đảm đầy đủ bằng tài sản Có bảo đảm đầy đủ bằng tài sản Khoản tín dụng Khoản tín dụng Khoản tín dụng Số tiền cấp tín dụng Số tiền cấp tín dụng Số tiền cấp tín dụng 
+SME.3.1.4.53 triệu đồng 
+SME.3.1.4.53 
+SME.3.1.4.53  triệu đồng  triệu đồng Mục đích cấp tín dụng Mục đích cấp tín dụng Mục đích cấp tín dụng 
+SME.3.1.4.54  triệu đồng 
+SME.3.1.4.5 
+SME.3.1.4.5 4 4   triệu đồng   triệu đồng Phương thức cấp tín dụng Phương thức cấp tín dụng Phương thức cấp tín dụng 
+SME.3.1.4.55 
+SME.3.1.4.5 
+SME.3.1.4.5 5 5 Thời hạn vay vốn Thời hạn vay vốn Thời hạn vay vốn  
+SME.3.1.4.6     
+SME.3.1.4.6 
+SME.3.1.4.6 Lãi suất, phí Lãi suất, phí Lãi suất, phí 
+SME.3.1.4.57 
+SME.3.1.4.57 
+SME.3.1.4.57 Lịch trả nợ gốc, lãi Lịch trả nợ gốc, lãi Lịch trả nợ gốc, lãi 
+SME.3.1.4.58 
+SME.3.1.4.58 
+SME.3.1.4.58 Biện pháp bảo đảm Biện pháp bảo đảm Biện pháp bảo đảm Có bảo đảm đầy đủ bằng tài sản Có bảo đảm đầy đủ bằng tài sản Có bảo đảm đầy đủ bằng tài sản Điều kiện cấp tín dụng Điều kiện cấp tín dụng Điều kiện cấp tín dụng 
+SME.3.1.4.59 
+SME.3.1.4.5 
+SME.3.1.4.5 9 9 Tôi xin cam đoan đã tập hợp đầy đủ thông tin dựa trên hồ sơ tín dụng, những chi tiết, thông tin trên đây là trung thực và đúng thực tế khách hàng. Tôi xin cam đoan đã tập hợp đầy đủ thông tin dựa trên hồ sơ tín dụng, những chi tiết, thông tin trên đây là trung thực và đúng thực tế khách hàng. Tôi xin cam đoan đã tập hợp đầy đủ thông tin dựa trên hồ sơ tín dụng, những chi tiết, thông tin trên đây là trung thực và đúng thực tế khách hàng.                                                      Cán bộ đánh giá                                                      Cán bộ đánh giá                                                      Cán bộ đánh giá                                                     (CB QHKH)                                                     (CB QHKH)                                                     (CB QHKH)                                                         (Ký, ghi họ tên)                                                         (Ký, ghi họ tên)                                                         (Ký, ghi họ tên) KẾT QUẢ THẨM ĐỊNH CỦA CHI NHÁNH KẾT QUẢ THẨM ĐỊNH CỦA CHI NHÁNH KẾT QUẢ THẨM ĐỊNH CỦA CHI NHÁNH   Sau khi thẩm định, đồng ý với các đánh giá và đề xuất của cán bộ QHKH. ☐ ☐   Sau khi thẩm định, đồng ý với các đánh giá và đề xuất của cán bộ QHKH.   Sau khi thẩm định, đồng ý với các đánh giá và đề xuất của cán bộ QHKH.   Sau khi thẩm định, không đồng ý với đánh giá và đề xuất của Cán bộ QHKH. Các nội dung không đồng ý và lý do như sau:……………………………………………………………………………..…. ☐ ☐   Sau khi thẩm định, không đồng ý với đánh giá và đề xuất của Cán bộ QHKH. Các nội dung không đồng ý và lý do như sau:……………………………………………………………………………..….   Sau khi thẩm định, không đồng ý với đánh giá và đề xuất của Cán bộ QHKH. Các nội dung không đồng ý và lý do như sau:……………………………………………………………………………..….   Ý kiến/điều kiện khác (nếu có):……………………………………………………………………… ☐ ☐   Ý kiến/điều kiện khác (nếu có):………………………………………………………………………   Ý kiến/điều kiện khác (nếu có):………………………………………………………………………                                                 Người thẩm định                                                 Người thẩm định                                                 Người thẩm định                                            (CB QHKH, Lãnh đạo PKH/PGD)                                            (CB QHKH, Lãnh đạo PKH/PGD)                                            (CB QHKH, Lãnh đạo PKH/PGD)                                              (Ký, ghi họ tên)                                              (Ký, ghi họ tên)                                              (Ký, ghi họ tên) PHÊ DUYỆT VÀ QUYẾT ĐỊNH CỦA CẤP CÓ THẨM QUYỀN TẠI CHI NHÁNH PHÊ DUYỆT VÀ QUYẾT ĐỊNH CỦA CẤP CÓ THẨM QUYỀN TẠI CHI NHÁNH PHÊ DUYỆT VÀ QUYẾT ĐỊNH CỦA CẤP CÓ THẨM QUYỀN TẠI CHI NHÁNH Căn cứ các nội dung đánh giá và thẩm định của Tổ thẩm định, Giám đốc Chi nhánh quyết định: Căn cứ các nội dung đánh giá và thẩm định của Tổ thẩm định, Giám đốc Chi nhánh quyết định: Căn cứ các nội dung đánh giá và thẩm định của Tổ thẩm định, Giám đốc Chi nhánh quyết định:  Không đồng ý phê duyệt và quyết định cấp tín dụng, lý do:……………………………………………………. ☐ ☐  Không đồng ý phê duyệt và quyết định cấp tín dụng, lý do:…………………………………………………….  Không đồng ý phê duyệt và quyết định cấp tín dụng, lý do:…………………………………………………….  Đồng ý phê duyệt và quyết định cấp tín dụng ☐ ☐  Đồng ý phê duyệt và quyết định cấp tín dụng  Đồng ý phê duyệt và quyết định cấp tín dụng Nội dung phê duyệt và quyết định tín dụng (nêu đầy đủ và chi tiết tương tự nội dung Đề xuất tại khoản mục 5.2.2 phần B mẫu Tờ trình này) Nội dung phê duyệt và quyết định tín dụng ( Nội dung phê duyệt và quyết định tín dụng ( nêu nêu     đầy đủ và chi tiết tương tự nội dung Đề xuất tại khoản mục 5.2.2 phần B mẫu Tờ trình này đầy đủ và chi tiết tương tự nội dung Đề xuất tại khoản mục 5.2.2 phần B mẫu Tờ trình này ) )                                        ….. ngày….. tháng…..năm……                                        ….. ngày….. tháng…..năm……                                        ….. ngày….. tháng…..năm……                                   Giám đốc chi nhánh                                   Giám đốc chi nhánh                                   Giám đốc chi nhánh                                  (Ký, ghi rõ họ tên)                                  (Ký, ghi rõ họ tên)                                  (Ký, ghi rõ họ tên) Nguyên tắc áp dụng mẫu biểu Tờ trình:  Nguyên tắc áp dụng mẫu biểu Tờ trình:  Nguyên tắc áp dụng mẫu biểu Tờ trình:  Các nội dung tại mẫu Tờ trình nêu trên hoàn toàn mang tính tham khảo, hướng dẫn thực hiện. Trong quá trình thẩm định thực tế, tùy vào từng khoản tín dụng cụ thể, cán bộ lập tờ trình, cấp kiểm soát, cấp có thẩm quyền phê duyệt tín dụng được phép xem xét chỉnh sửa, lược bớt, bổ sung/yêu cầu bổ sung thêm các thông tin khác ngoài các thông tin được nêu tại Mẫu Tờ trình này nhằm đánh giá một cách chính xác nhất về khách hàng, về rủi ro, biện pháp quản lý, lợi ích cho NHCT,… Trên cơ sở đó, cấp có thẩm quyền đưa ra quyết định cuối cùng việc cấp tín dụng cho khách hàng nhằm đảm bảo an toàn, hiệu quả nguồn vốn cho vay. Các nội dung tại mẫu Tờ trình nêu trên hoàn toàn mang tính tham khảo, hướng dẫn thực hiện. Trong quá trình thẩm định thực tế, tùy vào từng khoản tín dụng cụ thể, cán bộ lập tờ trình, cấp kiểm soát, cấp có thẩm quyền phê duyệt tín dụng được phép xem xét chỉnh sửa, lược bớt, bổ sung/yêu cầu bổ sung thêm các thông tin khác ngoài các thông tin được nêu tại Mẫu Tờ trình này nhằm đánh giá một cách chính xác nhất về khách hàng, về rủi ro, biện pháp quản lý, lợi ích cho NHCT,… Trên cơ sở đó, cấp có thẩm quyền đưa ra quyết định cuối cùng việc cấp tín dụng cho khách hàng nhằm đảm bảo an toàn, hiệu quả nguồn vốn cho vay. Các nội dung tại mẫu Tờ trình nêu trên hoàn toàn mang tính tham khảo, hướng dẫn thực hiện. Trong quá trình thẩm định thực tế, tùy vào từng khoản tín dụng cụ thể, cán bộ lập tờ trình, cấp kiểm soát, cấp có thẩm quyền phê duyệt tín dụng được phép xem xét chỉnh sửa, lược bớt, bổ sung/yêu cầu bổ sung thêm các thông tin khác ngoài các thông tin được nêu tại Mẫu Tờ trình này nhằm đánh giá một cách chính xác nhất về khách hàng, về rủi ro, biện pháp quản lý, lợi ích cho NHCT,… Trên cơ sở đó, cấp có thẩm quyền đưa ra quyết định cuối cùng việc cấp tín dụng cho khách hàng nhằm đảm bảo an toàn, hiệu quả nguồn vốn cho vay. Chi nhánh lưu ý trong quá trình thẩm định cấp GHTD cần lưu trữ/thu thập đủ hồ sơ làm tài liệu đánh giá/căn cứ để  đưa ra các kết quả thẩm định được thể hiện trong tờ trình.  Chi nhánh lưu ý trong quá trình thẩm định cấp GHTD cần lưu trữ/thu thập đủ hồ sơ làm tài liệu đánh giá/căn cứ để  đưa ra các kết quả thẩm định được thể hiện trong tờ trình.  Chi nhánh lưu ý trong quá trình thẩm định cấp GHTD cần lưu trữ/thu thập đủ hồ sơ làm tài liệu đánh giá/căn cứ để  đưa ra các kết quả thẩm định được thể hiện trong tờ trình. 
