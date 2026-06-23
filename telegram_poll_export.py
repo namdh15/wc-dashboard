@@ -339,6 +339,18 @@ def fetch_scores():
             json.dump(scores, f, ensure_ascii=False, indent=2)
         print(f"Đã tạo lại {SCORES_FILE} với {len(scores)} trận.")
 
+    # Sync các trận mới từ poll vào scores (phòng trường hợp kéo poll mới hơn)
+    poll_matches = _rebuild_scores_from_poll()
+    new_matches = [m for m in poll_matches if m not in scores]
+    if new_matches:
+        for m in new_matches:
+            scores[m] = None
+        with open(SCORES_FILE, "w", encoding="utf-8") as f:
+            json.dump(scores, f, ensure_ascii=False, indent=2)
+        print(f"Đã thêm {len(new_matches)} trận mới từ poll vào {SCORES_FILE}:")
+        for m in new_matches:
+            print(f"  + {m}")
+
     null_matches = [k for k, v in scores.items() if v is None]
     if not null_matches:
         print("Tất cả trận đã có điểm rồi.")
